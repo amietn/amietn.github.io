@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>tome.one - systemd</title><link>https://tome.one/</link><description></description><lastBuildDate>Sun, 19 Feb 2017 10:42:00 +0100</lastBuildDate><item><title>Systemd tips and tricks</title><link>https://tome.one/systemd-tips-and-tricks.html</link><description>&lt;p&gt;Systemd is great. Here are a few things you can do with it.&lt;/p&gt;
+&lt;h4&gt;Editing unit files&lt;/h4&gt;
+&lt;p&gt;I usually can't remember where unit files are located but that's not an issue. Systemd will let you edit them just by knowing the unit name.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;SYSTEMD_EDITOR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;vim
+$ sudo -E systemctl edit --full …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">tome.one</dc:creator><pubDate>Sun, 19 Feb 2017 10:42:00 +0100</pubDate><guid isPermaLink="false">tag:tome.one,2017-02-19:/systemd-tips-and-tricks.html</guid><category>dev</category><category>linux</category><category>systemd</category></item></channel></rss>

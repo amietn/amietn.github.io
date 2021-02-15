@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>tome.one - bash</title><link>https://tome.one/</link><description></description><lastBuildDate>Fri, 02 Dec 2016 17:50:00 +0100</lastBuildDate><item><title>Bash Magic</title><link>https://tome.one/bash-magic.html</link><description>&lt;p&gt;Over the years I have learned many tips and tricks when working with Bash. Some are well known while others are not. Here are a few tricks that I find the most useful.&lt;/p&gt;
+&lt;h4&gt;Searching history&lt;/h4&gt;
+&lt;p&gt;So you know you just typed that command but cannot remember what it was. Fine …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">tome.one</dc:creator><pubDate>Fri, 02 Dec 2016 17:50:00 +0100</pubDate><guid isPermaLink="false">tag:tome.one,2016-12-02:/bash-magic.html</guid><category>dev</category><category>linux</category><category>bash</category></item></channel></rss>

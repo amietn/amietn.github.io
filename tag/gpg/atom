@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>tome.one - gpg</title><link href="https://tome.one/" rel="alternate"></link><link href="https://tome.one/tag/gpg/atom" rel="self"></link><id>https://tome.one/</id><updated>2017-04-30T21:00:00+02:00</updated><entry><title>Setting up gpg-agent</title><link href="https://tome.one/setting-up-gpg-agent.html" rel="alternate"></link><published>2017-04-30T21:00:00+02:00</published><updated>2017-04-30T21:00:00+02:00</updated><author><name>tome.one</name></author><id>tag:tome.one,2017-04-30:/setting-up-gpg-agent.html</id><summary type="html">&lt;p&gt;On Arch &lt;code&gt;gpg-agent&lt;/code&gt; comes with the &lt;code&gt;gnupg&lt;/code&gt; package so no other package is needed  if &lt;code&gt;gpg&lt;/code&gt; is already installed.&lt;/p&gt;
+&lt;p&gt;I use &lt;code&gt;gpg-agent&lt;/code&gt; for temporarily caching the PIN for my &lt;a href="https://www.yubico.com/products/yubikey-hardware/"&gt;Yubikey&lt;/a&gt; so that I don't have to type it everytime as well as for ssh-agent emulation.&lt;/p&gt;
+&lt;h4&gt;Setup&lt;/h4&gt;
+&lt;p&gt;Add the following lines …&lt;/p&gt;</summary><content type="html">&lt;p&gt;On Arch &lt;code&gt;gpg-agent&lt;/code&gt; comes with the &lt;code&gt;gnupg&lt;/code&gt; package so no other package is needed  if &lt;code&gt;gpg&lt;/code&gt; is already installed.&lt;/p&gt;
+&lt;p&gt;I use &lt;code&gt;gpg-agent&lt;/code&gt; for temporarily caching the PIN for my &lt;a href="https://www.yubico.com/products/yubikey-hardware/"&gt;Yubikey&lt;/a&gt; so that I don't have to type it everytime as well as for ssh-agent emulation.&lt;/p&gt;
+&lt;h4&gt;Setup&lt;/h4&gt;
+&lt;p&gt;Add the following lines to your &lt;code&gt;~/.bashrc&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Set GPG TTY&lt;/span&gt;
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;GPG_TTY&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;tty&lt;span class="k"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Refresh gpg-agent tty in case user switches into an X session&lt;/span&gt;
+gpg-connect-agent updatestartuptty /bye &amp;gt;/dev/null
+
+&lt;span class="c1"&gt;# Set SSH to use gpg-agent&lt;/span&gt;
+&lt;span class="nb"&gt;unset&lt;/span&gt; SSH_AGENT_PID
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;gnupg_SSH_AUTH_SOCK_by&lt;/span&gt;&lt;span class="k"&gt;:-&lt;/span&gt;&lt;span class="nv"&gt;0&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; -ne &lt;span class="nv"&gt;$$&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+  &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;SSH_AUTH_SOCK&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/run/user/&lt;/span&gt;&lt;span class="nv"&gt;$UID&lt;/span&gt;&lt;span class="s2"&gt;/gnupg/S.gpg-agent.ssh&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;fi&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Start the gpg-agent if not already running&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; ! pgrep -x -u &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;USER&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; gpg-agent &amp;gt;/dev/null &lt;span class="m"&gt;2&lt;/span&gt;&amp;gt;&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+  gpg-connect-agent /bye &amp;gt;/dev/null &lt;span class="m"&gt;2&lt;/span&gt;&amp;gt;&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;
+&lt;span class="k"&gt;fi&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Add these lines to &lt;code&gt;~/.gnupg/gpg-agent.conf&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;enable-ssh-support&lt;/span&gt;
+&lt;span class="err"&gt;default-cache-ttl 10800&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="dev"></category><category term="linux"></category><category term="gpg"></category></entry></feed>

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>tome.one - linux</title><link href="https://tome.one/" rel="alternate"></link><link href="https://tome.one/tag/linux/atom" rel="self"></link><id>https://tome.one/</id><updated>2017-06-30T21:20:00+02:00</updated><entry><title>WireGuard</title><link href="https://tome.one/wireguard.html" rel="alternate"></link><published>2017-06-30T21:20:00+02:00</published><updated>2017-06-30T21:20:00+02:00</updated><author><name>tome.one</name></author><id>tag:tome.one,2017-06-30:/wireguard.html</id><content type="html">&lt;p&gt;I co-wrote a blog post on WireGuard with adr13n earlier this month.&lt;/p&gt;
+&lt;p&gt;Read it on &lt;a href="https://research.kudelskisecurity.com/2017/06/07/installing-wireguard-the-modern-vpn/"&gt;research.kudelskisecurity.com&lt;/a&gt;.&lt;/p&gt;</content><category term="dev"></category><category term="linux"></category><category term="wireguard"></category><category term="vpn"></category><category term="security"></category></entry><entry><title>Playing 10bit HEVC videos on Linux with NVIDIA and mpv</title><link href="https://tome.one/playing-10bit-hevc-videos-on-linux-with-nvidia-and-mpv.html" rel="alternate"></link><published>2017-05-26T13:40:00+02:00</published><updated>2017-05-26T13:40:00+02:00</updated><author><name>tome.one</name></author><id>tag:tome.one,2017-05-26:/playing-10bit-hevc-videos-on-linux-with-nvidia-and-mpv.html</id><summary type="html">&lt;p&gt;For this to work you will need an NVIDIA GPU.&lt;/p&gt;
+&lt;p&gt;Get the &lt;code&gt;mpv-build&lt;/code&gt; scripts, tune the mpv and ffmpeg options and build:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/sh&lt;/span&gt;
+
+mkdir -p ~/git
+&lt;span class="nb"&gt;cd&lt;/span&gt; ~/git
+git clone https://github.com/mpv-player/mpv-build.git
+&lt;span class="nb"&gt;cd&lt;/span&gt; mpv-build
+
+&lt;span class="c1"&gt;# write mpv_options file&lt;/span&gt;
+cat &lt;span class="s"&gt;&amp;lt;&amp;lt; EOF &amp;gt; mpv_options&lt;/span&gt;
+&lt;span class="s"&gt;--enable-cuda-hwaccel&lt;/span&gt;
+&lt;span class="s"&gt;EOF&lt;/span&gt;
+
+&lt;span class="c1"&gt;# write ffmpeg_options file …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;For this to work you will need an NVIDIA GPU.&lt;/p&gt;
+&lt;p&gt;Get the &lt;code&gt;mpv-build&lt;/code&gt; scripts, tune the mpv and ffmpeg options and build:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/sh&lt;/span&gt;
+
+mkdir -p ~/git
+&lt;span class="nb"&gt;cd&lt;/span&gt; ~/git
+git clone https://github.com/mpv-player/mpv-build.git
+&lt;span class="nb"&gt;cd&lt;/span&gt; mpv-build
+
+&lt;span class="c1"&gt;# write mpv_options file&lt;/span&gt;
+cat &lt;span class="s"&gt;&amp;lt;&amp;lt; EOF &amp;gt; mpv_options&lt;/span&gt;
+&lt;span class="s"&gt;--enable-cuda-hwaccel&lt;/span&gt;
+&lt;span class="s"&gt;EOF&lt;/span&gt;
+
+&lt;span class="c1"&gt;# write ffmpeg_options file&lt;/span&gt;
+cat &lt;span class="s"&gt;&amp;lt;&amp;lt; EOF &amp;gt; ffmpeg_options&lt;/span&gt;
+&lt;span class="s"&gt;--enable-cuda&lt;/span&gt;
+&lt;span class="s"&gt;--enable-cuvid&lt;/span&gt;
+&lt;span class="s"&gt;--enable-nonfree&lt;/span&gt;
+&lt;span class="s"&gt;EOF&lt;/span&gt;
+
+&lt;span class="c1"&gt;# build&lt;/span&gt;
+./rebuild -j10
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Play a 10bit HEVC video with:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;~/git/mpv-build/mpv/build/mpv --hwdec=cuda --vo=opengl &amp;lt;VIDEO_FILE&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This is especially useful for 60 frame per second 2160p 10bit HEVC videos since most CPUs cannot decode those fast enough for smooth playback.&lt;/p&gt;</content><category term="dev"></category><category term="linux"></category><category term="hevc"></category><category term="video"></category></entry><entry><title>Setting up gpg-agent</title><link href="https://tome.one/setting-up-gpg-agent.html" rel="alternate"></link><published>2017-04-30T21:00:00+02:00</published><updated>2017-04-30T21:00:00+02:00</updated><author><name>tome.one</name></author><id>tag:tome.one,2017-04-30:/setting-up-gpg-agent.html</id><summary type="html">&lt;p&gt;On Arch &lt;code&gt;gpg-agent&lt;/code&gt; comes with the &lt;code&gt;gnupg&lt;/code&gt; package so no other package is needed  if &lt;code&gt;gpg&lt;/code&gt; is already installed.&lt;/p&gt;
+&lt;p&gt;I use &lt;code&gt;gpg-agent&lt;/code&gt; for temporarily caching the PIN for my &lt;a href="https://www.yubico.com/products/yubikey-hardware/"&gt;Yubikey&lt;/a&gt; so that I don't have to type it everytime as well as for ssh-agent emulation.&lt;/p&gt;
+&lt;h4&gt;Setup&lt;/h4&gt;
+&lt;p&gt;Add the following lines …&lt;/p&gt;</summary><content type="html">&lt;p&gt;On Arch &lt;code&gt;gpg-agent&lt;/code&gt; comes with the &lt;code&gt;gnupg&lt;/code&gt; package so no other package is needed  if &lt;code&gt;gpg&lt;/code&gt; is already installed.&lt;/p&gt;
+&lt;p&gt;I use &lt;code&gt;gpg-agent&lt;/code&gt; for temporarily caching the PIN for my &lt;a href="https://www.yubico.com/products/yubikey-hardware/"&gt;Yubikey&lt;/a&gt; so that I don't have to type it everytime as well as for ssh-agent emulation.&lt;/p&gt;
+&lt;h4&gt;Setup&lt;/h4&gt;
+&lt;p&gt;Add the following lines to your &lt;code&gt;~/.bashrc&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Set GPG TTY&lt;/span&gt;
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;GPG_TTY&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;tty&lt;span class="k"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Refresh gpg-agent tty in case user switches into an X session&lt;/span&gt;
+gpg-connect-agent updatestartuptty /bye &amp;gt;/dev/null
+
+&lt;span class="c1"&gt;# Set SSH to use gpg-agent&lt;/span&gt;
+&lt;span class="nb"&gt;unset&lt;/span&gt; SSH_AGENT_PID
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;gnupg_SSH_AUTH_SOCK_by&lt;/span&gt;&lt;span class="k"&gt;:-&lt;/span&gt;&lt;span class="nv"&gt;0&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; -ne &lt;span class="nv"&gt;$$&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+  &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;SSH_AUTH_SOCK&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/run/user/&lt;/span&gt;&lt;span class="nv"&gt;$UID&lt;/span&gt;&lt;span class="s2"&gt;/gnupg/S.gpg-agent.ssh&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;fi&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Start the gpg-agent if not already running&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; ! pgrep -x -u &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;USER&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; gpg-agent &amp;gt;/dev/null &lt;span class="m"&gt;2&lt;/span&gt;&amp;gt;&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+  gpg-connect-agent /bye &amp;gt;/dev/null &lt;span class="m"&gt;2&lt;/span&gt;&amp;gt;&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;
+&lt;span class="k"&gt;fi&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Add these lines to &lt;code&gt;~/.gnupg/gpg-agent.conf&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;enable-ssh-support&lt;/span&gt;
+&lt;span class="err"&gt;default-cache-ttl 10800&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="dev"></category><category term="linux"></category><category term="gpg"></category></entry><entry><title>Systemd tips and tricks</title><link href="https://tome.one/systemd-tips-and-tricks.html" rel="alternate"></link><published>2017-02-19T10:42:00+01:00</published><updated>2017-02-19T10:42:00+01:00</updated><author><name>tome.one</name></author><id>tag:tome.one,2017-02-19:/systemd-tips-and-tricks.html</id><summary type="html">&lt;p&gt;Systemd is great. Here are a few things you can do with it.&lt;/p&gt;
+&lt;h4&gt;Editing unit files&lt;/h4&gt;
+&lt;p&gt;I usually can't remember where unit files are located but that's not an issue. Systemd will let you edit them just by knowing the unit name.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;SYSTEMD_EDITOR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;vim
+$ sudo -E systemctl edit --full …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Systemd is great. Here are a few things you can do with it.&lt;/p&gt;
+&lt;h4&gt;Editing unit files&lt;/h4&gt;
+&lt;p&gt;I usually can't remember where unit files are located but that's not an issue. Systemd will let you edit them just by knowing the unit name.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;SYSTEMD_EDITOR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;vim
+$ sudo -E systemctl edit --full &amp;lt;unit_name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;Using the journal like a boss&lt;/h4&gt;
+&lt;p&gt;Check out what's going on in the journal live (&lt;code&gt;tail -f&lt;/code&gt; style) for a specific unit:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ journalctl -u &amp;lt;unit_name&amp;gt; -fn200
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;An incident with nginx happened last night around 21:30? No problem, let's skip directly there:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ journalctl -u nginx --since &lt;span class="s2"&gt;&amp;quot;2017-02-18 21:30&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Other examples:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ journalctl -u nginx --since yesterday
+$ journalctl -u nginx --since today
+$ journalctl -u nginx --since &lt;span class="s2"&gt;&amp;quot;10 hours ago&amp;quot;&lt;/span&gt; --until &lt;span class="s2"&gt;&amp;quot;4 hours ago&amp;quot;&lt;/span&gt;
+$ journalctl -u nginx --since &lt;span class="m"&gt;14&lt;/span&gt;:00
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;I don't think it's possible to do &lt;code&gt;--since "yesterday 21:30"&lt;/code&gt; yet. The full date has to be used. I might contribute a patch for that.&lt;/p&gt;
+&lt;p&gt;See &lt;code&gt;man systemd.time&lt;/code&gt; for more details.&lt;/p&gt;
+&lt;p&gt;An incident happened and it involves a few units, let's say nginx, mysql and php-fpm? Let's see what happened:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ journalctl -u nginx -u mysql -u php-fpm --since today
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Quickly store messages in the journal under a SYSLOG_IDENTIFIER:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;blah blah blah&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; systemd-cat -t my_identifier
+$ journalctl -t my_identifier
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Make the journal persistent, assuming you kept the default &lt;code&gt;Storage=auto&lt;/code&gt; in &lt;code&gt;/etc/systemd/journald.conf&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo mkdir /var/log/journal
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Alternatively, &lt;code&gt;Storage=persistent&lt;/code&gt; can also be set.&lt;/p&gt;
+&lt;p&gt;Be careful with persistent journal. The journal will now survive reboots but by default its maximum size is set to 10% of the file system it resides in. Additionally the size is capped to 4 GB, even if you use &lt;code&gt;SystemMaxUse=100%&lt;/code&gt; so if your unit produces lots of messages you won't be able to keep log history for a long time anyway.&lt;/p&gt;
+&lt;p&gt;Skip directly to the relevant &lt;code&gt;journald.conf&lt;/code&gt; manpage section with the following command for more details:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ &lt;span class="nv"&gt;LESS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;+/SystemMaxUse&amp;#39;&lt;/span&gt; man journald.conf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;Listing enabled unit files&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ systemctl list-unit-files --state&lt;span class="o"&gt;=&lt;/span&gt;enabled
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;Managing logs across all your machines&lt;/h4&gt;
+&lt;p&gt;While logs can be forwarded to a master machine using &lt;code&gt;systemd-journal-remote&lt;/code&gt; (see manpage for details) you would still be capped to 4GB of logs. It's preferable to send journal messages to a &lt;a href="https://www.graylog.org/"&gt;Graylog&lt;/a&gt; instance. Use &lt;a href="https://github.com/systemd/journal2gelf"&gt;journal2gelf&lt;/a&gt; to export systemd messages in the Graylog Extended Log Format (GELF).&lt;/p&gt;
+&lt;p&gt;Graylog has virtual appliances for download, including a &lt;a href="http://docs.graylog.org/en/2.2/pages/installation/docker.html"&gt;docker-compose version&lt;/a&gt; which sadly does not allow for proper scaling, i.e. automatically manage volumes for persistence when scaling with Elasticsearch and MongoDB which are used by Graylog.&lt;/p&gt;
+&lt;p&gt;There are however &lt;a href="https://github.com/kubernetes/helm"&gt;Kubernetes Helm&lt;/a&gt; charts for Elasticsearch and MongoDB worth looking into. With &lt;a href="https://kubernetes.io/"&gt;Kubernetes&lt;/a&gt; 100% managed manual scaling or auto-scaling could be performed.&lt;/p&gt;</content><category term="dev"></category><category term="linux"></category><category term="systemd"></category></entry><entry><title>Bash Magic</title><link href="https://tome.one/bash-magic.html" rel="alternate"></link><published>2016-12-02T17:50:00+01:00</published><updated>2016-12-02T17:50:00+01:00</updated><author><name>tome.one</name></author><id>tag:tome.one,2016-12-02:/bash-magic.html</id><summary type="html">&lt;p&gt;Over the years I have learned many tips and tricks when working with Bash. Some are well known while others are not. Here are a few tricks that I find the most useful.&lt;/p&gt;
+&lt;h4&gt;Searching history&lt;/h4&gt;
+&lt;p&gt;So you know you just typed that command but cannot remember what it was. Fine …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Over the years I have learned many tips and tricks when working with Bash. Some are well known while others are not. Here are a few tricks that I find the most useful.&lt;/p&gt;
+&lt;h4&gt;Searching history&lt;/h4&gt;
+&lt;p&gt;So you know you just typed that command but cannot remember what it was. Fine, just type &lt;code&gt;&amp;lt;ctrl&amp;gt;-R&lt;/code&gt;. Your prompt will then look something like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;(reverse-i-search)`&amp;#39;:&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Start typing part of your command and bash will find it for you. Search results will be narrowed down as you keep typing. Cycle forward through search results by hitting &lt;code&gt;&amp;lt;ctrl&amp;gt;-R&lt;/code&gt; multiple times.&lt;/p&gt;
+&lt;p&gt;Cycling backwards through history with &lt;code&gt;&amp;lt;ctrl&amp;gt;-S&lt;/code&gt; requires enabling XON/XOFF flow control with the following command:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;stty -ixon&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Otherwise your terminal will freeze upon hitting &lt;code&gt;&amp;lt;ctrl&amp;gt;-S&lt;/code&gt;. Use &lt;code&gt;&amp;lt;ctrl&amp;gt;-Q&lt;/code&gt; to unfreeze.&lt;/p&gt;
+&lt;p&gt;Press &lt;code&gt;Enter&lt;/code&gt; to execute the search result and use the arrows to edit the command before executing.&lt;/p&gt;
+&lt;h4&gt;Customizing the prompt&lt;/h4&gt;
+&lt;p&gt;The prompt is defined by the &lt;code&gt;PS1&lt;/code&gt; variable. The default prompt is quite succinct:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;PS1=&amp;#39;\s-\v\$&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The result looks like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;bash-4.3$&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;It can be improved by displaying useful information such as the date, hostname, username, current working directory and much more. Here is the PS1 I've been using these days:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;PS1=&amp;#39;┌─[\e[0;32m\t\e[0m]─[\e[0;36m\u\e[0m\e[0m \e[0;33m\w\e[0m]\n└─&amp;gt;\$ &amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;It looks like that:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;┌─[13:33:37]─[john ~/git/foo/bar/www]&lt;/span&gt;
+&lt;span class="err"&gt;└─&amp;gt;$&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;See the Bash manual for more details about Bash variables.&lt;/p&gt;
+&lt;h4&gt;Moving and Erasing&lt;/h4&gt;
+&lt;p&gt;Hit &lt;code&gt;&amp;lt;ctrl&amp;gt;-A&lt;/code&gt; to move the caret to the beginning of the line. &lt;code&gt;&amp;lt;ctrl&amp;gt;-E&lt;/code&gt; will move to the end of the line.&lt;/p&gt;
+&lt;p&gt;Use &lt;code&gt;&amp;lt;alt&amp;gt;-F&lt;/code&gt; to move one word forward and &lt;code&gt;&amp;lt;alt&amp;gt;-B&lt;/code&gt; to move one word backwards.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;ctrl&amp;gt;-U&lt;/code&gt; will delete everything to the left of the caret while &lt;code&gt;&amp;lt;ctrl&amp;gt;-K&lt;/code&gt; will delete everything under and to the right of the caret.&lt;/p&gt;
+&lt;p&gt;Type &lt;code&gt;&amp;lt;ctrl&amp;gt;-W&lt;/code&gt; to delete the word to the left (until the first space character). Use &lt;code&gt;&amp;lt;alt&amp;gt;-Backspace&lt;/code&gt; to delete the word to the left until the next special character. This is useful when working with paths and you want to delete until the next &lt;code&gt;/&lt;/code&gt; to the left.&lt;/p&gt;
+&lt;h4&gt;Recalling history&lt;/h4&gt;
+&lt;p&gt;Recall the last argument of the last command with &lt;code&gt;&amp;lt;alt&amp;gt;-_&lt;/code&gt; (&amp;lt;alt&amp;gt;-underscore).&lt;/p&gt;
+&lt;p&gt;Run the previous command with sudo in front:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;sudo !!&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;Expansion&lt;/h4&gt;
+&lt;p&gt;Create a backup copy of a file without typing the file path twice:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;cp /path/to/file{,.bak}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;Configuring history&lt;/h4&gt;
+&lt;p&gt;Increase the number of commands stored in the history and save the time and date each command was executed on:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;HISTSIZE=100000&lt;/span&gt;
+&lt;span class="err"&gt;HISTFILESIZE=20000&lt;/span&gt;
+&lt;span class="err"&gt;HISTTIMEFORMAT=&amp;quot;[%F %T %Z (%z)] &amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The history is stored in &lt;code&gt;~/.bash_history&lt;/code&gt; and can be displayed with the &lt;code&gt;history&lt;/code&gt; command.&lt;/p&gt;
+&lt;h4&gt;Copy and paste&lt;/h4&gt;
+&lt;p&gt;Paste the contents of the clipboard with &lt;code&gt;&amp;lt;shift&amp;gt;-Insert&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Run a command with the last argument from your clipboard:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;define&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="n"&gt;xc&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;xc&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
+        &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="o"&gt;@&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;$(xclip -o)&amp;quot;&lt;/span&gt;
+&lt;span class="err"&gt;}&lt;/span&gt;
+
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;use&lt;/span&gt; &lt;span class="k"&gt;with&lt;/span&gt;
+&lt;span class="n"&gt;xc&lt;/span&gt; &lt;span class="n"&gt;my_command&lt;/span&gt; &lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="k"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;my_command&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;clipboard_contents&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;How is this more useful than pasting the clipboard contents with &lt;code&gt;&amp;lt;shift&amp;gt;-Insert&lt;/code&gt; you say? This will save you enclosing the clipboard contents with quotes since the clipboard contents are passed as a single argument to &lt;code&gt;my_command&lt;/code&gt;.&lt;/p&gt;
+&lt;h4&gt;Useful aliases&lt;/h4&gt;
+&lt;p&gt;Package management:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;alias i=&amp;#39;sudo -E pacman -S&amp;#39;&lt;/span&gt;
+&lt;span class="err"&gt;alias r=&amp;#39;sudo -E pacman -Rs&amp;#39;&lt;/span&gt;
+&lt;span class="err"&gt;alias s=&amp;#39;pacman -Ss&amp;#39;&lt;/span&gt;
+&lt;span class="err"&gt;alias syu=&amp;#39;sudo -E pacman -Syu&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Listing files and grepping:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;alias ls=&amp;#39;ls --color=auto --group-directories-first -lh&amp;#39;&lt;/span&gt;
+&lt;span class="err"&gt;alias lsgrep=&amp;#39;ls | grep -i&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Systemd:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;alias sc=&amp;#39;sudo -E systemctl&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Systemd will be the topic of another post. Enjoy!&lt;/p&gt;</content><category term="dev"></category><category term="linux"></category><category term="bash"></category></entry></feed>

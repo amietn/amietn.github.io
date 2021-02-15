@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>tome.one - conference</title><link href="https://tome.one/" rel="alternate"></link><link href="https://tome.one/tag/conference/atom" rel="self"></link><id>https://tome.one/</id><updated>2016-11-01T20:31:00+01:00</updated><entry><title>Spark Summit Europe 2016</title><link href="https://tome.one/spark-summit-europe-2016.html" rel="alternate"></link><published>2016-11-01T20:31:00+01:00</published><updated>2016-11-01T20:31:00+01:00</updated><author><name>tome.one</name></author><id>tag:tome.one,2016-11-01:/spark-summit-europe-2016.html</id><summary type="html">&lt;p&gt;I attended &lt;a href="https://spark-summit.org/eu-2016/"&gt;Spark Summit Europe 2016&lt;/a&gt; in Brussels this year in October, a conference where &lt;a href="http://spark.apache.org/"&gt;Apache Spark&lt;/a&gt; enthusiasts meet up.
+I've been using Spark for nearly a year now on multiple projects and was delighted to see so many Spark users at Square Brussels.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Spark Summit Europe 2016 photo" src="https://tome.one/images/spark-summit-europe-2016-header.jpg"&gt;
+ &lt;/p&gt;
+&lt;p&gt;There were three trainings to choose …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I attended &lt;a href="https://spark-summit.org/eu-2016/"&gt;Spark Summit Europe 2016&lt;/a&gt; in Brussels this year in October, a conference where &lt;a href="http://spark.apache.org/"&gt;Apache Spark&lt;/a&gt; enthusiasts meet up.
+I've been using Spark for nearly a year now on multiple projects and was delighted to see so many Spark users at Square Brussels.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Spark Summit Europe 2016 photo" src="https://tome.one/images/spark-summit-europe-2016-header.jpg"&gt;
+ &lt;/p&gt;
+&lt;p&gt;There were three trainings to choose from on the first day. I went for “Exploring Wikipedia with Spark (Tackling a unified case)”.&lt;/p&gt;
+&lt;p&gt;The class was taught in Scala and Databricks notebooks were used. Databricks is a cloud platform that lets data scientists use Spark without having to setup or manage a cluster themselves. Databricks uses AWS as their backend. Clusters can be started and then attached to notebooks where code can be executed on the attached cluster.&lt;/p&gt;
+&lt;p&gt;The class started with a recap of the basics, covering multiple APIs, including RDDs, Dataframes and the new Datasets. We used publicly available Wikipedia datasets and leveraged Spark SQL, Spark Streaming, GraphFrames, UDFs and machine learning algorithms. I was impressed to see how easy it was to run code snippets on the Databricks platform and get insights into the data.&lt;/p&gt;
+&lt;p&gt;Another great feature is the support for mixing languages in a notebook. For instance a UDF can be defined and registered in Python and can then be used in Scala.
+The other two trainings which I wasn't able to attend were “Apache Spark Essentials (Python)” and “Data Science with Apache Spark”.
+ &lt;/p&gt;
+&lt;h2&gt;The talks&lt;/h2&gt;
+&lt;p&gt;The following days were conference days. Usually each day started with keynotes and then there were three or four talks to choose from every 30 minutes. I will highlight some of the talks and keynotes I attended.
+ &lt;/p&gt;
+&lt;h4&gt;&lt;em&gt;Simplifying Big Data Applications with Apache Spark 2.0&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;Spark 2.0 was released and brings many improvements over the 1.6 branch, namely:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Performance improvements with whole-stage code generation and vectorization&lt;/li&gt;
+&lt;li&gt;Unified API: Dataframes are now just an alias for Datasets&lt;/li&gt;
+&lt;li&gt;The new SparkSession single entry point. This replaces SparkContext, StreamingContext, SQLContext, etc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;&lt;em&gt;The Next AMPLab: Real-Time, Intelligent, and Secure Computing&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;Spark was born at &lt;a href="https://amplab.cs.berkeley.edu/"&gt;AMPLab&lt;/a&gt;. We were shown what projects AMPLab is currently working on and thus what can be expected in the next 5 years for Spark. They currently have two main projects: Drizzle and Opaque. Drizzle aims at reducing latency in Spark Streaming while Opaque is an attempt at improving security in Spark, for instance by protecting against pattern recognition attacks.
+ &lt;/p&gt;
+&lt;h4&gt;&lt;em&gt;Spark's Performance: The Past, Present, and Future&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;Performance in Spark 2.0 is improved with whole-stage code generation, a new technique which will optimize the code of the whole pipeline and can boost performance by one order of magnitude in some cases. Another technique used to improve performance is vectorization, or in other words, using an in-memory columnar format for faster data access. Databricks published &lt;a href="https://databricks.com/blog/2016/05/23/apache-spark-as-a-compiler-joining-a-billion-rows-per-second-on-a-laptop.html"&gt;a blog post&lt;/a&gt; discussing this.
+ &lt;/p&gt;
+&lt;h4&gt;&lt;em&gt;How to Connect Spark to Your Own Datasource&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;The author of the &lt;a href="https://github.com/mongodb/mongo-spark"&gt;MongoDB Spark connector&lt;/a&gt; shared his experience in writing a Spark connector. There is a lack of official documentation on writing these so the best way to start writing your own connector is to look at how others did it, for example the &lt;a href="https://github.com/datastax/spark-cassandra-connector"&gt;Spark Cassandra connector&lt;/a&gt;.
+ &lt;/p&gt;
+&lt;h4&gt;&lt;em&gt;Dynamic Resource Allocation, Do More With Your Cluster&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;This technique is useful for shared clusters and jobs of varying load. In this talk we were shown some parameters that can be set for optimizing dynamic resource allocation on a Spark cluster.
+ &lt;/p&gt;
+&lt;h4&gt;&lt;em&gt;Vegas, the Missing MatPlotLib for Spark&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;Two engineers from Netflix showed their project called &lt;a href="https://github.com/vegas-viz/Vegas"&gt;Vegas&lt;/a&gt;. This project will generate HTML code that can be used on web pages. Vegas also supports &lt;a href="https://zeppelin.apache.org/"&gt;Apache Zeppelin&lt;/a&gt; notebooks, has console support and can render to SVG. Vegas uses &lt;a href="https://vega.github.io/vega-lite/"&gt;Vega-Lite&lt;/a&gt; underneath. It is currently in beta stage.
+ &lt;/p&gt;
+&lt;h4&gt;&lt;em&gt;SparkLint: a Tool for Monitoring, Identifying and Tuning Inefficient Spark Jobs Across Your Cluster&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;Groupon announced the availability of &lt;a href="https://github.com/groupon/sparklint"&gt;SparkLint&lt;/a&gt;, a performance debugger for Spark. It can detect over-allocation and has CPU utilization graphs for Spark jobs. SparkLint is available on Github.
+ &lt;/p&gt;
+&lt;h4&gt;&lt;em&gt;Spark and Object Stores —What You Need to Know&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;This talk gives a set of optimal parameters to use when working with Object Stores and Spark. When using the Amazon S3 API, make sure to use the new s3a:// protocol in your URLs. This is the only one that is currently supported.
+ &lt;/p&gt;
+&lt;h4&gt;&lt;em&gt;Mastering Spark Unit Testing&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;A few tips and tricks from Blizzard were presented for unit testing Spark jobs. The main ideas were that one should not use a Spark context if it's not necessary. Code can usually be tested outside of a Spark job.&lt;/p&gt;
+&lt;p&gt;If it's really necessary to run a Spark job in your test, then use the local master and run it on your local machine. You can then set breakpoints for instance in IntelliJ Idea and debug both driver and executor code. A cool idea that the speaker gave was to share the Spark context across various unit tests so that the initialization is done only once and the tests are running faster.
+ &lt;/p&gt;
+&lt;h4&gt;&lt;em&gt;Apache Spark 2.0 Performance Improvements Investigated With Flame Graphs&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;a href="https://github.com/brendangregg/FlameGraph"&gt;Flame Graphs&lt;/a&gt; are a great visualization tool that can be used to profile Spark jobs in order to find the most frequent code paths and optimize bottlenecks. This talk is about the use of Flame graphs at CERN in order to analyze the performance of Spark 1.6 and 2.0.
+ &lt;/p&gt;
+&lt;h4&gt;&lt;em&gt;TensorFrames: Deep Learning with TensorFlow on Apache Spark&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;Databricks presented &lt;a href="https://github.com/databricks/tensorframes"&gt;TensorFrames&lt;/a&gt;, a bridge between Spark and &lt;a href="https://www.tensorflow.org/"&gt;TensorFlow&lt;/a&gt;. A TensorFlow graph can be defined and used as a mapper function that can be applied to a Dataframe. TensorFrames can bring a huge performance increase when running on GPUs.
+ &lt;/p&gt;
+&lt;h4&gt;&lt;em&gt;Apache Spark at Scale: A 60 TB+ Production Use Case&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;Facebook uses Spark at scale and during this talk they presented a few tips and tricks that they found while working with Spark. They use Flame Graphs for profiling. They highlighted that the thread dump function available in the Spark UI is useful for debugging.&lt;/p&gt;
+&lt;p&gt;They gave interesting ideas for configuration:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Use memory off heap&lt;/li&gt;
+&lt;li&gt;Use parallel GC instead of G1GC&lt;/li&gt;
+&lt;li&gt;Tune the shuffle service (number of threads, etc.)&lt;/li&gt;
+&lt;li&gt;Configure the various buffer sizes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;They published &lt;a href="https://code.facebook.com/posts/1671373793181703/apache-spark-scale-a-60-tb-production-use-case/"&gt;a blog post&lt;/a&gt; about this.&lt;/p&gt;
+&lt;h4&gt;&lt;em&gt;Apache Kudu and Spark SQL for Fast Analytics on Fast Data&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;An engineer from Cloudera presented &lt;a href="http://kudu.apache.org/"&gt;Apache Kudu&lt;/a&gt;, a top level Apache project that sits between HDFS and &lt;a href="http://hbase.apache.org/"&gt;HBase&lt;/a&gt;. The speaker revealed an interesting fact during the Q&amp;amp;A session: Kudu does not store its data on HDFS, but rather on a local file system. Kudu is a data store that has some of the advantages of the Parquet file format: it's a columnar store. Support for Kerberos in Kudu is coming soon.
+ &lt;/p&gt;
+&lt;h4&gt;&lt;em&gt;SparkOscope: Enabling Apache Spark Optimization Through Cross-Stack Monitoring and Visualization&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;SparkOscope is an IBM research project. It collects OS-level metrics while Spark jobs are running. It does not guarantee that the metrics correspond to the resource usage of the Spark job. In the event that other processes are running at the same time as the Spark job that is being observed then the metrics will include usage of multiple processes unrelated to Spark jobs. &lt;a href="https://github.com/ibm-research-ireland/sparkoscope"&gt;SparkOscope&lt;/a&gt; is available on Github.
+ &lt;/p&gt;
+&lt;h4&gt;&lt;em&gt;Problem Solving Recipes Learned from Supporting Spark&lt;/em&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;OutOfMemoryErrors usually happen when allocating too many objects. Tune the spark.memory.fraction setting and do not allocate objects in tight loops. Be careful when allocating objects in mapPartitions() for instance.&lt;/li&gt;
+&lt;li&gt;NoSuchMethodError is usually thrown when there is a library version mismatch. Try to upgrade or downgrade Spark, change the library loading order or shade libraries to fix this.&lt;/li&gt;
+&lt;li&gt;Use spark.speculation to restart slow-running tasks.&lt;/li&gt;
+&lt;li&gt;Use df.explain to debug queries on dataframes.
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;&lt;em&gt;Containerized Spark on Kubernetes&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;There was this &lt;a href="http://chapeau.freevariable.com/2016/10/spark-on-kubernetes-at-spark-summit-eu.html"&gt;excellent talk by William Benton&lt;/a&gt; from Red Hat about running Spark on Kubernetes. Don't miss out on this one!
+ &lt;/p&gt;
+&lt;h4&gt;&lt;em&gt;Spark SQL 2.0 Experiences Using TPC-DS&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;Very interesting talk and Q&amp;amp;A session about running a large scale benchmark with Spark SQL on a $5.5 million cluster. About 90% of the 99 queries defined in the &lt;a href="http://www.tpc.org/tpcds/"&gt;TPC-DS&lt;/a&gt; specification were runnable on Spark SQL.&lt;/p&gt;
+&lt;p&gt;See the related &lt;a href="https://developer.ibm.com/hadoop/2015/11/30/99-tpc-ds-queries-integrated-into-spark-sql-perf/"&gt;blog post&lt;/a&gt;.
+ &lt;/p&gt;
+&lt;h2&gt;The talks I missed&lt;/h2&gt;
+&lt;p&gt;There are a few more talks that I couldn't attend but that I will watch as soon as the video streams become available:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;No One Puts Spark in the Container&lt;/li&gt;
+&lt;li&gt;Hive to Spark—Journey and Lessons Learned&lt;/li&gt;
+&lt;li&gt;Adopting Dataframes and Parquet in an Already Existing Warehouse&lt;/li&gt;
+&lt;li&gt;A Deep Dive into the Catalyst Optimizer
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Closing words&lt;/h2&gt;
+&lt;p&gt;A few interesting things/trends I heard at Spark Summit:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Parquet is an efficient, fast, columnar file format&lt;/li&gt;
+&lt;li&gt;Many people use Databricks notebooks. You don't have to manage your own cluster.&lt;/li&gt;
+&lt;li&gt;There is no better API (RDD, Dataframes, Datasets), it's a question of preference&lt;/li&gt;
+&lt;li&gt;Dataframes do not replace RDDs but they have an advantage one should be aware of: the Catalyst optimizer will rewrite your poorly optimized queries when using Spark SQL and dataframes. This is not true when using the low-level RDD API directly.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Presentation slides and recordings from the event will be available on the &lt;a href="https://spark-summit.org/eu-2016/schedule/"&gt;Spark Summit website&lt;/a&gt; by November 4.&lt;/p&gt;
+&lt;p&gt;Update: cross-posted on &lt;a href="https://research.kudelskisecurity.com"&gt;research.kudelskisecurity.com&lt;/a&gt;&lt;/p&gt;</content><category term="dev"></category><category term="conference"></category><category term="spark"></category><category term="big data"></category></entry></feed>

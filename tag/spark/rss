@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>tome.one - spark</title><link>https://tome.one/</link><description></description><lastBuildDate>Tue, 01 Nov 2016 20:31:00 +0100</lastBuildDate><item><title>Spark Summit Europe 2016</title><link>https://tome.one/spark-summit-europe-2016.html</link><description>&lt;p&gt;I attended &lt;a href="https://spark-summit.org/eu-2016/"&gt;Spark Summit Europe 2016&lt;/a&gt; in Brussels this year in October, a conference where &lt;a href="http://spark.apache.org/"&gt;Apache Spark&lt;/a&gt; enthusiasts meet up.
+I've been using Spark for nearly a year now on multiple projects and was delighted to see so many Spark users at Square Brussels.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Spark Summit Europe 2016 photo" src="https://tome.one/images/spark-summit-europe-2016-header.jpg"&gt;
+ &lt;/p&gt;
+&lt;p&gt;There were three trainings to choose …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">tome.one</dc:creator><pubDate>Tue, 01 Nov 2016 20:31:00 +0100</pubDate><guid isPermaLink="false">tag:tome.one,2016-11-01:/spark-summit-europe-2016.html</guid><category>dev</category><category>conference</category><category>spark</category><category>big data</category></item></channel></rss>

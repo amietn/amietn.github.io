@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>tome.one - video</title><link href="https://tome.one/" rel="alternate"></link><link href="https://tome.one/tag/video/atom" rel="self"></link><id>https://tome.one/</id><updated>2017-05-26T13:40:00+02:00</updated><entry><title>Playing 10bit HEVC videos on Linux with NVIDIA and mpv</title><link href="https://tome.one/playing-10bit-hevc-videos-on-linux-with-nvidia-and-mpv.html" rel="alternate"></link><published>2017-05-26T13:40:00+02:00</published><updated>2017-05-26T13:40:00+02:00</updated><author><name>tome.one</name></author><id>tag:tome.one,2017-05-26:/playing-10bit-hevc-videos-on-linux-with-nvidia-and-mpv.html</id><summary type="html">&lt;p&gt;For this to work you will need an NVIDIA GPU.&lt;/p&gt;
+&lt;p&gt;Get the &lt;code&gt;mpv-build&lt;/code&gt; scripts, tune the mpv and ffmpeg options and build:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/sh&lt;/span&gt;
+
+mkdir -p ~/git
+&lt;span class="nb"&gt;cd&lt;/span&gt; ~/git
+git clone https://github.com/mpv-player/mpv-build.git
+&lt;span class="nb"&gt;cd&lt;/span&gt; mpv-build
+
+&lt;span class="c1"&gt;# write mpv_options file&lt;/span&gt;
+cat &lt;span class="s"&gt;&amp;lt;&amp;lt; EOF &amp;gt; mpv_options&lt;/span&gt;
+&lt;span class="s"&gt;--enable-cuda-hwaccel&lt;/span&gt;
+&lt;span class="s"&gt;EOF&lt;/span&gt;
+
+&lt;span class="c1"&gt;# write ffmpeg_options file …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;For this to work you will need an NVIDIA GPU.&lt;/p&gt;
+&lt;p&gt;Get the &lt;code&gt;mpv-build&lt;/code&gt; scripts, tune the mpv and ffmpeg options and build:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/sh&lt;/span&gt;
+
+mkdir -p ~/git
+&lt;span class="nb"&gt;cd&lt;/span&gt; ~/git
+git clone https://github.com/mpv-player/mpv-build.git
+&lt;span class="nb"&gt;cd&lt;/span&gt; mpv-build
+
+&lt;span class="c1"&gt;# write mpv_options file&lt;/span&gt;
+cat &lt;span class="s"&gt;&amp;lt;&amp;lt; EOF &amp;gt; mpv_options&lt;/span&gt;
+&lt;span class="s"&gt;--enable-cuda-hwaccel&lt;/span&gt;
+&lt;span class="s"&gt;EOF&lt;/span&gt;
+
+&lt;span class="c1"&gt;# write ffmpeg_options file&lt;/span&gt;
+cat &lt;span class="s"&gt;&amp;lt;&amp;lt; EOF &amp;gt; ffmpeg_options&lt;/span&gt;
+&lt;span class="s"&gt;--enable-cuda&lt;/span&gt;
+&lt;span class="s"&gt;--enable-cuvid&lt;/span&gt;
+&lt;span class="s"&gt;--enable-nonfree&lt;/span&gt;
+&lt;span class="s"&gt;EOF&lt;/span&gt;
+
+&lt;span class="c1"&gt;# build&lt;/span&gt;
+./rebuild -j10
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Play a 10bit HEVC video with:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;~/git/mpv-build/mpv/build/mpv --hwdec=cuda --vo=opengl &amp;lt;VIDEO_FILE&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This is especially useful for 60 frame per second 2160p 10bit HEVC videos since most CPUs cannot decode those fast enough for smooth playback.&lt;/p&gt;</content><category term="dev"></category><category term="linux"></category><category term="hevc"></category><category term="video"></category></entry></feed>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>tome.one - systemd</title><link href="https://tome.one/" rel="alternate"></link><link href="https://tome.one/tag/systemd/atom" rel="self"></link><id>https://tome.one/</id><updated>2017-02-19T10:42:00+01:00</updated><entry><title>Systemd tips and tricks</title><link href="https://tome.one/systemd-tips-and-tricks.html" rel="alternate"></link><published>2017-02-19T10:42:00+01:00</published><updated>2017-02-19T10:42:00+01:00</updated><author><name>tome.one</name></author><id>tag:tome.one,2017-02-19:/systemd-tips-and-tricks.html</id><summary type="html">&lt;p&gt;Systemd is great. Here are a few things you can do with it.&lt;/p&gt;
+&lt;h4&gt;Editing unit files&lt;/h4&gt;
+&lt;p&gt;I usually can't remember where unit files are located but that's not an issue. Systemd will let you edit them just by knowing the unit name.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;SYSTEMD_EDITOR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;vim
+$ sudo -E systemctl edit --full …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Systemd is great. Here are a few things you can do with it.&lt;/p&gt;
+&lt;h4&gt;Editing unit files&lt;/h4&gt;
+&lt;p&gt;I usually can't remember where unit files are located but that's not an issue. Systemd will let you edit them just by knowing the unit name.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;SYSTEMD_EDITOR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;vim
+$ sudo -E systemctl edit --full &amp;lt;unit_name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;Using the journal like a boss&lt;/h4&gt;
+&lt;p&gt;Check out what's going on in the journal live (&lt;code&gt;tail -f&lt;/code&gt; style) for a specific unit:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ journalctl -u &amp;lt;unit_name&amp;gt; -fn200
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;An incident with nginx happened last night around 21:30? No problem, let's skip directly there:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ journalctl -u nginx --since &lt;span class="s2"&gt;&amp;quot;2017-02-18 21:30&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Other examples:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ journalctl -u nginx --since yesterday
+$ journalctl -u nginx --since today
+$ journalctl -u nginx --since &lt;span class="s2"&gt;&amp;quot;10 hours ago&amp;quot;&lt;/span&gt; --until &lt;span class="s2"&gt;&amp;quot;4 hours ago&amp;quot;&lt;/span&gt;
+$ journalctl -u nginx --since &lt;span class="m"&gt;14&lt;/span&gt;:00
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;I don't think it's possible to do &lt;code&gt;--since "yesterday 21:30"&lt;/code&gt; yet. The full date has to be used. I might contribute a patch for that.&lt;/p&gt;
+&lt;p&gt;See &lt;code&gt;man systemd.time&lt;/code&gt; for more details.&lt;/p&gt;
+&lt;p&gt;An incident happened and it involves a few units, let's say nginx, mysql and php-fpm? Let's see what happened:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ journalctl -u nginx -u mysql -u php-fpm --since today
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Quickly store messages in the journal under a SYSLOG_IDENTIFIER:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;blah blah blah&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; systemd-cat -t my_identifier
+$ journalctl -t my_identifier
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Make the journal persistent, assuming you kept the default &lt;code&gt;Storage=auto&lt;/code&gt; in &lt;code&gt;/etc/systemd/journald.conf&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo mkdir /var/log/journal
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Alternatively, &lt;code&gt;Storage=persistent&lt;/code&gt; can also be set.&lt;/p&gt;
+&lt;p&gt;Be careful with persistent journal. The journal will now survive reboots but by default its maximum size is set to 10% of the file system it resides in. Additionally the size is capped to 4 GB, even if you use &lt;code&gt;SystemMaxUse=100%&lt;/code&gt; so if your unit produces lots of messages you won't be able to keep log history for a long time anyway.&lt;/p&gt;
+&lt;p&gt;Skip directly to the relevant &lt;code&gt;journald.conf&lt;/code&gt; manpage section with the following command for more details:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ &lt;span class="nv"&gt;LESS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;+/SystemMaxUse&amp;#39;&lt;/span&gt; man journald.conf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;Listing enabled unit files&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ systemctl list-unit-files --state&lt;span class="o"&gt;=&lt;/span&gt;enabled
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;Managing logs across all your machines&lt;/h4&gt;
+&lt;p&gt;While logs can be forwarded to a master machine using &lt;code&gt;systemd-journal-remote&lt;/code&gt; (see manpage for details) you would still be capped to 4GB of logs. It's preferable to send journal messages to a &lt;a href="https://www.graylog.org/"&gt;Graylog&lt;/a&gt; instance. Use &lt;a href="https://github.com/systemd/journal2gelf"&gt;journal2gelf&lt;/a&gt; to export systemd messages in the Graylog Extended Log Format (GELF).&lt;/p&gt;
+&lt;p&gt;Graylog has virtual appliances for download, including a &lt;a href="http://docs.graylog.org/en/2.2/pages/installation/docker.html"&gt;docker-compose version&lt;/a&gt; which sadly does not allow for proper scaling, i.e. automatically manage volumes for persistence when scaling with Elasticsearch and MongoDB which are used by Graylog.&lt;/p&gt;
+&lt;p&gt;There are however &lt;a href="https://github.com/kubernetes/helm"&gt;Kubernetes Helm&lt;/a&gt; charts for Elasticsearch and MongoDB worth looking into. With &lt;a href="https://kubernetes.io/"&gt;Kubernetes&lt;/a&gt; 100% managed manual scaling or auto-scaling could be performed.&lt;/p&gt;</content><category term="dev"></category><category term="linux"></category><category term="systemd"></category></entry></feed>

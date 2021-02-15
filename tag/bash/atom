@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>tome.one - bash</title><link href="https://tome.one/" rel="alternate"></link><link href="https://tome.one/tag/bash/atom" rel="self"></link><id>https://tome.one/</id><updated>2016-12-02T17:50:00+01:00</updated><entry><title>Bash Magic</title><link href="https://tome.one/bash-magic.html" rel="alternate"></link><published>2016-12-02T17:50:00+01:00</published><updated>2016-12-02T17:50:00+01:00</updated><author><name>tome.one</name></author><id>tag:tome.one,2016-12-02:/bash-magic.html</id><summary type="html">&lt;p&gt;Over the years I have learned many tips and tricks when working with Bash. Some are well known while others are not. Here are a few tricks that I find the most useful.&lt;/p&gt;
+&lt;h4&gt;Searching history&lt;/h4&gt;
+&lt;p&gt;So you know you just typed that command but cannot remember what it was. Fine …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Over the years I have learned many tips and tricks when working with Bash. Some are well known while others are not. Here are a few tricks that I find the most useful.&lt;/p&gt;
+&lt;h4&gt;Searching history&lt;/h4&gt;
+&lt;p&gt;So you know you just typed that command but cannot remember what it was. Fine, just type &lt;code&gt;&amp;lt;ctrl&amp;gt;-R&lt;/code&gt;. Your prompt will then look something like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;(reverse-i-search)`&amp;#39;:&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Start typing part of your command and bash will find it for you. Search results will be narrowed down as you keep typing. Cycle forward through search results by hitting &lt;code&gt;&amp;lt;ctrl&amp;gt;-R&lt;/code&gt; multiple times.&lt;/p&gt;
+&lt;p&gt;Cycling backwards through history with &lt;code&gt;&amp;lt;ctrl&amp;gt;-S&lt;/code&gt; requires enabling XON/XOFF flow control with the following command:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;stty -ixon&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Otherwise your terminal will freeze upon hitting &lt;code&gt;&amp;lt;ctrl&amp;gt;-S&lt;/code&gt;. Use &lt;code&gt;&amp;lt;ctrl&amp;gt;-Q&lt;/code&gt; to unfreeze.&lt;/p&gt;
+&lt;p&gt;Press &lt;code&gt;Enter&lt;/code&gt; to execute the search result and use the arrows to edit the command before executing.&lt;/p&gt;
+&lt;h4&gt;Customizing the prompt&lt;/h4&gt;
+&lt;p&gt;The prompt is defined by the &lt;code&gt;PS1&lt;/code&gt; variable. The default prompt is quite succinct:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;PS1=&amp;#39;\s-\v\$&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The result looks like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;bash-4.3$&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;It can be improved by displaying useful information such as the date, hostname, username, current working directory and much more. Here is the PS1 I've been using these days:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;PS1=&amp;#39;┌─[\e[0;32m\t\e[0m]─[\e[0;36m\u\e[0m\e[0m \e[0;33m\w\e[0m]\n└─&amp;gt;\$ &amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;It looks like that:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;┌─[13:33:37]─[john ~/git/foo/bar/www]&lt;/span&gt;
+&lt;span class="err"&gt;└─&amp;gt;$&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;See the Bash manual for more details about Bash variables.&lt;/p&gt;
+&lt;h4&gt;Moving and Erasing&lt;/h4&gt;
+&lt;p&gt;Hit &lt;code&gt;&amp;lt;ctrl&amp;gt;-A&lt;/code&gt; to move the caret to the beginning of the line. &lt;code&gt;&amp;lt;ctrl&amp;gt;-E&lt;/code&gt; will move to the end of the line.&lt;/p&gt;
+&lt;p&gt;Use &lt;code&gt;&amp;lt;alt&amp;gt;-F&lt;/code&gt; to move one word forward and &lt;code&gt;&amp;lt;alt&amp;gt;-B&lt;/code&gt; to move one word backwards.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;ctrl&amp;gt;-U&lt;/code&gt; will delete everything to the left of the caret while &lt;code&gt;&amp;lt;ctrl&amp;gt;-K&lt;/code&gt; will delete everything under and to the right of the caret.&lt;/p&gt;
+&lt;p&gt;Type &lt;code&gt;&amp;lt;ctrl&amp;gt;-W&lt;/code&gt; to delete the word to the left (until the first space character). Use &lt;code&gt;&amp;lt;alt&amp;gt;-Backspace&lt;/code&gt; to delete the word to the left until the next special character. This is useful when working with paths and you want to delete until the next &lt;code&gt;/&lt;/code&gt; to the left.&lt;/p&gt;
+&lt;h4&gt;Recalling history&lt;/h4&gt;
+&lt;p&gt;Recall the last argument of the last command with &lt;code&gt;&amp;lt;alt&amp;gt;-_&lt;/code&gt; (&amp;lt;alt&amp;gt;-underscore).&lt;/p&gt;
+&lt;p&gt;Run the previous command with sudo in front:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;sudo !!&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;Expansion&lt;/h4&gt;
+&lt;p&gt;Create a backup copy of a file without typing the file path twice:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;cp /path/to/file{,.bak}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;Configuring history&lt;/h4&gt;
+&lt;p&gt;Increase the number of commands stored in the history and save the time and date each command was executed on:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;HISTSIZE=100000&lt;/span&gt;
+&lt;span class="err"&gt;HISTFILESIZE=20000&lt;/span&gt;
+&lt;span class="err"&gt;HISTTIMEFORMAT=&amp;quot;[%F %T %Z (%z)] &amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The history is stored in &lt;code&gt;~/.bash_history&lt;/code&gt; and can be displayed with the &lt;code&gt;history&lt;/code&gt; command.&lt;/p&gt;
+&lt;h4&gt;Copy and paste&lt;/h4&gt;
+&lt;p&gt;Paste the contents of the clipboard with &lt;code&gt;&amp;lt;shift&amp;gt;-Insert&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Run a command with the last argument from your clipboard:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;define&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="n"&gt;xc&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;xc&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
+        &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="o"&gt;@&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;$(xclip -o)&amp;quot;&lt;/span&gt;
+&lt;span class="err"&gt;}&lt;/span&gt;
+
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;use&lt;/span&gt; &lt;span class="k"&gt;with&lt;/span&gt;
+&lt;span class="n"&gt;xc&lt;/span&gt; &lt;span class="n"&gt;my_command&lt;/span&gt; &lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="k"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;my_command&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;clipboard_contents&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;How is this more useful than pasting the clipboard contents with &lt;code&gt;&amp;lt;shift&amp;gt;-Insert&lt;/code&gt; you say? This will save you enclosing the clipboard contents with quotes since the clipboard contents are passed as a single argument to &lt;code&gt;my_command&lt;/code&gt;.&lt;/p&gt;
+&lt;h4&gt;Useful aliases&lt;/h4&gt;
+&lt;p&gt;Package management:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;alias i=&amp;#39;sudo -E pacman -S&amp;#39;&lt;/span&gt;
+&lt;span class="err"&gt;alias r=&amp;#39;sudo -E pacman -Rs&amp;#39;&lt;/span&gt;
+&lt;span class="err"&gt;alias s=&amp;#39;pacman -Ss&amp;#39;&lt;/span&gt;
+&lt;span class="err"&gt;alias syu=&amp;#39;sudo -E pacman -Syu&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Listing files and grepping:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;alias ls=&amp;#39;ls --color=auto --group-directories-first -lh&amp;#39;&lt;/span&gt;
+&lt;span class="err"&gt;alias lsgrep=&amp;#39;ls | grep -i&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Systemd:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;alias sc=&amp;#39;sudo -E systemctl&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Systemd will be the topic of another post. Enjoy!&lt;/p&gt;</content><category term="dev"></category><category term="linux"></category><category term="bash"></category></entry></feed>
