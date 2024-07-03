@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="preload" href="https://rsms.me/inter/font-files/Inter-SemiBold.woff2?v=4.0" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://rsms.me/inter/font-files/Inter-Regular.woff2?v=4.0" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://rsms.me/inter/font-files/Inter-Medium.woff2?v=4.0" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://rsms.me/inter/font-files/InterVariable.woff2?v=4.0" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link href="/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="All articles Atom feed" />
+    <link href="/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="All articles RSS feed" />
+    <meta name="author" content="tome.one">
+    <meta name="description" content="I attended Spark Summit Europe 2016 in Brussels this year in October, a conference where Apache Spark enthusiasts meet up. I've been using Spark for nearly a year now on multiple projects and was delighted to see so many Spark users at Square Brussels. There were three trainings to choose …">
+    <meta name="keywords" content="conference, spark, big data">
+<meta property="og:site_name" content="tome.one">
+<meta property="og:title" content="Spark Summit Europe 2016">
+<meta property="og:description" content="I attended Spark Summit Europe 2016 in Brussels this year in October, a conference where Apache Spark enthusiasts meet up. I've been using Spark for nearly a year now on multiple projects and was delighted to see so many Spark users at Square Brussels. There were three trainings to choose …">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="./spark-summit-europe-2016.html">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2016-11-01 20:31:00+01:00">
+<meta property="article:modified_time" content="">
+<meta property="article:author" content="./author/tomeone.html">
+<meta property="article:section" content="dev">
+<meta property="article:tag" content="conference">
+<meta property="article:tag" content="spark">
+<meta property="article:tag" content="big data">
+<meta property="og:image" content="">
+    <title>tome.one &ndash; Spark Summit Europe 2016</title>
+    <!-- JS files -->
+    <script src="./theme/tabler/js/tabler.min.js?1692870487" defer></script>
+    <script src="https://instant.page/5.2.0" type="module"
+        integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
+    <!-- CSS files -->
+    <link href="./theme/tabler/css/tabler.min.css?1692870487" rel="stylesheet">
+    <link href="./theme/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="./theme/tipuesearch/tipuesearch.css">
+    <link rel="stylesheet" type="text/css"
+          href="./theme/pygments/monokai.css">
+        <link rel="shortcut icon" href="https://tome.one/theme/img/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://tome.one/theme/img/favicon.ico" type="image/x-icon">
+    <style>
+        :root {
+            --tblr-font-sans-serif: Inter, -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+        }
+
+        body {
+            font-feature-settings: "cv03", "cv04", "cv11";
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- Sidebar -->
+    <aside class="navbar navbar-vertical navbar-left navbar-expand-lg">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu"
+                    aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <h1 class="navbar-brand navbar-brand-autodark">
+                <a href="/" class="text-decoration-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-books" width="24"
+                         height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M5 4m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z"/>
+                        <path d="M9 4m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z"/>
+                        <path d="M5 8h4"/>
+                        <path d="M9 16h4"/>
+                        <path d="M13.803 4.56l2.184 -.53c.562 -.135 1.133 .19 1.282 .732l3.695 13.418a1.02 1.02 0 0 1 -.634 1.219l-.133 .041l-2.184 .53c-.562 .135 -1.133 -.19 -1.282 -.732l-3.695 -13.418a1.02 1.02 0 0 1 .634 -1.219l.133 -.041z"/>
+                        <path d="M14 9l4 -1"/>
+                        <path d="M16 16l3.923 -.98"/>
+                    </svg>
+                    tome.one
+                </a>
+            </h1>
+            <div class="collapse navbar-collapse" id="sidebar-menu">
+                <ul class="navbar-nav pt-lg-3">
+
+                        <li class="nav-item ">
+                            <a class="nav-link" href="./pages/about.html">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         class="icon icon-tabler icon-tabler-question-mark" width="24" height="24"
+                                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                         stroke-linecap="round" stroke-linejoin="round"><path stroke="none"
+                                                                                              d="M0 0h24v24H0z"
+                                                                                              fill="none"/><path
+                                            d="M8 8a3.5 3 0 0 1 3.5 -3h1a3.5 3 0 0 1 3.5 3a3 3 0 0 1 -2 3a3 4 0 0 0 -2 4"/><path
+                                            d="M12 19l0 .01"/></svg>
+
+                      </span>
+                                <span class="nav-link-title">
+                                About
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="nav-link" href="./pages/conferences.html">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane"
+                                         width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                         stroke="currentColor" fill="none" stroke-linecap="round"
+                                         stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path
+                                            d="M16 10h4a2 2 0 0 1 0 4h-4l-4 7h-3l2 -7h-4l-2 2h-3l2 -4l-2 -4h3l2 2h4l-2 -7h3z"/></svg>
+
+                      </span>
+                                <span class="nav-link-title">
+                                Conferences
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="nav-link" href="./pages/links.html">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link"
+                                         width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                         stroke="currentColor" fill="none" stroke-linecap="round"
+                                         stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path
+                                            d="M9 15l6 -6"/><path
+                                            d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464"/><path
+                                            d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463"/></svg>
+
+                      </span>
+                                <span class="nav-link-title">
+                                Links
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="nav-link" href="./pages/projects.html">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tool"
+                                         width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                         stroke="currentColor" fill="none" stroke-linecap="round"
+                                         stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path
+                                            d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5"/></svg>
+
+                      </span>
+                                <span class="nav-link-title">
+                                Projects
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="nav-link" href="./pages/publications.html">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-book"
+                                         width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                         stroke="currentColor" fill="none" stroke-linecap="round"
+                                         stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path
+                                            d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0"/><path
+                                            d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0"/><path d="M3 6l0 13"/><path
+                                            d="M12 6l0 13"/><path d="M21 6l0 13"/></svg>
+
+                      </span>
+                                <span class="nav-link-title">
+                                Publications
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="nav-link" href="./pages/talks.html">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         class="icon icon-tabler icon-tabler-speakerphone" width="24" height="24"
+                                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                         stroke-linecap="round" stroke-linejoin="round"><path stroke="none"
+                                                                                              d="M0 0h24v24H0z"
+                                                                                              fill="none"/><path
+                                            d="M18 8a3 3 0 0 1 0 6"/><path
+                                            d="M10 8v11a1 1 0 0 1 -1 1h-1a1 1 0 0 1 -1 -1v-5"/><path
+                                            d="M12 8h0l4.524 -3.77a.9 .9 0 0 1 1.476 .692v12.156a.9 .9 0 0 1 -1.476 .692l-4.524 -3.77h-8a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1h8"/></svg>
+
+                      </span>
+                                <span class="nav-link-title">
+                                Talks
+                                </span>
+                            </a>
+                        </li>
+
+                    <li>
+                        <div class="hr-text">
+                            <span>Archives</span>
+                        </div>
+                    </li>
+
+                    <li class="nav-item ">
+                        <a class="nav-link" href="./archives.html">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive"
+                                     width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                     fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none"
+                                                                                                      d="M0 0h24v24H0z"
+                                                                                                      fill="none"/><path
+                                        d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"/><path
+                                        d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10"/><path d="M10 12l4 0"/></svg>
+                            </span>
+                            <span class="nav-link-title">
+                                    Posts
+                                  </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item ">
+                        <a class="nav-link" href="./categories.html">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-category"
+                                       width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                       fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none"
+                                                                                                        d="M0 0h24v24H0z"
+                                                                                                        fill="none"/><path
+                                          d="M4 4h6v6h-6z"/><path d="M14 4h6v6h-6z"/><path d="M4 14h6v6h-6z"/><path
+                                          d="M17 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/></svg>
+                            </span>
+                            <span class="nav-link-title">
+                                    Categories
+                                  </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item ">
+                        <a class="nav-link" href="./tags.html">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag"
+                                     width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                     fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none"
+                                                                                                      d="M0 0h24v24H0z"
+                                                                                                      fill="none"/><path
+                                        d="M7.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path
+                                        d="M3 6v5.172a2 2 0 0 0 .586 1.414l7.71 7.71a2.41 2.41 0 0 0 3.408 0l5.592 -5.592a2.41 2.41 0 0 0 0 -3.408l-7.71 -7.71a2 2 0 0 0 -1.414 -.586h-5.172a3 3 0 0 0 -3 3z"/></svg>
+                            </span>
+                            <span class="nav-link-title">
+                                    Tags
+                                  </span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </aside>
+    <div class="page-wrapper">
+        <!-- Page header -->
+        <div class="page-header d-print-none">
+            <div class="container-narrow">
+                <div class="row g-2 align-items-center">
+                    <div class="col">
+                        <!-- Page pre-title -->
+                        <div class="page-pretitle">
+                                tome.one
+                        </div>
+    <h1 class="article-title" id="spark-summit-europe-2016">Spark Summit Europe 2016</h1>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container-narrow">
+
+            <div class="row ms-auto align-items-center">
+                <div class="col-auto pt-3 align-items-start">
+
+                    <a class="text-black px-2 ps-0 text-decoration-none" target="_blank"
+                       href="https://github.com/amietn">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             class="icon icon-tabler icon-tabler-brand-github" width="24" height="24"
+                             viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                             stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"/>
+                        </svg>
+                    </a>
+
+                    <a class="text-black px-2 text-decoration-none" target="_blank" href="https://twitter.com/tmlxs">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-x"
+                             width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                             fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M4 4l11.733 16h4.267l-11.733 -16z"/>
+                            <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/>
+                        </svg>
+                    </a>
+
+                    <a class="text-black px-2 text-decoration-none" target="_blank"
+                       href="https://www.linkedin.com/in/nilsamiet">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin"
+                             width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                             fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"/>
+                            <path d="M8 11l0 5"/>
+                            <path d="M8 8l0 .01"/>
+                            <path d="M12 16l0 -5"/>
+                            <path d="M16 16v-3a2 2 0 0 0 -4 0"/>
+                        </svg>
+                    </a>
+
+                </div>
+
+                <div class="col-auto ms-auto pt-3">
+                    <form action="/search" method="get" autocomplete="off" novalidate=""
+                          onsubmit="return (this.elements['q'].value.length > 0)">
+                        <div class="input-icon">
+                  <span class="input-icon-addon">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/search -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                         stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                         stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+                            d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+                  </span>
+                            <input id="searchbox" name="q" type="text" value=""
+                                   class="form-control"
+                                   placeholder="Search…"
+                                   aria-label="Search in website">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Page body -->
+        <div class="page-body">
+            <div class="container-narrow">
+    <div class="article-content">
+
+        <div class="article-header align-items-center">
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-month" width="24"
+                     height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"/>
+                    <path d="M16 3v4"/>
+                    <path d="M8 3v4"/>
+                    <path d="M4 11h16"/>
+                    <path d="M7 14h.013"/>
+                    <path d="M10.01 14h.005"/>
+                    <path d="M13.01 14h.005"/>
+                    <path d="M16.015 14h.005"/>
+                    <path d="M13.015 17h.005"/>
+                    <path d="M7.01 17h.005"/>
+                    <path d="M10.01 17h.005"/>
+                </svg>
+                <span class="text-secondary">
+                Tue 01 November 2016
+                </span> &#8226;
+            </span>
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24"
+                     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                     stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"/>
+                    <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/>
+                </svg>
+                <span><a href="/pages/about.html">Nils Amiet</a></span>
+            </span>
+
+
+                <p class="mt-1">
+
+                        <a class="badge bg-azure text-white"
+                           href="./tag/conference.html">conference</a>
+                        <a class="badge bg-azure text-white"
+                           href="./tag/spark.html">spark</a>
+                        <a class="badge bg-azure text-white"
+                           href="./tag/big-data.html">big data</a>
+                </p>
+        </div>
+
+        <div class="article-content">
+            <div class="row row-deck row-cards mb-4">
+                <div class="col-sm-12 col-lg-12">
+                    <div class="card car">
+                        <div class="card-body">
+
+                            <p>I attended <a href="https://spark-summit.org/eu-2016/">Spark Summit Europe 2016</a> in Brussels this year in October, a conference where <a href="http://spark.apache.org/">Apache Spark</a> enthusiasts meet up.
+I've been using Spark for nearly a year now on multiple projects and was delighted to see so many Spark users at Square Brussels.</p>
+<p><img alt="Spark Summit Europe 2016 photo" src="./images/spark-summit-europe-2016-header.jpg">
+ </p>
+<p>There were three trainings to choose from on the first day. I went for “Exploring Wikipedia with Spark (Tackling a unified case)”.</p>
+<p>The class was taught in Scala and Databricks notebooks were used. Databricks is a cloud platform that lets data scientists use Spark without having to setup or manage a cluster themselves. Databricks uses AWS as their backend. Clusters can be started and then attached to notebooks where code can be executed on the attached cluster.</p>
+<p>The class started with a recap of the basics, covering multiple APIs, including RDDs, Dataframes and the new Datasets. We used publicly available Wikipedia datasets and leveraged Spark SQL, Spark Streaming, GraphFrames, UDFs and machine learning algorithms. I was impressed to see how easy it was to run code snippets on the Databricks platform and get insights into the data.</p>
+<p>Another great feature is the support for mixing languages in a notebook. For instance a UDF can be defined and registered in Python and can then be used in Scala.
+The other two trainings which I wasn't able to attend were “Apache Spark Essentials (Python)” and “Data Science with Apache Spark”.
+ </p>
+<h2>The talks</h2>
+<p>The following days were conference days. Usually each day started with keynotes and then there were three or four talks to choose from every 30 minutes. I will highlight some of the talks and keynotes I attended.
+ </p>
+<h4><em>Simplifying Big Data Applications with Apache Spark 2.0</em></h4>
+<p>Spark 2.0 was released and brings many improvements over the 1.6 branch, namely:</p>
+<ul>
+<li>Performance improvements with whole-stage code generation and vectorization</li>
+<li>Unified API: Dataframes are now just an alias for Datasets</li>
+<li>The new SparkSession single entry point. This replaces SparkContext, StreamingContext, SQLContext, etc.</li>
+</ul>
+<h4><em>The Next AMPLab: Real-Time, Intelligent, and Secure Computing</em></h4>
+<p>Spark was born at <a href="https://amplab.cs.berkeley.edu/">AMPLab</a>. We were shown what projects AMPLab is currently working on and thus what can be expected in the next 5 years for Spark. They currently have two main projects: Drizzle and Opaque. Drizzle aims at reducing latency in Spark Streaming while Opaque is an attempt at improving security in Spark, for instance by protecting against pattern recognition attacks.
+ </p>
+<h4><em>Spark's Performance: The Past, Present, and Future</em></h4>
+<p>Performance in Spark 2.0 is improved with whole-stage code generation, a new technique which will optimize the code of the whole pipeline and can boost performance by one order of magnitude in some cases. Another technique used to improve performance is vectorization, or in other words, using an in-memory columnar format for faster data access. Databricks published <a href="https://databricks.com/blog/2016/05/23/apache-spark-as-a-compiler-joining-a-billion-rows-per-second-on-a-laptop.html">a blog post</a> discussing this.
+ </p>
+<h4><em>How to Connect Spark to Your Own Datasource</em></h4>
+<p>The author of the <a href="https://github.com/mongodb/mongo-spark">MongoDB Spark connector</a> shared his experience in writing a Spark connector. There is a lack of official documentation on writing these so the best way to start writing your own connector is to look at how others did it, for example the <a href="https://github.com/datastax/spark-cassandra-connector">Spark Cassandra connector</a>.
+ </p>
+<h4><em>Dynamic Resource Allocation, Do More With Your Cluster</em></h4>
+<p>This technique is useful for shared clusters and jobs of varying load. In this talk we were shown some parameters that can be set for optimizing dynamic resource allocation on a Spark cluster.
+ </p>
+<h4><em>Vegas, the Missing MatPlotLib for Spark</em></h4>
+<p>Two engineers from Netflix showed their project called <a href="https://github.com/vegas-viz/Vegas">Vegas</a>. This project will generate HTML code that can be used on web pages. Vegas also supports <a href="https://zeppelin.apache.org/">Apache Zeppelin</a> notebooks, has console support and can render to SVG. Vegas uses <a href="https://vega.github.io/vega-lite/">Vega-Lite</a> underneath. It is currently in beta stage.
+ </p>
+<h4><em>SparkLint: a Tool for Monitoring, Identifying and Tuning Inefficient Spark Jobs Across Your Cluster</em></h4>
+<p>Groupon announced the availability of <a href="https://github.com/groupon/sparklint">SparkLint</a>, a performance debugger for Spark. It can detect over-allocation and has CPU utilization graphs for Spark jobs. SparkLint is available on Github.
+ </p>
+<h4><em>Spark and Object Stores —What You Need to Know</em></h4>
+<p>This talk gives a set of optimal parameters to use when working with Object Stores and Spark. When using the Amazon S3 API, make sure to use the new s3a:// protocol in your URLs. This is the only one that is currently supported.
+ </p>
+<h4><em>Mastering Spark Unit Testing</em></h4>
+<p>A few tips and tricks from Blizzard were presented for unit testing Spark jobs. The main ideas were that one should not use a Spark context if it's not necessary. Code can usually be tested outside of a Spark job.</p>
+<p>If it's really necessary to run a Spark job in your test, then use the local master and run it on your local machine. You can then set breakpoints for instance in IntelliJ Idea and debug both driver and executor code. A cool idea that the speaker gave was to share the Spark context across various unit tests so that the initialization is done only once and the tests are running faster.
+ </p>
+<h4><em>Apache Spark 2.0 Performance Improvements Investigated With Flame Graphs</em></h4>
+<p><a href="https://github.com/brendangregg/FlameGraph">Flame Graphs</a> are a great visualization tool that can be used to profile Spark jobs in order to find the most frequent code paths and optimize bottlenecks. This talk is about the use of Flame graphs at CERN in order to analyze the performance of Spark 1.6 and 2.0.
+ </p>
+<h4><em>TensorFrames: Deep Learning with TensorFlow on Apache Spark</em></h4>
+<p>Databricks presented <a href="https://github.com/databricks/tensorframes">TensorFrames</a>, a bridge between Spark and <a href="https://www.tensorflow.org/">TensorFlow</a>. A TensorFlow graph can be defined and used as a mapper function that can be applied to a Dataframe. TensorFrames can bring a huge performance increase when running on GPUs.
+ </p>
+<h4><em>Apache Spark at Scale: A 60 TB+ Production Use Case</em></h4>
+<p>Facebook uses Spark at scale and during this talk they presented a few tips and tricks that they found while working with Spark. They use Flame Graphs for profiling. They highlighted that the thread dump function available in the Spark UI is useful for debugging.</p>
+<p>They gave interesting ideas for configuration:</p>
+<ul>
+<li>Use memory off heap</li>
+<li>Use parallel GC instead of G1GC</li>
+<li>Tune the shuffle service (number of threads, etc.)</li>
+<li>Configure the various buffer sizes</li>
+</ul>
+<p>They published <a href="https://code.facebook.com/posts/1671373793181703/apache-spark-scale-a-60-tb-production-use-case/">a blog post</a> about this.</p>
+<h4><em>Apache Kudu and Spark SQL for Fast Analytics on Fast Data</em></h4>
+<p>An engineer from Cloudera presented <a href="http://kudu.apache.org/">Apache Kudu</a>, a top level Apache project that sits between HDFS and <a href="http://hbase.apache.org/">HBase</a>. The speaker revealed an interesting fact during the Q&amp;A session: Kudu does not store its data on HDFS, but rather on a local file system. Kudu is a data store that has some of the advantages of the Parquet file format: it's a columnar store. Support for Kerberos in Kudu is coming soon.
+ </p>
+<h4><em>SparkOscope: Enabling Apache Spark Optimization Through Cross-Stack Monitoring and Visualization</em></h4>
+<p>SparkOscope is an IBM research project. It collects OS-level metrics while Spark jobs are running. It does not guarantee that the metrics correspond to the resource usage of the Spark job. In the event that other processes are running at the same time as the Spark job that is being observed then the metrics will include usage of multiple processes unrelated to Spark jobs. <a href="https://github.com/ibm-research-ireland/sparkoscope">SparkOscope</a> is available on Github.
+ </p>
+<h4><em>Problem Solving Recipes Learned from Supporting Spark</em></h4>
+<ul>
+<li>OutOfMemoryErrors usually happen when allocating too many objects. Tune the spark.memory.fraction setting and do not allocate objects in tight loops. Be careful when allocating objects in mapPartitions() for instance.</li>
+<li>NoSuchMethodError is usually thrown when there is a library version mismatch. Try to upgrade or downgrade Spark, change the library loading order or shade libraries to fix this.</li>
+<li>Use spark.speculation to restart slow-running tasks.</li>
+<li>Use df.explain to debug queries on dataframes.
+ </li>
+</ul>
+<h4><em>Containerized Spark on Kubernetes</em></h4>
+<p>There was this <a href="http://chapeau.freevariable.com/2016/10/spark-on-kubernetes-at-spark-summit-eu.html">excellent talk by William Benton</a> from Red Hat about running Spark on Kubernetes. Don't miss out on this one!
+ </p>
+<h4><em>Spark SQL 2.0 Experiences Using TPC-DS</em></h4>
+<p>Very interesting talk and Q&amp;A session about running a large scale benchmark with Spark SQL on a $5.5 million cluster. About 90% of the 99 queries defined in the <a href="http://www.tpc.org/tpcds/">TPC-DS</a> specification were runnable on Spark SQL.</p>
+<p>See the related <a href="https://developer.ibm.com/hadoop/2015/11/30/99-tpc-ds-queries-integrated-into-spark-sql-perf/">blog post</a>.
+ </p>
+<h2>The talks I missed</h2>
+<p>There are a few more talks that I couldn't attend but that I will watch as soon as the video streams become available:</p>
+<ul>
+<li>No One Puts Spark in the Container</li>
+<li>Hive to Spark—Journey and Lessons Learned</li>
+<li>Adopting Dataframes and Parquet in an Already Existing Warehouse</li>
+<li>A Deep Dive into the Catalyst Optimizer
+ </li>
+</ul>
+<h2>Closing words</h2>
+<p>A few interesting things/trends I heard at Spark Summit:</p>
+<ul>
+<li>Parquet is an efficient, fast, columnar file format</li>
+<li>Many people use Databricks notebooks. You don't have to manage your own cluster.</li>
+<li>There is no better API (RDD, Dataframes, Datasets), it's a question of preference</li>
+<li>Dataframes do not replace RDDs but they have an advantage one should be aware of: the Catalyst optimizer will rewrite your poorly optimized queries when using Spark SQL and dataframes. This is not true when using the low-level RDD API directly.</li>
+</ul>
+<p>Presentation slides and recordings from the event will be available on the <a href="https://spark-summit.org/eu-2016/schedule/">Spark Summit website</a> by November 4.</p>
+<p>Update: cross-posted on <a href="https://research.kudelskisecurity.com">research.kudelskisecurity.com</a></p>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

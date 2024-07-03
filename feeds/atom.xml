@@ -1,0 +1,945 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>tome.one</title><link href="https://tome.one/" rel="alternate"></link><link href="https://tome.one/feeds/atom.xml" rel="self"></link><id>https://tome.one/</id><updated>2024-01-03T18:40:00+01:00</updated><entry><title>Passkeys and Security Key Shopping Guide</title><link href="https://tome.one/passkeys-and-security-key-shopping-guide.html" rel="alternate"></link><published>2024-01-03T18:40:00+01:00</published><updated>2024-01-03T18:40:00+01:00</updated><author><name>tome.one</name></author><id>tag:tome.one,2024-01-03:/passkeys-and-security-key-shopping-guide.html</id><summary type="html">&lt;p&gt;User authentication has long been relying on passwords.
+However, passwords come with a ton of problems.
+They're hard to remember, they can be reused across websites and services and are sensitive to phishing and data leaks.
+Also, password policies are a major pain point for users.&lt;/p&gt;
+&lt;p&gt;Password managers solve the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;User authentication has long been relying on passwords.
+However, passwords come with a ton of problems.
+They're hard to remember, they can be reused across websites and services and are sensitive to phishing and data leaks.
+Also, password policies are a major pain point for users.&lt;/p&gt;
+&lt;p&gt;Password managers solve the "hard to remember" piece, but are just a workaround. They're not solving the actual problem.
+We need to get rid of passwords.&lt;/p&gt;
+&lt;h1&gt;Passkeys&lt;/h1&gt;
+&lt;p&gt;You probably have heard of &lt;a href="https://passkeys.dev/"&gt;Passkeys&lt;/a&gt;.
+They're a new way to sign in to websites and applications without passwords.
+Passkeys can be stored on your laptop, on your smartphone or on a hardware security key, such as a Yubikey.&lt;/p&gt;
+&lt;p&gt;For the average user, storing one's passkeys in their smartphone and having them synced 
+in Google's or Apple's cloud is probably the most user-friendly solution and is what I expect most people will do in the near future.&lt;/p&gt;
+&lt;p&gt;However, this solution comes at a cost. You give up some security because you trust Google, Apple or whatever third-party passkey provider
+you choose to store your passkeys. This is where hardware-based security keys shine, because the passkeys you store into those can never leave
+the security key. They remain offline and you keep control or your passkeys.&lt;/p&gt;
+&lt;h1&gt;Security keys&lt;/h1&gt;
+&lt;p&gt;Shopping for security keys these days is hard. Vendors like Yubico, Google, Nitrokey and SoloKeys to name a few, make it 
+especially hard for you to know what you're getting.&lt;/p&gt;
+&lt;p&gt;Indeed, these security keys come with a wide array of features, like FIDO2, PGP, PIV, OTP, and more.
+For passkeys, we only care about FIDO2 support because Passkeys are just FIDO2 credentials, and this is the topic of this blog post so we'll only cover that today.&lt;/p&gt;
+&lt;p&gt;Indeed, 99% of security key vendors fail to provide detailed technical specifications of what their FIDO2 security key supports, 
+so you never know what you're getting and may be disappointed upon delivery.&lt;/p&gt;
+&lt;p&gt;For example, in November last year, Google announced the latest iteration of their 
+&lt;a href="https://blog.google/technology/safety-security/titan-security-key-google-store/"&gt;Titan Security Key&lt;/a&gt; 
+and claimed it can store up to 250 unique passkeys. This sounded super nice because current models on the market previously only allowed to 
+store up to 25, 50 or maybe 100 passkeys. Before that, no product ever allowed to store that many passkeys.&lt;/p&gt;
+&lt;p&gt;I decided to buy that new &lt;a href="https://store.google.com/product/titan_security_key"&gt;Titan Security Key&lt;/a&gt; because of that claim, and it arrived the next day.
+When it arrived, I immediately plugged it in and ran &lt;code&gt;ctapcli info&lt;/code&gt; to see what FIDO2 features and options it supported:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;ctapcli&lt;span class="w"&gt; &lt;/span&gt;info
+Get&lt;span class="w"&gt; &lt;/span&gt;the&lt;span class="w"&gt; &lt;/span&gt;Authenticator&lt;span class="w"&gt; &lt;/span&gt;infomation.
+
+Get&lt;span class="w"&gt; &lt;/span&gt;all&lt;span class="w"&gt; &lt;/span&gt;data.
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;versions&lt;/span&gt;&lt;span class="w"&gt;                           &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;FIDO_2_0&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;U2F_V2&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;extensions&lt;/span&gt;&lt;span class="w"&gt;                         &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;credProtect&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;hmac-secret&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;aaguid&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;16&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt;                         &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;42B4FB4A286643B29BF76C6669C2E5D3
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;options&lt;/span&gt;&lt;span class="w"&gt;                            &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;rk&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;clientPin&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="o"&gt;)]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_msg_size&lt;/span&gt;&lt;span class="w"&gt;                       &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2200&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pin_uv_auth_protocols&lt;/span&gt;&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_credential_count_in_list&lt;/span&gt;&lt;span class="w"&gt;       &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_credential_id_length&lt;/span&gt;&lt;span class="w"&gt;           &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;transports&lt;/span&gt;&lt;span class="w"&gt;                         &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;algorithms&lt;/span&gt;&lt;span class="w"&gt;                         &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_serialized_large_blob_array&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;force_pin_change&lt;/span&gt;&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;false&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;min_pin_length&lt;/span&gt;&lt;span class="w"&gt;                     &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;firmware_version&lt;/span&gt;&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_cred_blob_length&lt;/span&gt;&lt;span class="w"&gt;               &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_rpids_for_set_min_pin_length&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;preferred_platform_uv_attempts&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;uv_modality&lt;/span&gt;&lt;span class="w"&gt;                        &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;remaining_discoverable_credentials&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+
+Error:&lt;span class="w"&gt; &lt;/span&gt;Invalid&lt;span class="w"&gt; &lt;/span&gt;item
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;And here's the output of &lt;code&gt;fido2-token&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;fido2-token&lt;span class="w"&gt; &lt;/span&gt;-L
+/dev/hidraw0:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;vendor&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;0x18d1,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;product&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;0x9470&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;Google&lt;span class="w"&gt; &lt;/span&gt;Titan&lt;span class="w"&gt; &lt;/span&gt;Security&lt;span class="w"&gt; &lt;/span&gt;Key&lt;span class="w"&gt; &lt;/span&gt;v2&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;fido2-token&lt;span class="w"&gt; &lt;/span&gt;-I&lt;span class="w"&gt; &lt;/span&gt;/dev/hidraw0&lt;span class="w"&gt; &lt;/span&gt;
+proto:&lt;span class="w"&gt; &lt;/span&gt;0x02
+major:&lt;span class="w"&gt; &lt;/span&gt;0x02
+minor:&lt;span class="w"&gt; &lt;/span&gt;0x00
+build:&lt;span class="w"&gt; &lt;/span&gt;0x03
+caps:&lt;span class="w"&gt; &lt;/span&gt;0x05&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;wink,&lt;span class="w"&gt; &lt;/span&gt;cbor,&lt;span class="w"&gt; &lt;/span&gt;msg&lt;span class="o"&gt;)&lt;/span&gt;
+version&lt;span class="w"&gt; &lt;/span&gt;strings:&lt;span class="w"&gt; &lt;/span&gt;FIDO_2_0,&lt;span class="w"&gt; &lt;/span&gt;U2F_V2
+extension&lt;span class="w"&gt; &lt;/span&gt;strings:&lt;span class="w"&gt; &lt;/span&gt;credProtect,&lt;span class="w"&gt; &lt;/span&gt;hmac-secret
+aaguid:&lt;span class="w"&gt; &lt;/span&gt;42b4fb4a286643b29bf76c6669c2e5d3
+options:&lt;span class="w"&gt; &lt;/span&gt;rk,&lt;span class="w"&gt; &lt;/span&gt;clientPin
+fwversion:&lt;span class="w"&gt; &lt;/span&gt;0x0
+maxmsgsiz:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2200&lt;/span&gt;
+maxcredcntlst:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+maxcredlen:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+maxlargeblob:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+pin&lt;span class="w"&gt; &lt;/span&gt;protocols:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;
+pin&lt;span class="w"&gt; &lt;/span&gt;retries:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;8&lt;/span&gt;
+pin&lt;span class="w"&gt; &lt;/span&gt;change&lt;span class="w"&gt; &lt;/span&gt;required:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;false&lt;/span&gt;
+uv&lt;span class="w"&gt; &lt;/span&gt;retries:&lt;span class="w"&gt; &lt;/span&gt;undefined
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;As you can see, the new Titan Security Key (2023 model) doesn't support credential management.
+Indeed, it may be able to store up to 250 resident credentials, but 
+there's no way to selectively delete or enumerate those credentials.
+This is a big letdown for me because when I do fill those 250 slots, the only way for me to make some free space
+is to completely reset the key and lose all my passkeys, which is definitely not what I'd like.&lt;/p&gt;
+&lt;p&gt;I also recently purchased a &lt;a href="https://www.yubico.com/ch/product/security-key-series/security-key-c-nfc-by-yubico-black/"&gt;Security Key C NFC&lt;/a&gt; by Yubico. 
+This model can only store up to 25 passkeys, but it does support credential management:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;ctapcli&lt;span class="w"&gt; &lt;/span&gt;info
+...
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;options&lt;/span&gt;&lt;span class="w"&gt;                            &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;rk&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;up&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;plat&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;false&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;clientPin&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;credentialMgmtPreview&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="o"&gt;)]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Indeed, it supports enumerating resident credentials and tells how many free slots are left:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;ctapcli&lt;span class="w"&gt; &lt;/span&gt;cred
+PIN:&lt;span class="w"&gt; &lt;/span&gt;
+
+Enumerate&lt;span class="w"&gt; &lt;/span&gt;discoverable&lt;span class="w"&gt; &lt;/span&gt;credentials.
+-&lt;span class="w"&gt; &lt;/span&gt;existing&lt;span class="w"&gt; &lt;/span&gt;discoverable&lt;span class="w"&gt; &lt;/span&gt;credentials:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;/24
+-&lt;span class="w"&gt; &lt;/span&gt;rp:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;id:&lt;span class="w"&gt; &lt;/span&gt;github.com,&lt;span class="w"&gt; &lt;/span&gt;name:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;-&lt;span class="w"&gt; &lt;/span&gt;credential:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;id:&lt;span class="w"&gt; &lt;/span&gt;***,&lt;span class="w"&gt; &lt;/span&gt;name:&lt;span class="w"&gt; &lt;/span&gt;***,&lt;span class="w"&gt; &lt;/span&gt;display_name:&lt;span class="w"&gt; &lt;/span&gt;***&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;We can see that I have one passkey stored and 24 free slots left, so the Security Key C NFC really does support storing up to 25 passkeys.
+What's nice about this model, is that it also reports that it supports both ECDSA with the P-256 curve, and EdDSA for &lt;a href="https://www.rfc-editor.org/rfc/rfc9053.html"&gt;signatures&lt;/a&gt;.
+I still do wish that Yubico makes a newer model with the same features but with more storage for passkeys.&lt;/p&gt;
+&lt;h1&gt;Features to look for when choosing a security key&lt;/h1&gt;
+&lt;p&gt;I was really disappointed when I found out that the security key I bought didn't support what I thought was a very important feature.
+There was no way to tell whether it supported it or not. The official product store page didn't list any detailed technical specifications.
+To help you avoid ending up in the same uncomfortable situation I found myself in, here's a quick guide to buying a new security key.&lt;/p&gt;
+&lt;p&gt;When I'm shopping for a new security key, this is what I look for.&lt;/p&gt;
+&lt;h2&gt;1) FIDO2 support&lt;/h2&gt;
+&lt;p&gt;The security key must support FIDO2 to be able to store passkeys.&lt;/p&gt;
+&lt;h2&gt;2) How you're going to connect the security key&lt;/h2&gt;
+&lt;p&gt;Does it support USB type A or USB type C? Does it support NFC?&lt;/p&gt;
+&lt;h2&gt;3) Max number of resident credentials&lt;/h2&gt;
+&lt;p&gt;Is that 25? 50? 250?
+Think of how many passkeys you'll need to store. Is this going to be enough?&lt;/p&gt;
+&lt;p&gt;This information may not even be shown on the vendor's official site.
+Sometimes, the best way to make sure, is to ask someone who already owns that security key model to check that for you.
+You may as well find the appendix of this blog post useful, because it contains the output of &lt;code&gt;authenticatorGetInfo&lt;/code&gt; 
+for multiple FIDO2 security key models I own. Maybe the one you're interested in is in that list.&lt;/p&gt;
+&lt;h2&gt;4) hmac-secret extension support&lt;/h2&gt;
+&lt;p&gt;This CTAP extension is required by some applications, such as LUKS.
+Look for the &lt;code&gt;hmac-secret&lt;/code&gt; value in the &lt;code&gt;extensions&lt;/code&gt; field of the CTAP &lt;code&gt;authenticatorGetInfo&lt;/code&gt; command output.&lt;/p&gt;
+&lt;h2&gt;5) credProtect extension support&lt;/h2&gt;
+&lt;p&gt;The &lt;code&gt;credProtect&lt;/code&gt; extension is used to enforce per-credential policies. 
+During creation of a new credential (or passkey), the credProtect extension can be set to, for example, &lt;code&gt;userVerificationRequired&lt;/code&gt;.
+If the authenticator supports the credProtect extension, then this passkey can only ever be used with user verification (PIN, fingerprint, etc.).
+This gives you the peace of mind that even if your security key is stolen, your passkeys cannot be used without your PIN or fingerprint.&lt;/p&gt;
+&lt;h2&gt;6) CTAP 2.1 support&lt;/h2&gt;
+&lt;p&gt;The security key implements CTAP 2.1 or higher.
+This is usually signaled by the presence of either the &lt;code&gt;FIDO_2_1_PRE&lt;/code&gt; or the &lt;code&gt;FIDO_2_1&lt;/code&gt; value in the &lt;code&gt;versions&lt;/code&gt; field of the CTAP &lt;code&gt;authenticatorGetInfo&lt;/code&gt; command output.
+There are security vulnerabilities that can be exploited in CTAP 2.0, such as PIN bypasses, especially with respect to the use of the hmac-secret extension.
+You definitely want this if you're going to use a security key to unlock LUKS partitions.&lt;/p&gt;
+&lt;h2&gt;7) Credential management support&lt;/h2&gt;
+&lt;p&gt;Look for the presence of the &lt;code&gt;credMgmt&lt;/code&gt; or &lt;code&gt;credentialMgmtPreview&lt;/code&gt; value in the &lt;code&gt;options&lt;/code&gt; field of the CTAP &lt;code&gt;authenticatorGetInfo&lt;/code&gt; command output.
+Without credential management support, there's no way to delete individual passkeys and free up space.
+When the security key gets full, the only option is to reset it, and therefore lose all passkeys stored on it.
+Credential management also allows for listing stored credentials and seeing how many free slots are left.&lt;/p&gt;
+&lt;p&gt;Storing resident credentials is the only option for username-less sign in. If the credentials are not stored on the authenticator, the website 
+you're signing in to has no way to know your username, and you'll have to manually type it.
+When storing resident credentials, those credentials become discoverable, and can be enumerated.
+Therefore, the username can be autofilled and your web browser will show you a nice UI where you can select which account you'd like 
+to use in case you have used Passkeys for multiple accounts on a same website. For example, if you have more than one Google account.&lt;/p&gt;
+&lt;h2&gt;8) Does it support biometrics?&lt;/h2&gt;
+&lt;p&gt;Do you need to perform user verification with your fingerprint?
+Usually, PIN is supported, but some security keys have a fingerprint reader and can store your fingerprint.
+One advantage of using biometrics is that user presence (where you tap the security key) and user verification (where the user's identity is verified) 
+can be performed in a single gesture: by placing your finger on the fingerprint reader. Whereas with a PIN, user presence must still be done by touching the security key 
+and the PIN has to be entered in another step.&lt;/p&gt;
+&lt;p&gt;If a fingerprint reader sounds interesting, you may want to verify how many fingerprints can be stored on that security key.
+It may not be possible to enroll and store fingerprints for all your fingers.
+Some models only allow to store a maximum of 3 fingerprints, for example, and as usual, this number is never specified.
+You discover it after having purchased the security key.&lt;/p&gt;
+&lt;p&gt;To my knowledge, there is no command that will directly tell how many fingerprints can be stored.
+However, when enrolling a new fingerprint, the command will fail when there are no more free slots.&lt;/p&gt;
+&lt;p&gt;Note that usually, if there's a fingerprint reader, there's no NFC support, so you'll have to make a choice here.&lt;/p&gt;
+&lt;h2&gt;9) Do you care about hardware attacks?&lt;/h2&gt;
+&lt;p&gt;Is a physical attack in your threat model?
+Do you need to be covered in case your security key is stolen by an attacker?
+In that case, you need to make sure your security key uses a secure element to store credentials, and
+that there are no known vulnerabilities on that secure element.&lt;/p&gt;
+&lt;p&gt;Also, make sure that the secure element is actually used.
+Some vendors sell security keys that contain a secure element but which is &lt;a href="https://shop.nitrokey.com/shop/nk3cn-nitrokey-3c-nfc-148"&gt;not used at all&lt;/a&gt; (see the IMPORTANT NOTE on that page).&lt;/p&gt;
+&lt;h2&gt;Summary and other criteria&lt;/h2&gt;
+&lt;p&gt;To summarize, mainly look for the following things:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Does it support FIDO2?&lt;/li&gt;
+&lt;li&gt;USB Type-A or Type-C?&lt;/li&gt;
+&lt;li&gt;NFC support?&lt;/li&gt;
+&lt;li&gt;Max resident credentials&lt;/li&gt;
+&lt;li&gt;hmac-secret extension support&lt;/li&gt;
+&lt;li&gt;credProtect extension support&lt;/li&gt;
+&lt;li&gt;CTAP 2.1 support&lt;/li&gt;
+&lt;li&gt;Credential management support&lt;/li&gt;
+&lt;li&gt;Biometrics&lt;/li&gt;
+&lt;li&gt;Secure element&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;But there are a few more things also worth looking for:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Price&lt;/li&gt;
+&lt;li&gt;Form factor / design (sticks out of laptop or fits flush, slim/stylish or bulky)&lt;/li&gt;
+&lt;li&gt;Availability and quality of documentation&lt;/li&gt;
+&lt;li&gt;Product certifications, such as FIPS 140-2, NIST SP800-63B or CC EAL (you may need this for enterprise scenarios)&lt;/li&gt;
+&lt;li&gt;Other supported applications (OTP, PGP, static password, PIV)&lt;/li&gt;
+&lt;li&gt;Open source firmware&lt;/li&gt;
+&lt;li&gt;Upgradable firmware&lt;/li&gt;
+&lt;li&gt;Does it work inside virtual machines? (this is a pretty niche use-case, but we've seen models work better than others inside VMs with USB passthrough)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;So which key is the best on the market today?&lt;/h1&gt;
+&lt;p&gt;I'm not affiliated with Yubico, but I do believe they make pretty good, secure and affordable products, that come with good documentation.
+Especially, after having used security keys made by other vendors.&lt;/p&gt;
+&lt;p&gt;They may not list all the technical details of their products on their website (see the appendix for more info), but I can easily recommend the $25 Security Key C NFC if Passkeys are all you care about and it's for personal use.
+I would also recommend buying a pair of these and register both security keys as a backup on all the websites you use, in case you lose one so that you don't get locked out.
+The only downside I see is the number of resident credentials is limited to 25. Hopefully they release a new model that bumps that number sooner than later.&lt;/p&gt;
+&lt;p&gt;If you need more applications like PGP, OTP or PIV, I would go for the Yubikey 5, which is essentially the same thing, but with more applications and also for double the price.
+But these days, I think Passkeys/FIDO2 is the killer app. Do you really need support for those other applications?&lt;/p&gt;
+&lt;h1&gt;Conclusions&lt;/h1&gt;
+&lt;p&gt;For the average person, maybe a security key is overkill and storing passkeys in their smartphone, plus cloud-sync is enough.
+But if you're concerned about third-parties storing your passkeys, this blog post gave an overview of 
+features to look for and pitfalls to avoid.&lt;/p&gt;
+&lt;p&gt;Choosing a security key depends on your use case, and I gave a list of these features. Think of which ones make sense to you 
+and the choice will become easier.&lt;/p&gt;
+&lt;h1&gt;Appendix&lt;/h1&gt;
+&lt;p&gt;Here are some technical details about the security keys I own.
+For each security key, I will include as much information as possible, including the output of the CTAP authenticatorGetInfo command.&lt;/p&gt;
+&lt;p&gt;Click on a security below to show more details.&lt;/p&gt;
+&lt;details&gt;
+&lt;summary&gt;Security Key C NFC by Yubico (2023)&lt;/summary&gt;
+
+This one was purchased in late 2023 for $29 off the official Yubico website.
+It's the newer model which is now black. It previously was blue.
+It's running firmware version 5.4.3.
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;ctapcli&lt;span class="w"&gt; &lt;/span&gt;info
+Get&lt;span class="w"&gt; &lt;/span&gt;the&lt;span class="w"&gt; &lt;/span&gt;Authenticator&lt;span class="w"&gt; &lt;/span&gt;infomation.
+
+Get&lt;span class="w"&gt; &lt;/span&gt;all&lt;span class="w"&gt; &lt;/span&gt;data.
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;versions&lt;/span&gt;&lt;span class="w"&gt;                           &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;U2F_V2&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;FIDO_2_0&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;FIDO_2_1_PRE&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;extensions&lt;/span&gt;&lt;span class="w"&gt;                         &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;credProtect&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;hmac-secret&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;aaguid&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;16&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt;                         &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;A4E9FC6D4CBE4758B8BA37598BB5BBAA
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;options&lt;/span&gt;&lt;span class="w"&gt;                            &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;rk&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;up&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;plat&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;false&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;clientPin&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;credentialMgmtPreview&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="o"&gt;)]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_msg_size&lt;/span&gt;&lt;span class="w"&gt;                       &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1200&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pin_uv_auth_protocols&lt;/span&gt;&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_credential_count_in_list&lt;/span&gt;&lt;span class="w"&gt;       &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;8&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_credential_id_length&lt;/span&gt;&lt;span class="w"&gt;           &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;128&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;transports&lt;/span&gt;&lt;span class="w"&gt;                         &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;nfc&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;usb&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;algorithms&lt;/span&gt;&lt;span class="w"&gt;                         &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;alg&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;-7&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;type&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;public-key&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;alg&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;-8&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;type&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;public-key&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;)]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_serialized_large_blob_array&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;force_pin_change&lt;/span&gt;&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;false&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;min_pin_length&lt;/span&gt;&lt;span class="w"&gt;                     &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;4&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;firmware_version&lt;/span&gt;&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;328707&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_cred_blob_length&lt;/span&gt;&lt;span class="w"&gt;               &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_rpids_for_set_min_pin_length&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;preferred_platform_uv_attempts&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;uv_modality&lt;/span&gt;&lt;span class="w"&gt;                        &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;remaining_discoverable_credentials&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+
+Error:&lt;span class="w"&gt; &lt;/span&gt;Invalid&lt;span class="w"&gt; &lt;/span&gt;item
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;fido2-token&lt;span class="w"&gt; &lt;/span&gt;-I&lt;span class="w"&gt; &lt;/span&gt;/dev/hidraw0&lt;span class="w"&gt; &lt;/span&gt;
+proto:&lt;span class="w"&gt; &lt;/span&gt;0x02
+major:&lt;span class="w"&gt; &lt;/span&gt;0x05
+minor:&lt;span class="w"&gt; &lt;/span&gt;0x04
+build:&lt;span class="w"&gt; &lt;/span&gt;0x03
+caps:&lt;span class="w"&gt; &lt;/span&gt;0x05&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;wink,&lt;span class="w"&gt; &lt;/span&gt;cbor,&lt;span class="w"&gt; &lt;/span&gt;msg&lt;span class="o"&gt;)&lt;/span&gt;
+version&lt;span class="w"&gt; &lt;/span&gt;strings:&lt;span class="w"&gt; &lt;/span&gt;U2F_V2,&lt;span class="w"&gt; &lt;/span&gt;FIDO_2_0,&lt;span class="w"&gt; &lt;/span&gt;FIDO_2_1_PRE
+extension&lt;span class="w"&gt; &lt;/span&gt;strings:&lt;span class="w"&gt; &lt;/span&gt;credProtect,&lt;span class="w"&gt; &lt;/span&gt;hmac-secret
+transport&lt;span class="w"&gt; &lt;/span&gt;strings:&lt;span class="w"&gt; &lt;/span&gt;nfc,&lt;span class="w"&gt; &lt;/span&gt;usb
+algorithms:&lt;span class="w"&gt; &lt;/span&gt;es256&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;public-key&lt;span class="o"&gt;)&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;eddsa&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;public-key&lt;span class="o"&gt;)&lt;/span&gt;
+aaguid:&lt;span class="w"&gt; &lt;/span&gt;a4e9fc6d4cbe4758b8ba37598bb5bbaa
+options:&lt;span class="w"&gt; &lt;/span&gt;rk,&lt;span class="w"&gt; &lt;/span&gt;up,&lt;span class="w"&gt; &lt;/span&gt;noplat,&lt;span class="w"&gt; &lt;/span&gt;clientPin,&lt;span class="w"&gt; &lt;/span&gt;credentialMgmtPreview
+fwversion:&lt;span class="w"&gt; &lt;/span&gt;0x50403
+maxmsgsiz:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1200&lt;/span&gt;
+maxcredcntlst:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;8&lt;/span&gt;
+maxcredlen:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;128&lt;/span&gt;
+maxlargeblob:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+minpinlen:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;4&lt;/span&gt;
+pin&lt;span class="w"&gt; &lt;/span&gt;protocols:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;
+pin&lt;span class="w"&gt; &lt;/span&gt;retries:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;8&lt;/span&gt;
+pin&lt;span class="w"&gt; &lt;/span&gt;change&lt;span class="w"&gt; &lt;/span&gt;required:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;false&lt;/span&gt;
+uv&lt;span class="w"&gt; &lt;/span&gt;retries:&lt;span class="w"&gt; &lt;/span&gt;undefined
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;ctapcli&lt;span class="w"&gt; &lt;/span&gt;cred
+PIN:&lt;span class="w"&gt; &lt;/span&gt;
+
+Enumerate&lt;span class="w"&gt; &lt;/span&gt;discoverable&lt;span class="w"&gt; &lt;/span&gt;credentials.
+-&lt;span class="w"&gt; &lt;/span&gt;existing&lt;span class="w"&gt; &lt;/span&gt;discoverable&lt;span class="w"&gt; &lt;/span&gt;credentials:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;/24
+-&lt;span class="w"&gt; &lt;/span&gt;rp:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;id:&lt;span class="w"&gt; &lt;/span&gt;github.com,&lt;span class="w"&gt; &lt;/span&gt;name:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;-&lt;span class="w"&gt; &lt;/span&gt;credential:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;id:&lt;span class="w"&gt; &lt;/span&gt;***,&lt;span class="w"&gt; &lt;/span&gt;name:&lt;span class="w"&gt; &lt;/span&gt;***,&lt;span class="w"&gt; &lt;/span&gt;display_name:&lt;span class="w"&gt; &lt;/span&gt;***&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/details&gt;
+
+&lt;details&gt;
+&lt;summary&gt;Security Key NFC by Yubico (2019)&lt;/summary&gt;
+
+This is the blue security key.
+I bought this one from the official Yubico store in February 2019 for $20, plus shipping fee, for a total of $25.
+It came with firmware version 5.1.2.
+It doesn't support credential management. Note that Yubico's firmware is proprietary and firmware upgrades are NOT possible.
+The only way to get a newer firmware is to purchase a new security key.
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;ykman&lt;span class="w"&gt; &lt;/span&gt;info
+Device&lt;span class="w"&gt; &lt;/span&gt;type:&lt;span class="w"&gt; &lt;/span&gt;Security&lt;span class="w"&gt; &lt;/span&gt;Key&lt;span class="w"&gt; &lt;/span&gt;NFC
+Firmware&lt;span class="w"&gt; &lt;/span&gt;version:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;5&lt;/span&gt;.1.2
+Form&lt;span class="w"&gt; &lt;/span&gt;factor:&lt;span class="w"&gt; &lt;/span&gt;Keychain&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;USB-A&lt;span class="o"&gt;)&lt;/span&gt;
+Enabled&lt;span class="w"&gt; &lt;/span&gt;USB&lt;span class="w"&gt; &lt;/span&gt;interfaces:&lt;span class="w"&gt; &lt;/span&gt;FIDO
+NFC&lt;span class="w"&gt; &lt;/span&gt;transport&lt;span class="w"&gt; &lt;/span&gt;is&lt;span class="w"&gt; &lt;/span&gt;enabled.
+
+Applications&lt;span class="w"&gt;    &lt;/span&gt;USB&lt;span class="w"&gt;             &lt;/span&gt;NFC&lt;span class="w"&gt;          &lt;/span&gt;
+OTP&lt;span class="w"&gt;             &lt;/span&gt;Not&lt;span class="w"&gt; &lt;/span&gt;available&lt;span class="w"&gt;   &lt;/span&gt;Not&lt;span class="w"&gt; &lt;/span&gt;available
+FIDO&lt;span class="w"&gt; &lt;/span&gt;U2F&lt;span class="w"&gt;        &lt;/span&gt;Enabled&lt;span class="w"&gt;         &lt;/span&gt;Enabled
+FIDO2&lt;span class="w"&gt;           &lt;/span&gt;Enabled&lt;span class="w"&gt;         &lt;/span&gt;Enabled
+OATH&lt;span class="w"&gt;            &lt;/span&gt;Not&lt;span class="w"&gt; &lt;/span&gt;available&lt;span class="w"&gt;   &lt;/span&gt;Not&lt;span class="w"&gt; &lt;/span&gt;available
+PIV&lt;span class="w"&gt;             &lt;/span&gt;Not&lt;span class="w"&gt; &lt;/span&gt;available&lt;span class="w"&gt;   &lt;/span&gt;Not&lt;span class="w"&gt; &lt;/span&gt;available
+OpenPGP&lt;span class="w"&gt;         &lt;/span&gt;Not&lt;span class="w"&gt; &lt;/span&gt;available&lt;span class="w"&gt;   &lt;/span&gt;Not&lt;span class="w"&gt; &lt;/span&gt;available
+YubiHSM&lt;span class="w"&gt; &lt;/span&gt;Auth&lt;span class="w"&gt;    &lt;/span&gt;Not&lt;span class="w"&gt; &lt;/span&gt;available&lt;span class="w"&gt;   &lt;/span&gt;Not&lt;span class="w"&gt; &lt;/span&gt;available
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;ctapcli&lt;span class="w"&gt; &lt;/span&gt;info
+Get&lt;span class="w"&gt; &lt;/span&gt;the&lt;span class="w"&gt; &lt;/span&gt;Authenticator&lt;span class="w"&gt; &lt;/span&gt;infomation.
+
+Get&lt;span class="w"&gt; &lt;/span&gt;all&lt;span class="w"&gt; &lt;/span&gt;data.
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;versions&lt;/span&gt;&lt;span class="w"&gt;                           &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;U2F_V2&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;FIDO_2_0&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;extensions&lt;/span&gt;&lt;span class="w"&gt;                         &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;hmac-secret&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;aaguid&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;16&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt;                         &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;6D44BA9BF6EC2E49B9300C8FE920CB73
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;options&lt;/span&gt;&lt;span class="w"&gt;                            &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;rk&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;up&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;plat&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;false&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;clientPin&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="o"&gt;)]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_msg_size&lt;/span&gt;&lt;span class="w"&gt;                       &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1200&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pin_uv_auth_protocols&lt;/span&gt;&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_credential_count_in_list&lt;/span&gt;&lt;span class="w"&gt;       &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_credential_id_length&lt;/span&gt;&lt;span class="w"&gt;           &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;transports&lt;/span&gt;&lt;span class="w"&gt;                         &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;algorithms&lt;/span&gt;&lt;span class="w"&gt;                         &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_serialized_large_blob_array&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;force_pin_change&lt;/span&gt;&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;false&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;min_pin_length&lt;/span&gt;&lt;span class="w"&gt;                     &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;firmware_version&lt;/span&gt;&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_cred_blob_length&lt;/span&gt;&lt;span class="w"&gt;               &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_rpids_for_set_min_pin_length&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;preferred_platform_uv_attempts&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;uv_modality&lt;/span&gt;&lt;span class="w"&gt;                        &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;remaining_discoverable_credentials&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+
+Error:&lt;span class="w"&gt; &lt;/span&gt;Invalid&lt;span class="w"&gt; &lt;/span&gt;item
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;fido2-token&lt;span class="w"&gt; &lt;/span&gt;-I&lt;span class="w"&gt; &lt;/span&gt;/dev/hidraw0&lt;span class="w"&gt; &lt;/span&gt;
+proto:&lt;span class="w"&gt; &lt;/span&gt;0x02
+major:&lt;span class="w"&gt; &lt;/span&gt;0x05
+minor:&lt;span class="w"&gt; &lt;/span&gt;0x01
+build:&lt;span class="w"&gt; &lt;/span&gt;0x02
+caps:&lt;span class="w"&gt; &lt;/span&gt;0x05&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;wink,&lt;span class="w"&gt; &lt;/span&gt;cbor,&lt;span class="w"&gt; &lt;/span&gt;msg&lt;span class="o"&gt;)&lt;/span&gt;
+version&lt;span class="w"&gt; &lt;/span&gt;strings:&lt;span class="w"&gt; &lt;/span&gt;U2F_V2,&lt;span class="w"&gt; &lt;/span&gt;FIDO_2_0
+extension&lt;span class="w"&gt; &lt;/span&gt;strings:&lt;span class="w"&gt; &lt;/span&gt;hmac-secret
+aaguid:&lt;span class="w"&gt; &lt;/span&gt;6d44ba9bf6ec2e49b9300c8fe920cb73
+options:&lt;span class="w"&gt; &lt;/span&gt;rk,&lt;span class="w"&gt; &lt;/span&gt;up,&lt;span class="w"&gt; &lt;/span&gt;noplat,&lt;span class="w"&gt; &lt;/span&gt;clientPin
+fwversion:&lt;span class="w"&gt; &lt;/span&gt;0x0
+maxmsgsiz:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1200&lt;/span&gt;
+maxcredcntlst:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+maxcredlen:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+maxlargeblob:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+pin&lt;span class="w"&gt; &lt;/span&gt;protocols:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;
+pin&lt;span class="w"&gt; &lt;/span&gt;retries:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;8&lt;/span&gt;
+pin&lt;span class="w"&gt; &lt;/span&gt;change&lt;span class="w"&gt; &lt;/span&gt;required:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;false&lt;/span&gt;
+uv&lt;span class="w"&gt; &lt;/span&gt;retries:&lt;span class="w"&gt; &lt;/span&gt;undefined
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+&lt;/details&gt;
+
+&lt;details&gt;
+&lt;summary&gt;Goldengate G320 by eWBM&lt;/summary&gt;
+
+Note that the G320 is the USB type-C model and the G310 is the same but with a USB type-A connector.
+
+I was contacted by eWBM and given these two models (G310 and G320) for free in October 2019 for an evaluation of their products.
+
+The maximum number of fingerprints that can be stored is 3.
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;ctapcli&lt;span class="w"&gt; &lt;/span&gt;info
+Get&lt;span class="w"&gt; &lt;/span&gt;the&lt;span class="w"&gt; &lt;/span&gt;Authenticator&lt;span class="w"&gt; &lt;/span&gt;infomation.
+
+Get&lt;span class="w"&gt; &lt;/span&gt;all&lt;span class="w"&gt; &lt;/span&gt;data.
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;versions&lt;/span&gt;&lt;span class="w"&gt;                           &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;U2F_V2&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;FIDO_2_0&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;FIDO_2_1_PRE&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;extensions&lt;/span&gt;&lt;span class="w"&gt;                         &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;credProtect&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;hmac-secret&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;aaguid&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;16&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt;                         &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;87DBC5A14C944DC88A4797D800FD1F3C
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;options&lt;/span&gt;&lt;span class="w"&gt;                            &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;rk&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;up&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;uv&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;plat&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;false&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;clientPin&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;credentialMgmtPreview&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;userVerificationMgmtPreview&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="o"&gt;)]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_msg_size&lt;/span&gt;&lt;span class="w"&gt;                       &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2048&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pin_uv_auth_protocols&lt;/span&gt;&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_credential_count_in_list&lt;/span&gt;&lt;span class="w"&gt;       &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;6&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_credential_id_length&lt;/span&gt;&lt;span class="w"&gt;           &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;192&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;transports&lt;/span&gt;&lt;span class="w"&gt;                         &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;usb&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;algorithms&lt;/span&gt;&lt;span class="w"&gt;                         &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_serialized_large_blob_array&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;force_pin_change&lt;/span&gt;&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;false&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;min_pin_length&lt;/span&gt;&lt;span class="w"&gt;                     &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;firmware_version&lt;/span&gt;&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_cred_blob_length&lt;/span&gt;&lt;span class="w"&gt;               &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_rpids_for_set_min_pin_length&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;preferred_platform_uv_attempts&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;uv_modality&lt;/span&gt;&lt;span class="w"&gt;                        &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;remaining_discoverable_credentials&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+
+Error:&lt;span class="w"&gt; &lt;/span&gt;Invalid&lt;span class="w"&gt; &lt;/span&gt;item
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;fido2-token&lt;span class="w"&gt; &lt;/span&gt;-I&lt;span class="w"&gt; &lt;/span&gt;/dev/hidraw0&lt;span class="w"&gt; &lt;/span&gt;
+proto:&lt;span class="w"&gt; &lt;/span&gt;0x02
+major:&lt;span class="w"&gt; &lt;/span&gt;0x02
+minor:&lt;span class="w"&gt; &lt;/span&gt;0x09
+build:&lt;span class="w"&gt; &lt;/span&gt;0x65
+caps:&lt;span class="w"&gt; &lt;/span&gt;0x0d&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;wink,&lt;span class="w"&gt; &lt;/span&gt;cbor,&lt;span class="w"&gt; &lt;/span&gt;nomsg&lt;span class="o"&gt;)&lt;/span&gt;
+version&lt;span class="w"&gt; &lt;/span&gt;strings:&lt;span class="w"&gt; &lt;/span&gt;U2F_V2,&lt;span class="w"&gt; &lt;/span&gt;FIDO_2_0,&lt;span class="w"&gt; &lt;/span&gt;FIDO_2_1_PRE
+extension&lt;span class="w"&gt; &lt;/span&gt;strings:&lt;span class="w"&gt; &lt;/span&gt;credProtect,&lt;span class="w"&gt; &lt;/span&gt;hmac-secret
+transport&lt;span class="w"&gt; &lt;/span&gt;strings:&lt;span class="w"&gt; &lt;/span&gt;usb
+aaguid:&lt;span class="w"&gt; &lt;/span&gt;87dbc5a14c944dc88a4797d800fd1f3c
+options:&lt;span class="w"&gt; &lt;/span&gt;rk,&lt;span class="w"&gt; &lt;/span&gt;up,&lt;span class="w"&gt; &lt;/span&gt;uv,&lt;span class="w"&gt; &lt;/span&gt;noplat,&lt;span class="w"&gt; &lt;/span&gt;clientPin,&lt;span class="w"&gt; &lt;/span&gt;credentialMgmtPreview,&lt;span class="w"&gt; &lt;/span&gt;userVerificationMgmtPreview
+fwversion:&lt;span class="w"&gt; &lt;/span&gt;0x0
+maxmsgsiz:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2048&lt;/span&gt;
+maxcredcntlst:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;6&lt;/span&gt;
+maxcredlen:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;192&lt;/span&gt;
+maxlargeblob:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+pin&lt;span class="w"&gt; &lt;/span&gt;protocols:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;
+pin&lt;span class="w"&gt; &lt;/span&gt;retries:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;8&lt;/span&gt;
+pin&lt;span class="w"&gt; &lt;/span&gt;change&lt;span class="w"&gt; &lt;/span&gt;required:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;false&lt;/span&gt;
+uv&lt;span class="w"&gt; &lt;/span&gt;retries:&lt;span class="w"&gt; &lt;/span&gt;undefined
+sensor&lt;span class="w"&gt; &lt;/span&gt;type:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;touch&lt;span class="o"&gt;)&lt;/span&gt;
+max&lt;span class="w"&gt; &lt;/span&gt;samples:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;5&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;ctapcli&lt;span class="w"&gt; &lt;/span&gt;cred
+PIN:&lt;span class="w"&gt; &lt;/span&gt;
+
+Enumerate&lt;span class="w"&gt; &lt;/span&gt;discoverable&lt;span class="w"&gt; &lt;/span&gt;credentials.
+-&lt;span class="w"&gt; &lt;/span&gt;existing&lt;span class="w"&gt; &lt;/span&gt;discoverable&lt;span class="w"&gt; &lt;/span&gt;credentials:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;/100
+
+No&lt;span class="w"&gt; &lt;/span&gt;discoverable&lt;span class="w"&gt; &lt;/span&gt;credentials.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+&lt;/details&gt;
+
+&lt;details&gt;
+&lt;summary&gt;Titan Security Key v2 by Google (2023)&lt;/summary&gt;
+
+This is the USB type-C model, also known as model K52T.
+I purchased this model from the official Google Store in November 2023 for $35.
+
+It doesn't support credential management!
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;ctapcli&lt;span class="w"&gt; &lt;/span&gt;info
+Get&lt;span class="w"&gt; &lt;/span&gt;the&lt;span class="w"&gt; &lt;/span&gt;Authenticator&lt;span class="w"&gt; &lt;/span&gt;infomation.
+
+Get&lt;span class="w"&gt; &lt;/span&gt;all&lt;span class="w"&gt; &lt;/span&gt;data.
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;versions&lt;/span&gt;&lt;span class="w"&gt;                           &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;FIDO_2_0&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;U2F_V2&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;extensions&lt;/span&gt;&lt;span class="w"&gt;                         &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;credProtect&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;hmac-secret&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;aaguid&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;16&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt;                         &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;42B4FB4A286643B29BF76C6669C2E5D3
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;options&lt;/span&gt;&lt;span class="w"&gt;                            &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;rk&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;clientPin&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="o"&gt;)]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_msg_size&lt;/span&gt;&lt;span class="w"&gt;                       &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2200&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pin_uv_auth_protocols&lt;/span&gt;&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_credential_count_in_list&lt;/span&gt;&lt;span class="w"&gt;       &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_credential_id_length&lt;/span&gt;&lt;span class="w"&gt;           &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;transports&lt;/span&gt;&lt;span class="w"&gt;                         &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;algorithms&lt;/span&gt;&lt;span class="w"&gt;                         &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_serialized_large_blob_array&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;force_pin_change&lt;/span&gt;&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;false&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;min_pin_length&lt;/span&gt;&lt;span class="w"&gt;                     &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;firmware_version&lt;/span&gt;&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_cred_blob_length&lt;/span&gt;&lt;span class="w"&gt;               &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_rpids_for_set_min_pin_length&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;preferred_platform_uv_attempts&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;uv_modality&lt;/span&gt;&lt;span class="w"&gt;                        &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;remaining_discoverable_credentials&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+
+Error:&lt;span class="w"&gt; &lt;/span&gt;Invalid&lt;span class="w"&gt; &lt;/span&gt;item
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;fido2-token&lt;span class="w"&gt; &lt;/span&gt;-I&lt;span class="w"&gt; &lt;/span&gt;/dev/hidraw0&lt;span class="w"&gt; &lt;/span&gt;
+proto:&lt;span class="w"&gt; &lt;/span&gt;0x02
+major:&lt;span class="w"&gt; &lt;/span&gt;0x02
+minor:&lt;span class="w"&gt; &lt;/span&gt;0x00
+build:&lt;span class="w"&gt; &lt;/span&gt;0x03
+caps:&lt;span class="w"&gt; &lt;/span&gt;0x05&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;wink,&lt;span class="w"&gt; &lt;/span&gt;cbor,&lt;span class="w"&gt; &lt;/span&gt;msg&lt;span class="o"&gt;)&lt;/span&gt;
+version&lt;span class="w"&gt; &lt;/span&gt;strings:&lt;span class="w"&gt; &lt;/span&gt;FIDO_2_0,&lt;span class="w"&gt; &lt;/span&gt;U2F_V2
+extension&lt;span class="w"&gt; &lt;/span&gt;strings:&lt;span class="w"&gt; &lt;/span&gt;credProtect,&lt;span class="w"&gt; &lt;/span&gt;hmac-secret
+aaguid:&lt;span class="w"&gt; &lt;/span&gt;42b4fb4a286643b29bf76c6669c2e5d3
+options:&lt;span class="w"&gt; &lt;/span&gt;rk,&lt;span class="w"&gt; &lt;/span&gt;clientPin
+fwversion:&lt;span class="w"&gt; &lt;/span&gt;0x0
+maxmsgsiz:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2200&lt;/span&gt;
+maxcredcntlst:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+maxcredlen:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+maxlargeblob:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+pin&lt;span class="w"&gt; &lt;/span&gt;protocols:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;
+pin&lt;span class="w"&gt; &lt;/span&gt;retries:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;8&lt;/span&gt;
+pin&lt;span class="w"&gt; &lt;/span&gt;change&lt;span class="w"&gt; &lt;/span&gt;required:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;false&lt;/span&gt;
+uv&lt;span class="w"&gt; &lt;/span&gt;retries:&lt;span class="w"&gt; &lt;/span&gt;undefined
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+&lt;/details&gt;
+
+&lt;details&gt;
+&lt;summary&gt;Solo 1 Hacker by SoloKeys&lt;/summary&gt;
+
+I bought this key in February 2019 from the official SoloKeys website for $20, plus shipping fee, for a total of $30.
+This is an old model. The newer one is the Solo 2.
+The firmware was later upgraded to version `4.1.5 unlocked`.
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;solo&lt;span class="w"&gt; &lt;/span&gt;key&lt;span class="w"&gt; &lt;/span&gt;version
+&lt;span class="m"&gt;4&lt;/span&gt;.1.5&lt;span class="w"&gt; &lt;/span&gt;unlocked
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;ctapcli&lt;span class="w"&gt; &lt;/span&gt;info
+Get&lt;span class="w"&gt; &lt;/span&gt;the&lt;span class="w"&gt; &lt;/span&gt;Authenticator&lt;span class="w"&gt; &lt;/span&gt;infomation.
+
+Get&lt;span class="w"&gt; &lt;/span&gt;all&lt;span class="w"&gt; &lt;/span&gt;data.
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;versions&lt;/span&gt;&lt;span class="w"&gt;                           &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;U2F_V2&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;FIDO_2_0&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;FIDO_2_1_PRE&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;extensions&lt;/span&gt;&lt;span class="w"&gt;                         &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;credProtect&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;hmac-secret&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;aaguid&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;16&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt;                         &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;8876631BD4A0427F57730EC71C9E0279
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;options&lt;/span&gt;&lt;span class="w"&gt;                            &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;rk&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;up&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;plat&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;false&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;credMgmt&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;clientPin&amp;quot;&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="o"&gt;)]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_msg_size&lt;/span&gt;&lt;span class="w"&gt;                       &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1200&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pin_uv_auth_protocols&lt;/span&gt;&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_credential_count_in_list&lt;/span&gt;&lt;span class="w"&gt;       &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;20&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_credential_id_length&lt;/span&gt;&lt;span class="w"&gt;           &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;128&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;transports&lt;/span&gt;&lt;span class="w"&gt;                         &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;algorithms&lt;/span&gt;&lt;span class="w"&gt;                         &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[]&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_serialized_large_blob_array&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;force_pin_change&lt;/span&gt;&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;false&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;min_pin_length&lt;/span&gt;&lt;span class="w"&gt;                     &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;firmware_version&lt;/span&gt;&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_cred_blob_length&lt;/span&gt;&lt;span class="w"&gt;               &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;max_rpids_for_set_min_pin_length&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;preferred_platform_uv_attempts&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;uv_modality&lt;/span&gt;&lt;span class="w"&gt;                        &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;remaining_discoverable_credentials&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+
+Error:&lt;span class="w"&gt; &lt;/span&gt;Invalid&lt;span class="w"&gt; &lt;/span&gt;item
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;fido2-token&lt;span class="w"&gt; &lt;/span&gt;-I&lt;span class="w"&gt; &lt;/span&gt;/dev/hidraw0&lt;span class="w"&gt; &lt;/span&gt;
+proto:&lt;span class="w"&gt; &lt;/span&gt;0x02
+major:&lt;span class="w"&gt; &lt;/span&gt;0x00
+minor:&lt;span class="w"&gt; &lt;/span&gt;0x00
+build:&lt;span class="w"&gt; &lt;/span&gt;0x00
+caps:&lt;span class="w"&gt; &lt;/span&gt;0x05&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;wink,&lt;span class="w"&gt; &lt;/span&gt;cbor,&lt;span class="w"&gt; &lt;/span&gt;msg&lt;span class="o"&gt;)&lt;/span&gt;
+version&lt;span class="w"&gt; &lt;/span&gt;strings:&lt;span class="w"&gt; &lt;/span&gt;U2F_V2,&lt;span class="w"&gt; &lt;/span&gt;FIDO_2_0,&lt;span class="w"&gt; &lt;/span&gt;FIDO_2_1_PRE
+extension&lt;span class="w"&gt; &lt;/span&gt;strings:&lt;span class="w"&gt; &lt;/span&gt;credProtect,&lt;span class="w"&gt; &lt;/span&gt;hmac-secret
+aaguid:&lt;span class="w"&gt; &lt;/span&gt;8876631bd4a0427f57730ec71c9e0279
+options:&lt;span class="w"&gt; &lt;/span&gt;rk,&lt;span class="w"&gt; &lt;/span&gt;up,&lt;span class="w"&gt; &lt;/span&gt;noplat,&lt;span class="w"&gt; &lt;/span&gt;credMgmt,&lt;span class="w"&gt; &lt;/span&gt;clientPin
+fwversion:&lt;span class="w"&gt; &lt;/span&gt;0x0
+maxmsgsiz:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1200&lt;/span&gt;
+maxcredcntlst:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;20&lt;/span&gt;
+maxcredlen:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;128&lt;/span&gt;
+maxlargeblob:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;
+pin&lt;span class="w"&gt; &lt;/span&gt;protocols:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;
+pin&lt;span class="w"&gt; &lt;/span&gt;retries:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;8&lt;/span&gt;
+pin&lt;span class="w"&gt; &lt;/span&gt;change&lt;span class="w"&gt; &lt;/span&gt;required:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;false&lt;/span&gt;
+uv&lt;span class="w"&gt; &lt;/span&gt;retries:&lt;span class="w"&gt; &lt;/span&gt;undefined
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;ctapcli&lt;span class="w"&gt; &lt;/span&gt;cred
+PIN:&lt;span class="w"&gt; &lt;/span&gt;
+
+Enumerate&lt;span class="w"&gt; &lt;/span&gt;discoverable&lt;span class="w"&gt; &lt;/span&gt;credentials.
+-&lt;span class="w"&gt; &lt;/span&gt;existing&lt;span class="w"&gt; &lt;/span&gt;discoverable&lt;span class="w"&gt; &lt;/span&gt;credentials:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;/49
+-&lt;span class="w"&gt; &lt;/span&gt;rp:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;id:&lt;span class="w"&gt; &lt;/span&gt;webauthn.io,&lt;span class="w"&gt; &lt;/span&gt;name:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;test&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;-&lt;span class="w"&gt; &lt;/span&gt;credential:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;id:&lt;span class="w"&gt; &lt;/span&gt;***,&lt;span class="w"&gt; &lt;/span&gt;name:&lt;span class="w"&gt; &lt;/span&gt;test,&lt;span class="w"&gt; &lt;/span&gt;display_name:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;test&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+&lt;/details&gt;</content><category term="dev"></category><category term="security-keys"></category><category term="passkeys"></category><category term="passwordless"></category></entry><entry><title>New blog layout</title><link href="https://tome.one/new-blog-layout.html" rel="alternate"></link><published>2023-12-18T15:41:00+01:00</published><updated>2023-12-18T15:41:00+01:00</updated><author><name>tome.one</name></author><id>tag:tome.one,2023-12-18:/new-blog-layout.html</id><summary type="html">&lt;p&gt;You may have noticed that the blog's visual look changed.
+I spent some time upgrading its looks and built a new Pelican theme based on &lt;a href="https://github.com/tabler/tabler"&gt;Tabler&lt;/a&gt;.
+I love Tabler. I have used it to build a prototype recently. It just looks good 
+by default and it comes with a ton …&lt;/p&gt;</summary><content type="html">&lt;p&gt;You may have noticed that the blog's visual look changed.
+I spent some time upgrading its looks and built a new Pelican theme based on &lt;a href="https://github.com/tabler/tabler"&gt;Tabler&lt;/a&gt;.
+I love Tabler. I have used it to build a prototype recently. It just looks good 
+by default and it comes with a ton of UI components and an extensive SVG icon library.&lt;/p&gt;
+&lt;p&gt;I also added a new "Projects" page to showcase a few open source projects I built, such as the recent Fuzzomatic.
+I also updated the &lt;a href="https://tome.one/pages/conferences.html"&gt;conferences&lt;/a&gt; and &lt;a href="https://tome.one/pages/talks.html"&gt;talks&lt;/a&gt; pages 
+to include my latest talks such as a workshop on Security Keys I gave at Ph0wn with my colleague Sylvain and the 
+Polynonce research we presented this summer at DEF CON in Las Vegas with my colleague Marco.&lt;/p&gt;
+&lt;p&gt;Expect to see a few more blog posts in the coming months. Until then, happy holidays!&lt;/p&gt;</content><category term="dev"></category><category term="blog"></category><category term="webdev"></category></entry><entry><title>2022 research</title><link href="https://tome.one/2022-research.html" rel="alternate"></link><published>2022-10-30T20:40:00+01:00</published><updated>2022-10-30T20:40:00+01:00</updated><author><name>tome.one</name></author><id>tag:tome.one,2022-10-30:/2022-research.html</id><summary type="html">&lt;p&gt;By the end of this year, I will have given &lt;a href="https://tome.one/pages/talks.html"&gt;four talks&lt;/a&gt; this year.&lt;/p&gt;
+&lt;p&gt;I did some research on GnuPG (GPG) memory forensics with my colleague Sylvain Pelissier and presented that research
+at Nullcon Berlin 2022 in April, and then at SSTIC2022 in June.&lt;/p&gt;
+&lt;p&gt;I also did some research on …&lt;/p&gt;</summary><content type="html">&lt;p&gt;By the end of this year, I will have given &lt;a href="https://tome.one/pages/talks.html"&gt;four talks&lt;/a&gt; this year.&lt;/p&gt;
+&lt;p&gt;I did some research on GnuPG (GPG) memory forensics with my colleague Sylvain Pelissier and presented that research
+at Nullcon Berlin 2022 in April, and then at SSTIC2022 in June.&lt;/p&gt;
+&lt;p&gt;I also did some research on a smart home system that was installed in my apartment and presented that at MCH2022, a Dutch hacker camp that was awesome!
+That was in July. I will present on the same topic at Black Alps 2022 in November.&lt;/p&gt;</content><category term="dev"></category><category term="talks"></category><category term="gpg"></category><category term="smart-home"></category><category term="sstic"></category><category term="nullcon"></category><category term="mch2022"></category><category term="blackalps"></category></entry><entry><title>Virtual talks</title><link href="https://tome.one/virtual-talks.html" rel="alternate"></link><published>2021-09-04T15:20:00+02:00</published><updated>2021-09-04T15:20:00+02:00</updated><author><name>tome.one</name></author><id>tag:tome.one,2021-09-04:/virtual-talks.html</id><content type="html">&lt;p&gt;I gave &lt;a href="https://tome.one/pages/talks.html"&gt;two talks&lt;/a&gt;, lately. 
+One was about replacing passwords with FIDO2 password authentication at Pass the SALT 2020.&lt;/p&gt;
+&lt;p&gt;I gave the other one with my colleague Tommmaso.
+It was about an open source Oblivious RAM filesystem prototype I wrote in Rust, called &lt;a href="https://github.com/kudelskisecurity/oramfs"&gt;oramfs&lt;/a&gt;.&lt;/p&gt;</content><category term="dev"></category><category term="talks"></category><category term="pass-the-salt"></category><category term="fido2"></category><category term="oram"></category></entry><entry><title>BlackAlps19 Blockchain vulnerabilities and exploitation in practice workshop</title><link href="https://tome.one/blackalps19-blockchain-vulnerabilities-and-exploitation-in-practice-workshop.html" rel="alternate"></link><published>2019-11-07T19:25:00+01:00</published><updated>2019-11-07T19:25:00+01:00</updated><author><name>tome.one</name></author><id>tag:tome.one,2019-11-07:/blackalps19-blockchain-vulnerabilities-and-exploitation-in-practice-workshop.html</id><content type="html">&lt;p&gt;I gave a 3-hour workshop about blockchain vulnerabilities and exploitation in practice at BlackAlps19 in Yverdon, Switzerland today.&lt;/p&gt;
+&lt;p&gt;Here are the slides: &lt;a href="https://tome.one/slides/amiet-blackalps19-blockchain-workshop.pdf"&gt;blackalps19-blockchain-workshop.pdf&lt;/a&gt;&lt;/p&gt;</content><category term="dev"></category><category term="talks"></category><category term="blackalps"></category><category term="blockchain"></category><category term="ethereum"></category><category term="fumblechain"></category></entry><entry><title>DEF CON 26 talk</title><link href="https://tome.one/def-con-26-talk.html" rel="alternate"></link><published>2018-08-29T16:50:00+02:00</published><updated>2018-08-29T16:50:00+02:00</updated><author><name>tome.one</name></author><id>tag:tome.one,2018-08-29:/def-con-26-talk.html</id><summary type="html">&lt;p&gt;If you were in Las Vegas for DEF CON 26 this year you may have seen a talk I gave with my colleague Yolan Romailler about collecting public keys and breaking them.&lt;/p&gt;
+&lt;p&gt;The video will be uploaded to Youtube eventually and I will update this post with its link. For …&lt;/p&gt;</summary><content type="html">&lt;p&gt;If you were in Las Vegas for DEF CON 26 this year you may have seen a talk I gave with my colleague Yolan Romailler about collecting public keys and breaking them.&lt;/p&gt;
+&lt;p&gt;The video will be uploaded to Youtube eventually and I will update this post with its link. For now, the slides and demo video are available on the Kudelski Security &lt;a href="https://research.kudelskisecurity.com/2018/08/16/breaking-and-reaping-keys-updated-slides-and-resources/"&gt;research blog&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Edit: Here is the youtube video.&lt;/p&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/Z7cLRE6t1Q8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;</content><category term="dev"></category><category term="talks"></category><category term="defcon"></category><category term="cryptography"></category><category term="big data"></category></entry><entry><title>WireGuard</title><link href="https://tome.one/wireguard.html" rel="alternate"></link><published>2017-06-30T21:20:00+02:00</published><updated>2017-06-30T21:20:00+02:00</updated><author><name>tome.one</name></author><id>tag:tome.one,2017-06-30:/wireguard.html</id><content type="html">&lt;p&gt;I co-wrote a blog post on WireGuard with adr13n earlier this month.&lt;/p&gt;
+&lt;p&gt;Read it on &lt;a href="https://research.kudelskisecurity.com/2017/06/07/installing-wireguard-the-modern-vpn/"&gt;research.kudelskisecurity.com&lt;/a&gt;.&lt;/p&gt;</content><category term="dev"></category><category term="linux"></category><category term="wireguard"></category><category term="vpn"></category><category term="security"></category></entry><entry><title>Playing 10bit HEVC videos on Linux with NVIDIA and mpv</title><link href="https://tome.one/playing-10bit-hevc-videos-on-linux-with-nvidia-and-mpv.html" rel="alternate"></link><published>2017-05-26T13:40:00+02:00</published><updated>2017-05-26T13:40:00+02:00</updated><author><name>tome.one</name></author><id>tag:tome.one,2017-05-26:/playing-10bit-hevc-videos-on-linux-with-nvidia-and-mpv.html</id><summary type="html">&lt;p&gt;For this to work you will need an NVIDIA GPU.&lt;/p&gt;
+&lt;p&gt;Get the &lt;code&gt;mpv-build&lt;/code&gt; scripts, tune the mpv and ffmpeg options and build:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/sh&lt;/span&gt;
+
+mkdir&lt;span class="w"&gt; &lt;/span&gt;-p&lt;span class="w"&gt; &lt;/span&gt;~/git
+&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;~/git
+git&lt;span class="w"&gt; &lt;/span&gt;clone&lt;span class="w"&gt; &lt;/span&gt;https://github.com/mpv-player/mpv-build.git
+&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;mpv-build
+
+&lt;span class="c1"&gt;# write mpv_options file&lt;/span&gt;
+cat&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;lt;&amp;lt; EOF &amp;gt; mpv_options&lt;/span&gt;
+&lt;span class="s"&gt;--enable-cuda-hwaccel&lt;/span&gt;
+&lt;span class="s"&gt;EOF&lt;/span&gt;
+
+&lt;span class="c1"&gt;# write ffmpeg_options file …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;For this to work you will need an NVIDIA GPU.&lt;/p&gt;
+&lt;p&gt;Get the &lt;code&gt;mpv-build&lt;/code&gt; scripts, tune the mpv and ffmpeg options and build:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/sh&lt;/span&gt;
+
+mkdir&lt;span class="w"&gt; &lt;/span&gt;-p&lt;span class="w"&gt; &lt;/span&gt;~/git
+&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;~/git
+git&lt;span class="w"&gt; &lt;/span&gt;clone&lt;span class="w"&gt; &lt;/span&gt;https://github.com/mpv-player/mpv-build.git
+&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;mpv-build
+
+&lt;span class="c1"&gt;# write mpv_options file&lt;/span&gt;
+cat&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;lt;&amp;lt; EOF &amp;gt; mpv_options&lt;/span&gt;
+&lt;span class="s"&gt;--enable-cuda-hwaccel&lt;/span&gt;
+&lt;span class="s"&gt;EOF&lt;/span&gt;
+
+&lt;span class="c1"&gt;# write ffmpeg_options file&lt;/span&gt;
+cat&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;lt;&amp;lt; EOF &amp;gt; ffmpeg_options&lt;/span&gt;
+&lt;span class="s"&gt;--enable-cuda&lt;/span&gt;
+&lt;span class="s"&gt;--enable-cuvid&lt;/span&gt;
+&lt;span class="s"&gt;--enable-nonfree&lt;/span&gt;
+&lt;span class="s"&gt;EOF&lt;/span&gt;
+
+&lt;span class="c1"&gt;# build&lt;/span&gt;
+./rebuild&lt;span class="w"&gt; &lt;/span&gt;-j10
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Play a 10bit HEVC video with:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;~/git/mpv-build/mpv/build/mpv --hwdec=cuda --vo=opengl &amp;lt;VIDEO_FILE&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This is especially useful for 60 frame per second 2160p 10bit HEVC videos since most CPUs cannot decode those fast enough for smooth playback.&lt;/p&gt;</content><category term="dev"></category><category term="linux"></category><category term="hevc"></category><category term="video"></category></entry><entry><title>Setting up gpg-agent</title><link href="https://tome.one/setting-up-gpg-agent.html" rel="alternate"></link><published>2017-04-30T21:00:00+02:00</published><updated>2017-04-30T21:00:00+02:00</updated><author><name>tome.one</name></author><id>tag:tome.one,2017-04-30:/setting-up-gpg-agent.html</id><summary type="html">&lt;p&gt;On Arch &lt;code&gt;gpg-agent&lt;/code&gt; comes with the &lt;code&gt;gnupg&lt;/code&gt; package so no other package is needed  if &lt;code&gt;gpg&lt;/code&gt; is already installed.&lt;/p&gt;
+&lt;p&gt;I use &lt;code&gt;gpg-agent&lt;/code&gt; for temporarily caching the PIN for my &lt;a href="https://www.yubico.com/products/yubikey-hardware/"&gt;Yubikey&lt;/a&gt; so that I don't have to type it everytime as well as for ssh-agent emulation.&lt;/p&gt;
+&lt;h4&gt;Setup&lt;/h4&gt;
+&lt;p&gt;Add the following lines …&lt;/p&gt;</summary><content type="html">&lt;p&gt;On Arch &lt;code&gt;gpg-agent&lt;/code&gt; comes with the &lt;code&gt;gnupg&lt;/code&gt; package so no other package is needed  if &lt;code&gt;gpg&lt;/code&gt; is already installed.&lt;/p&gt;
+&lt;p&gt;I use &lt;code&gt;gpg-agent&lt;/code&gt; for temporarily caching the PIN for my &lt;a href="https://www.yubico.com/products/yubikey-hardware/"&gt;Yubikey&lt;/a&gt; so that I don't have to type it everytime as well as for ssh-agent emulation.&lt;/p&gt;
+&lt;h4&gt;Setup&lt;/h4&gt;
+&lt;p&gt;Add the following lines to your &lt;code&gt;~/.bashrc&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Set GPG TTY&lt;/span&gt;
+&lt;span class="nb"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;GPG_TTY&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;tty&lt;span class="k"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Refresh gpg-agent tty in case user switches into an X session&lt;/span&gt;
+gpg-connect-agent&lt;span class="w"&gt; &lt;/span&gt;updatestartuptty&lt;span class="w"&gt; &lt;/span&gt;/bye&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;/dev/null
+
+&lt;span class="c1"&gt;# Set SSH to use gpg-agent&lt;/span&gt;
+&lt;span class="nb"&gt;unset&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;SSH_AGENT_PID
+&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;gnupg_SSH_AUTH_SOCK_by&lt;/span&gt;&lt;span class="k"&gt;:-&lt;/span&gt;&lt;span class="nv"&gt;0&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-ne&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$$&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nb"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;SSH_AUTH_SOCK&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/run/user/&lt;/span&gt;&lt;span class="nv"&gt;$UID&lt;/span&gt;&lt;span class="s2"&gt;/gnupg/S.gpg-agent.ssh&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;fi&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Start the gpg-agent if not already running&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;!&lt;span class="w"&gt; &lt;/span&gt;pgrep&lt;span class="w"&gt; &lt;/span&gt;-x&lt;span class="w"&gt; &lt;/span&gt;-u&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;USER&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;gpg-agent&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;/dev/null&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&amp;gt;&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;gpg-connect-agent&lt;span class="w"&gt; &lt;/span&gt;/bye&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;/dev/null&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&amp;gt;&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;
+&lt;span class="k"&gt;fi&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Add these lines to &lt;code&gt;~/.gnupg/gpg-agent.conf&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;enable-ssh-support
+default-cache-ttl 10800
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="dev"></category><category term="linux"></category><category term="gpg"></category></entry><entry><title>Systemd tips and tricks</title><link href="https://tome.one/systemd-tips-and-tricks.html" rel="alternate"></link><published>2017-02-19T10:42:00+01:00</published><updated>2017-02-19T10:42:00+01:00</updated><author><name>tome.one</name></author><id>tag:tome.one,2017-02-19:/systemd-tips-and-tricks.html</id><summary type="html">&lt;p&gt;Systemd is great. Here are a few things you can do with it.&lt;/p&gt;
+&lt;h4&gt;Editing unit files&lt;/h4&gt;
+&lt;p&gt;I usually can't remember where unit files are located but that's not an issue. Systemd will let you edit them just by knowing the unit name.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;SYSTEMD_EDITOR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;vim
+$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;-E&lt;span class="w"&gt; &lt;/span&gt;systemctl&lt;span class="w"&gt; &lt;/span&gt;edit&lt;span class="w"&gt; &lt;/span&gt;--full …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Systemd is great. Here are a few things you can do with it.&lt;/p&gt;
+&lt;h4&gt;Editing unit files&lt;/h4&gt;
+&lt;p&gt;I usually can't remember where unit files are located but that's not an issue. Systemd will let you edit them just by knowing the unit name.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;SYSTEMD_EDITOR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;vim
+$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;-E&lt;span class="w"&gt; &lt;/span&gt;systemctl&lt;span class="w"&gt; &lt;/span&gt;edit&lt;span class="w"&gt; &lt;/span&gt;--full&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;unit_name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;Using the journal like a boss&lt;/h4&gt;
+&lt;p&gt;Check out what's going on in the journal live (&lt;code&gt;tail -f&lt;/code&gt; style) for a specific unit:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;journalctl&lt;span class="w"&gt; &lt;/span&gt;-u&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;unit_name&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;-fn200
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;An incident with nginx happened last night around 21:30? No problem, let's skip directly there:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;journalctl&lt;span class="w"&gt; &lt;/span&gt;-u&lt;span class="w"&gt; &lt;/span&gt;nginx&lt;span class="w"&gt; &lt;/span&gt;--since&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;2017-02-18 21:30&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Other examples:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;journalctl&lt;span class="w"&gt; &lt;/span&gt;-u&lt;span class="w"&gt; &lt;/span&gt;nginx&lt;span class="w"&gt; &lt;/span&gt;--since&lt;span class="w"&gt; &lt;/span&gt;yesterday
+$&lt;span class="w"&gt; &lt;/span&gt;journalctl&lt;span class="w"&gt; &lt;/span&gt;-u&lt;span class="w"&gt; &lt;/span&gt;nginx&lt;span class="w"&gt; &lt;/span&gt;--since&lt;span class="w"&gt; &lt;/span&gt;today
+$&lt;span class="w"&gt; &lt;/span&gt;journalctl&lt;span class="w"&gt; &lt;/span&gt;-u&lt;span class="w"&gt; &lt;/span&gt;nginx&lt;span class="w"&gt; &lt;/span&gt;--since&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;10 hours ago&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;--until&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;4 hours ago&amp;quot;&lt;/span&gt;
+$&lt;span class="w"&gt; &lt;/span&gt;journalctl&lt;span class="w"&gt; &lt;/span&gt;-u&lt;span class="w"&gt; &lt;/span&gt;nginx&lt;span class="w"&gt; &lt;/span&gt;--since&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;14&lt;/span&gt;:00
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;I don't think it's possible to do &lt;code&gt;--since "yesterday 21:30"&lt;/code&gt; yet. The full date has to be used. I might contribute a patch for that.&lt;/p&gt;
+&lt;p&gt;See &lt;code&gt;man systemd.time&lt;/code&gt; for more details.&lt;/p&gt;
+&lt;p&gt;An incident happened and it involves a few units, let's say nginx, mysql and php-fpm? Let's see what happened:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;journalctl&lt;span class="w"&gt; &lt;/span&gt;-u&lt;span class="w"&gt; &lt;/span&gt;nginx&lt;span class="w"&gt; &lt;/span&gt;-u&lt;span class="w"&gt; &lt;/span&gt;mysql&lt;span class="w"&gt; &lt;/span&gt;-u&lt;span class="w"&gt; &lt;/span&gt;php-fpm&lt;span class="w"&gt; &lt;/span&gt;--since&lt;span class="w"&gt; &lt;/span&gt;today
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Quickly store messages in the journal under a SYSLOG_IDENTIFIER:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;blah blah blah&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;systemd-cat&lt;span class="w"&gt; &lt;/span&gt;-t&lt;span class="w"&gt; &lt;/span&gt;my_identifier
+$&lt;span class="w"&gt; &lt;/span&gt;journalctl&lt;span class="w"&gt; &lt;/span&gt;-t&lt;span class="w"&gt; &lt;/span&gt;my_identifier
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Make the journal persistent, assuming you kept the default &lt;code&gt;Storage=auto&lt;/code&gt; in &lt;code&gt;/etc/systemd/journald.conf&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;mkdir&lt;span class="w"&gt; &lt;/span&gt;/var/log/journal
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Alternatively, &lt;code&gt;Storage=persistent&lt;/code&gt; can also be set.&lt;/p&gt;
+&lt;p&gt;Be careful with persistent journal. The journal will now survive reboots but by default its maximum size is set to 10% of the file system it resides in. Additionally the size is capped to 4 GB, even if you use &lt;code&gt;SystemMaxUse=100%&lt;/code&gt; so if your unit produces lots of messages you won't be able to keep log history for a long time anyway.&lt;/p&gt;
+&lt;p&gt;Skip directly to the relevant &lt;code&gt;journald.conf&lt;/code&gt; manpage section with the following command for more details:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;LESS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;+/SystemMaxUse&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;man&lt;span class="w"&gt; &lt;/span&gt;journald.conf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;Listing enabled unit files&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$&lt;span class="w"&gt; &lt;/span&gt;systemctl&lt;span class="w"&gt; &lt;/span&gt;list-unit-files&lt;span class="w"&gt; &lt;/span&gt;--state&lt;span class="o"&gt;=&lt;/span&gt;enabled
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;Managing logs across all your machines&lt;/h4&gt;
+&lt;p&gt;While logs can be forwarded to a master machine using &lt;code&gt;systemd-journal-remote&lt;/code&gt; (see manpage for details) you would still be capped to 4GB of logs. It's preferable to send journal messages to a &lt;a href="https://www.graylog.org/"&gt;Graylog&lt;/a&gt; instance. Use &lt;a href="https://github.com/systemd/journal2gelf"&gt;journal2gelf&lt;/a&gt; to export systemd messages in the Graylog Extended Log Format (GELF).&lt;/p&gt;
+&lt;p&gt;Graylog has virtual appliances for download, including a &lt;a href="http://docs.graylog.org/en/2.2/pages/installation/docker.html"&gt;docker-compose version&lt;/a&gt; which sadly does not allow for proper scaling, i.e. automatically manage volumes for persistence when scaling with Elasticsearch and MongoDB which are used by Graylog.&lt;/p&gt;
+&lt;p&gt;There are however &lt;a href="https://github.com/kubernetes/helm"&gt;Kubernetes Helm&lt;/a&gt; charts for Elasticsearch and MongoDB worth looking into. With &lt;a href="https://kubernetes.io/"&gt;Kubernetes&lt;/a&gt; 100% managed manual scaling or auto-scaling could be performed.&lt;/p&gt;</content><category term="dev"></category><category term="linux"></category><category term="systemd"></category></entry><entry><title>Bash Magic</title><link href="https://tome.one/bash-magic.html" rel="alternate"></link><published>2016-12-02T17:50:00+01:00</published><updated>2016-12-02T17:50:00+01:00</updated><author><name>tome.one</name></author><id>tag:tome.one,2016-12-02:/bash-magic.html</id><summary type="html">&lt;p&gt;Over the years I have learned many tips and tricks when working with Bash. Some are well known while others are not. Here are a few tricks that I find the most useful.&lt;/p&gt;
+&lt;h4&gt;Searching history&lt;/h4&gt;
+&lt;p&gt;So you know you just typed that command but cannot remember what it was. Fine …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Over the years I have learned many tips and tricks when working with Bash. Some are well known while others are not. Here are a few tricks that I find the most useful.&lt;/p&gt;
+&lt;h4&gt;Searching history&lt;/h4&gt;
+&lt;p&gt;So you know you just typed that command but cannot remember what it was. Fine, just type &lt;code&gt;&amp;lt;ctrl&amp;gt;-R&lt;/code&gt;. Your prompt will then look something like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;(reverse-i-search)`&amp;#39;:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Start typing part of your command and bash will find it for you. Search results will be narrowed down as you keep typing. Cycle forward through search results by hitting &lt;code&gt;&amp;lt;ctrl&amp;gt;-R&lt;/code&gt; multiple times.&lt;/p&gt;
+&lt;p&gt;Cycling backwards through history with &lt;code&gt;&amp;lt;ctrl&amp;gt;-S&lt;/code&gt; requires enabling XON/XOFF flow control with the following command:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;stty -ixon
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Otherwise your terminal will freeze upon hitting &lt;code&gt;&amp;lt;ctrl&amp;gt;-S&lt;/code&gt;. Use &lt;code&gt;&amp;lt;ctrl&amp;gt;-Q&lt;/code&gt; to unfreeze.&lt;/p&gt;
+&lt;p&gt;Press &lt;code&gt;Enter&lt;/code&gt; to execute the search result and use the arrows to edit the command before executing.&lt;/p&gt;
+&lt;h4&gt;Customizing the prompt&lt;/h4&gt;
+&lt;p&gt;The prompt is defined by the &lt;code&gt;PS1&lt;/code&gt; variable. The default prompt is quite succinct:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;PS1=&amp;#39;\s-\v\$&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The result looks like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;bash&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;4.3&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;It can be improved by displaying useful information such as the date, hostname, username, current working directory and much more. Here is the PS1 I've been using these days:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;PS1=&amp;#39;┌─[\e[0;32m\t\e[0m]─[\e[0;36m\u\e[0m\e[0m \e[0;33m\w\e[0m]\n└─&amp;gt;\$ &amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;It looks like that:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;┌─&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;33&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;37&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;─&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;john&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;~&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;git&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;foo&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;bar&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;www&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+└─&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;See the Bash manual for more details about Bash variables.&lt;/p&gt;
+&lt;h4&gt;Moving and Erasing&lt;/h4&gt;
+&lt;p&gt;Hit &lt;code&gt;&amp;lt;ctrl&amp;gt;-A&lt;/code&gt; to move the caret to the beginning of the line. &lt;code&gt;&amp;lt;ctrl&amp;gt;-E&lt;/code&gt; will move to the end of the line.&lt;/p&gt;
+&lt;p&gt;Use &lt;code&gt;&amp;lt;alt&amp;gt;-F&lt;/code&gt; to move one word forward and &lt;code&gt;&amp;lt;alt&amp;gt;-B&lt;/code&gt; to move one word backwards.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;ctrl&amp;gt;-U&lt;/code&gt; will delete everything to the left of the caret while &lt;code&gt;&amp;lt;ctrl&amp;gt;-K&lt;/code&gt; will delete everything under and to the right of the caret.&lt;/p&gt;
+&lt;p&gt;Type &lt;code&gt;&amp;lt;ctrl&amp;gt;-W&lt;/code&gt; to delete the word to the left (until the first space character). Use &lt;code&gt;&amp;lt;alt&amp;gt;-Backspace&lt;/code&gt; to delete the word to the left until the next special character. This is useful when working with paths and you want to delete until the next &lt;code&gt;/&lt;/code&gt; to the left.&lt;/p&gt;
+&lt;h4&gt;Recalling history&lt;/h4&gt;
+&lt;p&gt;Recall the last argument of the last command with &lt;code&gt;&amp;lt;alt&amp;gt;-_&lt;/code&gt; (&amp;lt;alt&amp;gt;-underscore).&lt;/p&gt;
+&lt;p&gt;Run the previous command with sudo in front:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo !!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;Expansion&lt;/h4&gt;
+&lt;p&gt;Create a backup copy of a file without typing the file path twice:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;cp /path/to/file{,.bak}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;Configuring history&lt;/h4&gt;
+&lt;p&gt;Increase the number of commands stored in the history and save the time and date each command was executed on:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;HISTSIZE=100000
+HISTFILESIZE=20000
+HISTTIMEFORMAT=&amp;quot;[%F %T %Z (%z)] &amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The history is stored in &lt;code&gt;~/.bash_history&lt;/code&gt; and can be displayed with the &lt;code&gt;history&lt;/code&gt; command.&lt;/p&gt;
+&lt;h4&gt;Copy and paste&lt;/h4&gt;
+&lt;p&gt;Paste the contents of the clipboard with &lt;code&gt;&amp;lt;shift&amp;gt;-Insert&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Run a command with the last argument from your clipboard:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gh"&gt;#&lt;/span&gt; define a function xc()
+xc() {
+        $@ &amp;quot;$(xclip -o)&amp;quot;
+}
+
+&lt;span class="gh"&gt;#&lt;/span&gt; use with
+xc my_command # will execute: my_command &amp;lt;clipboard_contents&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;How is this more useful than pasting the clipboard contents with &lt;code&gt;&amp;lt;shift&amp;gt;-Insert&lt;/code&gt; you say? This will save you enclosing the clipboard contents with quotes since the clipboard contents are passed as a single argument to &lt;code&gt;my_command&lt;/code&gt;.&lt;/p&gt;
+&lt;h4&gt;Useful aliases&lt;/h4&gt;
+&lt;p&gt;Package management:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;alias i=&amp;#39;sudo -E pacman -S&amp;#39;
+alias r=&amp;#39;sudo -E pacman -Rs&amp;#39;
+alias s=&amp;#39;pacman -Ss&amp;#39;
+alias syu=&amp;#39;sudo -E pacman -Syu&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Listing files and grepping:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;alias ls=&amp;#39;ls --color=auto --group-directories-first -lh&amp;#39;
+alias lsgrep=&amp;#39;ls | grep -i&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Systemd:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;alias sc=&amp;#39;sudo -E systemctl&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Systemd will be the topic of another post. Enjoy!&lt;/p&gt;</content><category term="dev"></category><category term="linux"></category><category term="bash"></category></entry><entry><title>Spark Summit Europe 2016</title><link href="https://tome.one/spark-summit-europe-2016.html" rel="alternate"></link><published>2016-11-01T20:31:00+01:00</published><updated>2016-11-01T20:31:00+01:00</updated><author><name>tome.one</name></author><id>tag:tome.one,2016-11-01:/spark-summit-europe-2016.html</id><summary type="html">&lt;p&gt;I attended &lt;a href="https://spark-summit.org/eu-2016/"&gt;Spark Summit Europe 2016&lt;/a&gt; in Brussels this year in October, a conference where &lt;a href="http://spark.apache.org/"&gt;Apache Spark&lt;/a&gt; enthusiasts meet up.
+I've been using Spark for nearly a year now on multiple projects and was delighted to see so many Spark users at Square Brussels.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Spark Summit Europe 2016 photo" src="https://tome.one/images/spark-summit-europe-2016-header.jpg"&gt;
+ &lt;/p&gt;
+&lt;p&gt;There were three trainings to choose …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I attended &lt;a href="https://spark-summit.org/eu-2016/"&gt;Spark Summit Europe 2016&lt;/a&gt; in Brussels this year in October, a conference where &lt;a href="http://spark.apache.org/"&gt;Apache Spark&lt;/a&gt; enthusiasts meet up.
+I've been using Spark for nearly a year now on multiple projects and was delighted to see so many Spark users at Square Brussels.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Spark Summit Europe 2016 photo" src="https://tome.one/images/spark-summit-europe-2016-header.jpg"&gt;
+ &lt;/p&gt;
+&lt;p&gt;There were three trainings to choose from on the first day. I went for “Exploring Wikipedia with Spark (Tackling a unified case)”.&lt;/p&gt;
+&lt;p&gt;The class was taught in Scala and Databricks notebooks were used. Databricks is a cloud platform that lets data scientists use Spark without having to setup or manage a cluster themselves. Databricks uses AWS as their backend. Clusters can be started and then attached to notebooks where code can be executed on the attached cluster.&lt;/p&gt;
+&lt;p&gt;The class started with a recap of the basics, covering multiple APIs, including RDDs, Dataframes and the new Datasets. We used publicly available Wikipedia datasets and leveraged Spark SQL, Spark Streaming, GraphFrames, UDFs and machine learning algorithms. I was impressed to see how easy it was to run code snippets on the Databricks platform and get insights into the data.&lt;/p&gt;
+&lt;p&gt;Another great feature is the support for mixing languages in a notebook. For instance a UDF can be defined and registered in Python and can then be used in Scala.
+The other two trainings which I wasn't able to attend were “Apache Spark Essentials (Python)” and “Data Science with Apache Spark”.
+ &lt;/p&gt;
+&lt;h2&gt;The talks&lt;/h2&gt;
+&lt;p&gt;The following days were conference days. Usually each day started with keynotes and then there were three or four talks to choose from every 30 minutes. I will highlight some of the talks and keynotes I attended.
+ &lt;/p&gt;
+&lt;h4&gt;&lt;em&gt;Simplifying Big Data Applications with Apache Spark 2.0&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;Spark 2.0 was released and brings many improvements over the 1.6 branch, namely:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Performance improvements with whole-stage code generation and vectorization&lt;/li&gt;
+&lt;li&gt;Unified API: Dataframes are now just an alias for Datasets&lt;/li&gt;
+&lt;li&gt;The new SparkSession single entry point. This replaces SparkContext, StreamingContext, SQLContext, etc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;&lt;em&gt;The Next AMPLab: Real-Time, Intelligent, and Secure Computing&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;Spark was born at &lt;a href="https://amplab.cs.berkeley.edu/"&gt;AMPLab&lt;/a&gt;. We were shown what projects AMPLab is currently working on and thus what can be expected in the next 5 years for Spark. They currently have two main projects: Drizzle and Opaque. Drizzle aims at reducing latency in Spark Streaming while Opaque is an attempt at improving security in Spark, for instance by protecting against pattern recognition attacks.
+ &lt;/p&gt;
+&lt;h4&gt;&lt;em&gt;Spark's Performance: The Past, Present, and Future&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;Performance in Spark 2.0 is improved with whole-stage code generation, a new technique which will optimize the code of the whole pipeline and can boost performance by one order of magnitude in some cases. Another technique used to improve performance is vectorization, or in other words, using an in-memory columnar format for faster data access. Databricks published &lt;a href="https://databricks.com/blog/2016/05/23/apache-spark-as-a-compiler-joining-a-billion-rows-per-second-on-a-laptop.html"&gt;a blog post&lt;/a&gt; discussing this.
+ &lt;/p&gt;
+&lt;h4&gt;&lt;em&gt;How to Connect Spark to Your Own Datasource&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;The author of the &lt;a href="https://github.com/mongodb/mongo-spark"&gt;MongoDB Spark connector&lt;/a&gt; shared his experience in writing a Spark connector. There is a lack of official documentation on writing these so the best way to start writing your own connector is to look at how others did it, for example the &lt;a href="https://github.com/datastax/spark-cassandra-connector"&gt;Spark Cassandra connector&lt;/a&gt;.
+ &lt;/p&gt;
+&lt;h4&gt;&lt;em&gt;Dynamic Resource Allocation, Do More With Your Cluster&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;This technique is useful for shared clusters and jobs of varying load. In this talk we were shown some parameters that can be set for optimizing dynamic resource allocation on a Spark cluster.
+ &lt;/p&gt;
+&lt;h4&gt;&lt;em&gt;Vegas, the Missing MatPlotLib for Spark&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;Two engineers from Netflix showed their project called &lt;a href="https://github.com/vegas-viz/Vegas"&gt;Vegas&lt;/a&gt;. This project will generate HTML code that can be used on web pages. Vegas also supports &lt;a href="https://zeppelin.apache.org/"&gt;Apache Zeppelin&lt;/a&gt; notebooks, has console support and can render to SVG. Vegas uses &lt;a href="https://vega.github.io/vega-lite/"&gt;Vega-Lite&lt;/a&gt; underneath. It is currently in beta stage.
+ &lt;/p&gt;
+&lt;h4&gt;&lt;em&gt;SparkLint: a Tool for Monitoring, Identifying and Tuning Inefficient Spark Jobs Across Your Cluster&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;Groupon announced the availability of &lt;a href="https://github.com/groupon/sparklint"&gt;SparkLint&lt;/a&gt;, a performance debugger for Spark. It can detect over-allocation and has CPU utilization graphs for Spark jobs. SparkLint is available on Github.
+ &lt;/p&gt;
+&lt;h4&gt;&lt;em&gt;Spark and Object Stores —What You Need to Know&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;This talk gives a set of optimal parameters to use when working with Object Stores and Spark. When using the Amazon S3 API, make sure to use the new s3a:// protocol in your URLs. This is the only one that is currently supported.
+ &lt;/p&gt;
+&lt;h4&gt;&lt;em&gt;Mastering Spark Unit Testing&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;A few tips and tricks from Blizzard were presented for unit testing Spark jobs. The main ideas were that one should not use a Spark context if it's not necessary. Code can usually be tested outside of a Spark job.&lt;/p&gt;
+&lt;p&gt;If it's really necessary to run a Spark job in your test, then use the local master and run it on your local machine. You can then set breakpoints for instance in IntelliJ Idea and debug both driver and executor code. A cool idea that the speaker gave was to share the Spark context across various unit tests so that the initialization is done only once and the tests are running faster.
+ &lt;/p&gt;
+&lt;h4&gt;&lt;em&gt;Apache Spark 2.0 Performance Improvements Investigated With Flame Graphs&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;a href="https://github.com/brendangregg/FlameGraph"&gt;Flame Graphs&lt;/a&gt; are a great visualization tool that can be used to profile Spark jobs in order to find the most frequent code paths and optimize bottlenecks. This talk is about the use of Flame graphs at CERN in order to analyze the performance of Spark 1.6 and 2.0.
+ &lt;/p&gt;
+&lt;h4&gt;&lt;em&gt;TensorFrames: Deep Learning with TensorFlow on Apache Spark&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;Databricks presented &lt;a href="https://github.com/databricks/tensorframes"&gt;TensorFrames&lt;/a&gt;, a bridge between Spark and &lt;a href="https://www.tensorflow.org/"&gt;TensorFlow&lt;/a&gt;. A TensorFlow graph can be defined and used as a mapper function that can be applied to a Dataframe. TensorFrames can bring a huge performance increase when running on GPUs.
+ &lt;/p&gt;
+&lt;h4&gt;&lt;em&gt;Apache Spark at Scale: A 60 TB+ Production Use Case&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;Facebook uses Spark at scale and during this talk they presented a few tips and tricks that they found while working with Spark. They use Flame Graphs for profiling. They highlighted that the thread dump function available in the Spark UI is useful for debugging.&lt;/p&gt;
+&lt;p&gt;They gave interesting ideas for configuration:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Use memory off heap&lt;/li&gt;
+&lt;li&gt;Use parallel GC instead of G1GC&lt;/li&gt;
+&lt;li&gt;Tune the shuffle service (number of threads, etc.)&lt;/li&gt;
+&lt;li&gt;Configure the various buffer sizes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;They published &lt;a href="https://code.facebook.com/posts/1671373793181703/apache-spark-scale-a-60-tb-production-use-case/"&gt;a blog post&lt;/a&gt; about this.&lt;/p&gt;
+&lt;h4&gt;&lt;em&gt;Apache Kudu and Spark SQL for Fast Analytics on Fast Data&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;An engineer from Cloudera presented &lt;a href="http://kudu.apache.org/"&gt;Apache Kudu&lt;/a&gt;, a top level Apache project that sits between HDFS and &lt;a href="http://hbase.apache.org/"&gt;HBase&lt;/a&gt;. The speaker revealed an interesting fact during the Q&amp;amp;A session: Kudu does not store its data on HDFS, but rather on a local file system. Kudu is a data store that has some of the advantages of the Parquet file format: it's a columnar store. Support for Kerberos in Kudu is coming soon.
+ &lt;/p&gt;
+&lt;h4&gt;&lt;em&gt;SparkOscope: Enabling Apache Spark Optimization Through Cross-Stack Monitoring and Visualization&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;SparkOscope is an IBM research project. It collects OS-level metrics while Spark jobs are running. It does not guarantee that the metrics correspond to the resource usage of the Spark job. In the event that other processes are running at the same time as the Spark job that is being observed then the metrics will include usage of multiple processes unrelated to Spark jobs. &lt;a href="https://github.com/ibm-research-ireland/sparkoscope"&gt;SparkOscope&lt;/a&gt; is available on Github.
+ &lt;/p&gt;
+&lt;h4&gt;&lt;em&gt;Problem Solving Recipes Learned from Supporting Spark&lt;/em&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;OutOfMemoryErrors usually happen when allocating too many objects. Tune the spark.memory.fraction setting and do not allocate objects in tight loops. Be careful when allocating objects in mapPartitions() for instance.&lt;/li&gt;
+&lt;li&gt;NoSuchMethodError is usually thrown when there is a library version mismatch. Try to upgrade or downgrade Spark, change the library loading order or shade libraries to fix this.&lt;/li&gt;
+&lt;li&gt;Use spark.speculation to restart slow-running tasks.&lt;/li&gt;
+&lt;li&gt;Use df.explain to debug queries on dataframes.
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;&lt;em&gt;Containerized Spark on Kubernetes&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;There was this &lt;a href="http://chapeau.freevariable.com/2016/10/spark-on-kubernetes-at-spark-summit-eu.html"&gt;excellent talk by William Benton&lt;/a&gt; from Red Hat about running Spark on Kubernetes. Don't miss out on this one!
+ &lt;/p&gt;
+&lt;h4&gt;&lt;em&gt;Spark SQL 2.0 Experiences Using TPC-DS&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;Very interesting talk and Q&amp;amp;A session about running a large scale benchmark with Spark SQL on a $5.5 million cluster. About 90% of the 99 queries defined in the &lt;a href="http://www.tpc.org/tpcds/"&gt;TPC-DS&lt;/a&gt; specification were runnable on Spark SQL.&lt;/p&gt;
+&lt;p&gt;See the related &lt;a href="https://developer.ibm.com/hadoop/2015/11/30/99-tpc-ds-queries-integrated-into-spark-sql-perf/"&gt;blog post&lt;/a&gt;.
+ &lt;/p&gt;
+&lt;h2&gt;The talks I missed&lt;/h2&gt;
+&lt;p&gt;There are a few more talks that I couldn't attend but that I will watch as soon as the video streams become available:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;No One Puts Spark in the Container&lt;/li&gt;
+&lt;li&gt;Hive to Spark—Journey and Lessons Learned&lt;/li&gt;
+&lt;li&gt;Adopting Dataframes and Parquet in an Already Existing Warehouse&lt;/li&gt;
+&lt;li&gt;A Deep Dive into the Catalyst Optimizer
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Closing words&lt;/h2&gt;
+&lt;p&gt;A few interesting things/trends I heard at Spark Summit:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Parquet is an efficient, fast, columnar file format&lt;/li&gt;
+&lt;li&gt;Many people use Databricks notebooks. You don't have to manage your own cluster.&lt;/li&gt;
+&lt;li&gt;There is no better API (RDD, Dataframes, Datasets), it's a question of preference&lt;/li&gt;
+&lt;li&gt;Dataframes do not replace RDDs but they have an advantage one should be aware of: the Catalyst optimizer will rewrite your poorly optimized queries when using Spark SQL and dataframes. This is not true when using the low-level RDD API directly.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Presentation slides and recordings from the event will be available on the &lt;a href="https://spark-summit.org/eu-2016/schedule/"&gt;Spark Summit website&lt;/a&gt; by November 4.&lt;/p&gt;
+&lt;p&gt;Update: cross-posted on &lt;a href="https://research.kudelskisecurity.com"&gt;research.kudelskisecurity.com&lt;/a&gt;&lt;/p&gt;</content><category term="dev"></category><category term="conference"></category><category term="spark"></category><category term="big data"></category></entry></feed>

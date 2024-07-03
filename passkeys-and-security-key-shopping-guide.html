@@ -1,0 +1,1005 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="preload" href="https://rsms.me/inter/font-files/Inter-SemiBold.woff2?v=4.0" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://rsms.me/inter/font-files/Inter-Regular.woff2?v=4.0" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://rsms.me/inter/font-files/Inter-Medium.woff2?v=4.0" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://rsms.me/inter/font-files/InterVariable.woff2?v=4.0" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link href="/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="All articles Atom feed" />
+    <link href="/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="All articles RSS feed" />
+    <meta name="author" content="tome.one">
+    <meta name="description" content="User authentication has long been relying on passwords. However, passwords come with a ton of problems. They're hard to remember, they can be reused across websites and services and are sensitive to phishing and data leaks. Also, password policies are a major pain point for users. Password managers solve the …">
+    <meta name="keywords" content="security-keys, passkeys, passwordless">
+<meta property="og:site_name" content="tome.one">
+<meta property="og:title" content="Passkeys and Security Key Shopping Guide">
+<meta property="og:description" content="User authentication has long been relying on passwords. However, passwords come with a ton of problems. They're hard to remember, they can be reused across websites and services and are sensitive to phishing and data leaks. Also, password policies are a major pain point for users. Password managers solve the …">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="./passkeys-and-security-key-shopping-guide.html">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2024-01-03 18:40:00+01:00">
+<meta property="article:modified_time" content="">
+<meta property="article:author" content="./author/tomeone.html">
+<meta property="article:section" content="dev">
+<meta property="article:tag" content="security-keys">
+<meta property="article:tag" content="passkeys">
+<meta property="article:tag" content="passwordless">
+<meta property="og:image" content="">
+    <title>tome.one &ndash; Passkeys and Security Key Shopping Guide</title>
+    <!-- JS files -->
+    <script src="./theme/tabler/js/tabler.min.js?1692870487" defer></script>
+    <script src="https://instant.page/5.2.0" type="module"
+        integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
+    <!-- CSS files -->
+    <link href="./theme/tabler/css/tabler.min.css?1692870487" rel="stylesheet">
+    <link href="./theme/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="./theme/tipuesearch/tipuesearch.css">
+    <link rel="stylesheet" type="text/css"
+          href="./theme/pygments/monokai.css">
+        <link rel="shortcut icon" href="https://tome.one/theme/img/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://tome.one/theme/img/favicon.ico" type="image/x-icon">
+    <style>
+        :root {
+            --tblr-font-sans-serif: Inter, -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+        }
+
+        body {
+            font-feature-settings: "cv03", "cv04", "cv11";
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- Sidebar -->
+    <aside class="navbar navbar-vertical navbar-left navbar-expand-lg">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu"
+                    aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <h1 class="navbar-brand navbar-brand-autodark">
+                <a href="/" class="text-decoration-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-books" width="24"
+                         height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M5 4m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z"/>
+                        <path d="M9 4m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z"/>
+                        <path d="M5 8h4"/>
+                        <path d="M9 16h4"/>
+                        <path d="M13.803 4.56l2.184 -.53c.562 -.135 1.133 .19 1.282 .732l3.695 13.418a1.02 1.02 0 0 1 -.634 1.219l-.133 .041l-2.184 .53c-.562 .135 -1.133 -.19 -1.282 -.732l-3.695 -13.418a1.02 1.02 0 0 1 .634 -1.219l.133 -.041z"/>
+                        <path d="M14 9l4 -1"/>
+                        <path d="M16 16l3.923 -.98"/>
+                    </svg>
+                    tome.one
+                </a>
+            </h1>
+            <div class="collapse navbar-collapse" id="sidebar-menu">
+                <ul class="navbar-nav pt-lg-3">
+
+                        <li class="nav-item ">
+                            <a class="nav-link" href="./pages/about.html">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         class="icon icon-tabler icon-tabler-question-mark" width="24" height="24"
+                                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                         stroke-linecap="round" stroke-linejoin="round"><path stroke="none"
+                                                                                              d="M0 0h24v24H0z"
+                                                                                              fill="none"/><path
+                                            d="M8 8a3.5 3 0 0 1 3.5 -3h1a3.5 3 0 0 1 3.5 3a3 3 0 0 1 -2 3a3 4 0 0 0 -2 4"/><path
+                                            d="M12 19l0 .01"/></svg>
+
+                      </span>
+                                <span class="nav-link-title">
+                                About
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="nav-link" href="./pages/conferences.html">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane"
+                                         width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                         stroke="currentColor" fill="none" stroke-linecap="round"
+                                         stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path
+                                            d="M16 10h4a2 2 0 0 1 0 4h-4l-4 7h-3l2 -7h-4l-2 2h-3l2 -4l-2 -4h3l2 2h4l-2 -7h3z"/></svg>
+
+                      </span>
+                                <span class="nav-link-title">
+                                Conferences
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="nav-link" href="./pages/links.html">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link"
+                                         width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                         stroke="currentColor" fill="none" stroke-linecap="round"
+                                         stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path
+                                            d="M9 15l6 -6"/><path
+                                            d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464"/><path
+                                            d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463"/></svg>
+
+                      </span>
+                                <span class="nav-link-title">
+                                Links
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="nav-link" href="./pages/projects.html">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tool"
+                                         width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                         stroke="currentColor" fill="none" stroke-linecap="round"
+                                         stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path
+                                            d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5"/></svg>
+
+                      </span>
+                                <span class="nav-link-title">
+                                Projects
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="nav-link" href="./pages/publications.html">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-book"
+                                         width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                         stroke="currentColor" fill="none" stroke-linecap="round"
+                                         stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path
+                                            d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0"/><path
+                                            d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0"/><path d="M3 6l0 13"/><path
+                                            d="M12 6l0 13"/><path d="M21 6l0 13"/></svg>
+
+                      </span>
+                                <span class="nav-link-title">
+                                Publications
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="nav-link" href="./pages/talks.html">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         class="icon icon-tabler icon-tabler-speakerphone" width="24" height="24"
+                                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                         stroke-linecap="round" stroke-linejoin="round"><path stroke="none"
+                                                                                              d="M0 0h24v24H0z"
+                                                                                              fill="none"/><path
+                                            d="M18 8a3 3 0 0 1 0 6"/><path
+                                            d="M10 8v11a1 1 0 0 1 -1 1h-1a1 1 0 0 1 -1 -1v-5"/><path
+                                            d="M12 8h0l4.524 -3.77a.9 .9 0 0 1 1.476 .692v12.156a.9 .9 0 0 1 -1.476 .692l-4.524 -3.77h-8a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1h8"/></svg>
+
+                      </span>
+                                <span class="nav-link-title">
+                                Talks
+                                </span>
+                            </a>
+                        </li>
+
+                    <li>
+                        <div class="hr-text">
+                            <span>Archives</span>
+                        </div>
+                    </li>
+
+                    <li class="nav-item ">
+                        <a class="nav-link" href="./archives.html">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive"
+                                     width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                     fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none"
+                                                                                                      d="M0 0h24v24H0z"
+                                                                                                      fill="none"/><path
+                                        d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"/><path
+                                        d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10"/><path d="M10 12l4 0"/></svg>
+                            </span>
+                            <span class="nav-link-title">
+                                    Posts
+                                  </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item ">
+                        <a class="nav-link" href="./categories.html">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-category"
+                                       width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                       fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none"
+                                                                                                        d="M0 0h24v24H0z"
+                                                                                                        fill="none"/><path
+                                          d="M4 4h6v6h-6z"/><path d="M14 4h6v6h-6z"/><path d="M4 14h6v6h-6z"/><path
+                                          d="M17 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/></svg>
+                            </span>
+                            <span class="nav-link-title">
+                                    Categories
+                                  </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item ">
+                        <a class="nav-link" href="./tags.html">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag"
+                                     width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                     fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none"
+                                                                                                      d="M0 0h24v24H0z"
+                                                                                                      fill="none"/><path
+                                        d="M7.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path
+                                        d="M3 6v5.172a2 2 0 0 0 .586 1.414l7.71 7.71a2.41 2.41 0 0 0 3.408 0l5.592 -5.592a2.41 2.41 0 0 0 0 -3.408l-7.71 -7.71a2 2 0 0 0 -1.414 -.586h-5.172a3 3 0 0 0 -3 3z"/></svg>
+                            </span>
+                            <span class="nav-link-title">
+                                    Tags
+                                  </span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </aside>
+    <div class="page-wrapper">
+        <!-- Page header -->
+        <div class="page-header d-print-none">
+            <div class="container-narrow">
+                <div class="row g-2 align-items-center">
+                    <div class="col">
+                        <!-- Page pre-title -->
+                        <div class="page-pretitle">
+                                tome.one
+                        </div>
+    <h1 class="article-title" id="passkeys-and-security-key-shopping-guide">Passkeys and Security Key Shopping Guide</h1>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container-narrow">
+
+            <div class="row ms-auto align-items-center">
+                <div class="col-auto pt-3 align-items-start">
+
+                    <a class="text-black px-2 ps-0 text-decoration-none" target="_blank"
+                       href="https://github.com/amietn">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             class="icon icon-tabler icon-tabler-brand-github" width="24" height="24"
+                             viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                             stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"/>
+                        </svg>
+                    </a>
+
+                    <a class="text-black px-2 text-decoration-none" target="_blank" href="https://twitter.com/tmlxs">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-x"
+                             width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                             fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M4 4l11.733 16h4.267l-11.733 -16z"/>
+                            <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/>
+                        </svg>
+                    </a>
+
+                    <a class="text-black px-2 text-decoration-none" target="_blank"
+                       href="https://www.linkedin.com/in/nilsamiet">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin"
+                             width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                             fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"/>
+                            <path d="M8 11l0 5"/>
+                            <path d="M8 8l0 .01"/>
+                            <path d="M12 16l0 -5"/>
+                            <path d="M16 16v-3a2 2 0 0 0 -4 0"/>
+                        </svg>
+                    </a>
+
+                </div>
+
+                <div class="col-auto ms-auto pt-3">
+                    <form action="/search" method="get" autocomplete="off" novalidate=""
+                          onsubmit="return (this.elements['q'].value.length > 0)">
+                        <div class="input-icon">
+                  <span class="input-icon-addon">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/search -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                         stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                         stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+                            d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+                  </span>
+                            <input id="searchbox" name="q" type="text" value=""
+                                   class="form-control"
+                                   placeholder="Search…"
+                                   aria-label="Search in website">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Page body -->
+        <div class="page-body">
+            <div class="container-narrow">
+    <div class="article-content">
+
+        <div class="article-header align-items-center">
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-month" width="24"
+                     height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"/>
+                    <path d="M16 3v4"/>
+                    <path d="M8 3v4"/>
+                    <path d="M4 11h16"/>
+                    <path d="M7 14h.013"/>
+                    <path d="M10.01 14h.005"/>
+                    <path d="M13.01 14h.005"/>
+                    <path d="M16.015 14h.005"/>
+                    <path d="M13.015 17h.005"/>
+                    <path d="M7.01 17h.005"/>
+                    <path d="M10.01 17h.005"/>
+                </svg>
+                <span class="text-secondary">
+                Wed 03 January 2024
+                </span> &#8226;
+            </span>
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24"
+                     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                     stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"/>
+                    <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/>
+                </svg>
+                <span><a href="/pages/about.html">Nils Amiet</a></span>
+            </span>
+
+
+                <p class="mt-1">
+
+                        <a class="badge bg-azure text-white"
+                           href="./tag/security-keys.html">security-keys</a>
+                        <a class="badge bg-azure text-white"
+                           href="./tag/passkeys.html">passkeys</a>
+                        <a class="badge bg-azure text-white"
+                           href="./tag/passwordless.html">passwordless</a>
+                </p>
+        </div>
+
+        <div class="article-content">
+            <div class="row row-deck row-cards mb-4">
+                <div class="col-sm-12 col-lg-12">
+                    <div class="card car">
+                        <div class="card-body">
+
+                            <p>User authentication has long been relying on passwords.
+However, passwords come with a ton of problems.
+They're hard to remember, they can be reused across websites and services and are sensitive to phishing and data leaks.
+Also, password policies are a major pain point for users.</p>
+<p>Password managers solve the "hard to remember" piece, but are just a workaround. They're not solving the actual problem.
+We need to get rid of passwords.</p>
+<h1>Passkeys</h1>
+<p>You probably have heard of <a href="https://passkeys.dev/">Passkeys</a>.
+They're a new way to sign in to websites and applications without passwords.
+Passkeys can be stored on your laptop, on your smartphone or on a hardware security key, such as a Yubikey.</p>
+<p>For the average user, storing one's passkeys in their smartphone and having them synced 
+in Google's or Apple's cloud is probably the most user-friendly solution and is what I expect most people will do in the near future.</p>
+<p>However, this solution comes at a cost. You give up some security because you trust Google, Apple or whatever third-party passkey provider
+you choose to store your passkeys. This is where hardware-based security keys shine, because the passkeys you store into those can never leave
+the security key. They remain offline and you keep control or your passkeys.</p>
+<h1>Security keys</h1>
+<p>Shopping for security keys these days is hard. Vendors like Yubico, Google, Nitrokey and SoloKeys to name a few, make it 
+especially hard for you to know what you're getting.</p>
+<p>Indeed, these security keys come with a wide array of features, like FIDO2, PGP, PIV, OTP, and more.
+For passkeys, we only care about FIDO2 support because Passkeys are just FIDO2 credentials, and this is the topic of this blog post so we'll only cover that today.</p>
+<p>Indeed, 99% of security key vendors fail to provide detailed technical specifications of what their FIDO2 security key supports, 
+so you never know what you're getting and may be disappointed upon delivery.</p>
+<p>For example, in November last year, Google announced the latest iteration of their 
+<a href="https://blog.google/technology/safety-security/titan-security-key-google-store/">Titan Security Key</a> 
+and claimed it can store up to 250 unique passkeys. This sounded super nice because current models on the market previously only allowed to 
+store up to 25, 50 or maybe 100 passkeys. Before that, no product ever allowed to store that many passkeys.</p>
+<p>I decided to buy that new <a href="https://store.google.com/product/titan_security_key">Titan Security Key</a> because of that claim, and it arrived the next day.
+When it arrived, I immediately plugged it in and ran <code>ctapcli info</code> to see what FIDO2 features and options it supported:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ctapcli<span class="w"> </span>info
+Get<span class="w"> </span>the<span class="w"> </span>Authenticator<span class="w"> </span>infomation.
+
+Get<span class="w"> </span>all<span class="w"> </span>data.
+-<span class="w"> </span><span class="nv">versions</span><span class="w">                           </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;FIDO_2_0&quot;</span>,<span class="w"> </span><span class="s2">&quot;U2F_V2&quot;</span><span class="o">]</span>
+-<span class="w"> </span><span class="nv">extensions</span><span class="w">                         </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;credProtect&quot;</span>,<span class="w"> </span><span class="s2">&quot;hmac-secret&quot;</span><span class="o">]</span>
+-<span class="w"> </span>aaguid<span class="o">(</span><span class="m">16</span><span class="o">)</span><span class="w">                         </span><span class="o">=</span><span class="w"> </span>42B4FB4A286643B29BF76C6669C2E5D3
+-<span class="w"> </span><span class="nv">options</span><span class="w">                            </span><span class="o">=</span><span class="w"> </span><span class="o">[(</span><span class="s2">&quot;rk&quot;</span>,<span class="w"> </span><span class="nb">true</span><span class="o">)</span>,<span class="w"> </span><span class="o">(</span><span class="s2">&quot;clientPin&quot;</span>,<span class="w"> </span><span class="nb">true</span><span class="o">)]</span>
+-<span class="w"> </span><span class="nv">max_msg_size</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="m">2200</span>
+-<span class="w"> </span><span class="nv">pin_uv_auth_protocols</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="o">]</span>
+-<span class="w"> </span><span class="nv">max_credential_count_in_list</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">max_credential_id_length</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">transports</span><span class="w">                         </span><span class="o">=</span><span class="w"> </span><span class="o">[]</span>
+-<span class="w"> </span><span class="nv">algorithms</span><span class="w">                         </span><span class="o">=</span><span class="w"> </span><span class="o">[]</span>
+-<span class="w"> </span><span class="nv">max_serialized_large_blob_array</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">force_pin_change</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
+-<span class="w"> </span><span class="nv">min_pin_length</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">firmware_version</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">max_cred_blob_length</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">max_rpids_for_set_min_pin_length</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">preferred_platform_uv_attempts</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">uv_modality</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">remaining_discoverable_credentials</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+
+Error:<span class="w"> </span>Invalid<span class="w"> </span>item
+</code></pre></div>
+
+<p>And here's the output of <code>fido2-token</code>:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>fido2-token<span class="w"> </span>-L
+/dev/hidraw0:<span class="w"> </span><span class="nv">vendor</span><span class="o">=</span>0x18d1,<span class="w"> </span><span class="nv">product</span><span class="o">=</span>0x9470<span class="w"> </span><span class="o">(</span>Google<span class="w"> </span>Titan<span class="w"> </span>Security<span class="w"> </span>Key<span class="w"> </span>v2<span class="o">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>fido2-token<span class="w"> </span>-I<span class="w"> </span>/dev/hidraw0<span class="w"> </span>
+proto:<span class="w"> </span>0x02
+major:<span class="w"> </span>0x02
+minor:<span class="w"> </span>0x00
+build:<span class="w"> </span>0x03
+caps:<span class="w"> </span>0x05<span class="w"> </span><span class="o">(</span>wink,<span class="w"> </span>cbor,<span class="w"> </span>msg<span class="o">)</span>
+version<span class="w"> </span>strings:<span class="w"> </span>FIDO_2_0,<span class="w"> </span>U2F_V2
+extension<span class="w"> </span>strings:<span class="w"> </span>credProtect,<span class="w"> </span>hmac-secret
+aaguid:<span class="w"> </span>42b4fb4a286643b29bf76c6669c2e5d3
+options:<span class="w"> </span>rk,<span class="w"> </span>clientPin
+fwversion:<span class="w"> </span>0x0
+maxmsgsiz:<span class="w"> </span><span class="m">2200</span>
+maxcredcntlst:<span class="w"> </span><span class="m">0</span>
+maxcredlen:<span class="w"> </span><span class="m">0</span>
+maxlargeblob:<span class="w"> </span><span class="m">0</span>
+pin<span class="w"> </span>protocols:<span class="w"> </span><span class="m">1</span>
+pin<span class="w"> </span>retries:<span class="w"> </span><span class="m">8</span>
+pin<span class="w"> </span>change<span class="w"> </span>required:<span class="w"> </span><span class="nb">false</span>
+uv<span class="w"> </span>retries:<span class="w"> </span>undefined
+</code></pre></div>
+
+<p>As you can see, the new Titan Security Key (2023 model) doesn't support credential management.
+Indeed, it may be able to store up to 250 resident credentials, but 
+there's no way to selectively delete or enumerate those credentials.
+This is a big letdown for me because when I do fill those 250 slots, the only way for me to make some free space
+is to completely reset the key and lose all my passkeys, which is definitely not what I'd like.</p>
+<p>I also recently purchased a <a href="https://www.yubico.com/ch/product/security-key-series/security-key-c-nfc-by-yubico-black/">Security Key C NFC</a> by Yubico. 
+This model can only store up to 25 passkeys, but it does support credential management:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ctapcli<span class="w"> </span>info
+...
+-<span class="w"> </span><span class="nv">options</span><span class="w">                            </span><span class="o">=</span><span class="w"> </span><span class="o">[(</span><span class="s2">&quot;rk&quot;</span>,<span class="w"> </span><span class="nb">true</span><span class="o">)</span>,<span class="w"> </span><span class="o">(</span><span class="s2">&quot;up&quot;</span>,<span class="w"> </span><span class="nb">true</span><span class="o">)</span>,<span class="w"> </span><span class="o">(</span><span class="s2">&quot;plat&quot;</span>,<span class="w"> </span><span class="nb">false</span><span class="o">)</span>,<span class="w"> </span><span class="o">(</span><span class="s2">&quot;clientPin&quot;</span>,<span class="w"> </span><span class="nb">true</span><span class="o">)</span>,<span class="w"> </span><span class="o">(</span><span class="s2">&quot;credentialMgmtPreview&quot;</span>,<span class="w"> </span><span class="nb">true</span><span class="o">)]</span>
+</code></pre></div>
+
+<p>Indeed, it supports enumerating resident credentials and tells how many free slots are left:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ctapcli<span class="w"> </span>cred
+PIN:<span class="w"> </span>
+
+Enumerate<span class="w"> </span>discoverable<span class="w"> </span>credentials.
+-<span class="w"> </span>existing<span class="w"> </span>discoverable<span class="w"> </span>credentials:<span class="w"> </span><span class="m">1</span>/24
+-<span class="w"> </span>rp:<span class="w"> </span><span class="o">(</span>id:<span class="w"> </span>github.com,<span class="w"> </span>name:<span class="w"> </span><span class="o">)</span>
+<span class="w">  </span>-<span class="w"> </span>credential:<span class="w"> </span><span class="o">(</span>id:<span class="w"> </span>***,<span class="w"> </span>name:<span class="w"> </span>***,<span class="w"> </span>display_name:<span class="w"> </span>***<span class="o">)</span>
+</code></pre></div>
+
+<p>We can see that I have one passkey stored and 24 free slots left, so the Security Key C NFC really does support storing up to 25 passkeys.
+What's nice about this model, is that it also reports that it supports both ECDSA with the P-256 curve, and EdDSA for <a href="https://www.rfc-editor.org/rfc/rfc9053.html">signatures</a>.
+I still do wish that Yubico makes a newer model with the same features but with more storage for passkeys.</p>
+<h1>Features to look for when choosing a security key</h1>
+<p>I was really disappointed when I found out that the security key I bought didn't support what I thought was a very important feature.
+There was no way to tell whether it supported it or not. The official product store page didn't list any detailed technical specifications.
+To help you avoid ending up in the same uncomfortable situation I found myself in, here's a quick guide to buying a new security key.</p>
+<p>When I'm shopping for a new security key, this is what I look for.</p>
+<h2>1) FIDO2 support</h2>
+<p>The security key must support FIDO2 to be able to store passkeys.</p>
+<h2>2) How you're going to connect the security key</h2>
+<p>Does it support USB type A or USB type C? Does it support NFC?</p>
+<h2>3) Max number of resident credentials</h2>
+<p>Is that 25? 50? 250?
+Think of how many passkeys you'll need to store. Is this going to be enough?</p>
+<p>This information may not even be shown on the vendor's official site.
+Sometimes, the best way to make sure, is to ask someone who already owns that security key model to check that for you.
+You may as well find the appendix of this blog post useful, because it contains the output of <code>authenticatorGetInfo</code> 
+for multiple FIDO2 security key models I own. Maybe the one you're interested in is in that list.</p>
+<h2>4) hmac-secret extension support</h2>
+<p>This CTAP extension is required by some applications, such as LUKS.
+Look for the <code>hmac-secret</code> value in the <code>extensions</code> field of the CTAP <code>authenticatorGetInfo</code> command output.</p>
+<h2>5) credProtect extension support</h2>
+<p>The <code>credProtect</code> extension is used to enforce per-credential policies. 
+During creation of a new credential (or passkey), the credProtect extension can be set to, for example, <code>userVerificationRequired</code>.
+If the authenticator supports the credProtect extension, then this passkey can only ever be used with user verification (PIN, fingerprint, etc.).
+This gives you the peace of mind that even if your security key is stolen, your passkeys cannot be used without your PIN or fingerprint.</p>
+<h2>6) CTAP 2.1 support</h2>
+<p>The security key implements CTAP 2.1 or higher.
+This is usually signaled by the presence of either the <code>FIDO_2_1_PRE</code> or the <code>FIDO_2_1</code> value in the <code>versions</code> field of the CTAP <code>authenticatorGetInfo</code> command output.
+There are security vulnerabilities that can be exploited in CTAP 2.0, such as PIN bypasses, especially with respect to the use of the hmac-secret extension.
+You definitely want this if you're going to use a security key to unlock LUKS partitions.</p>
+<h2>7) Credential management support</h2>
+<p>Look for the presence of the <code>credMgmt</code> or <code>credentialMgmtPreview</code> value in the <code>options</code> field of the CTAP <code>authenticatorGetInfo</code> command output.
+Without credential management support, there's no way to delete individual passkeys and free up space.
+When the security key gets full, the only option is to reset it, and therefore lose all passkeys stored on it.
+Credential management also allows for listing stored credentials and seeing how many free slots are left.</p>
+<p>Storing resident credentials is the only option for username-less sign in. If the credentials are not stored on the authenticator, the website 
+you're signing in to has no way to know your username, and you'll have to manually type it.
+When storing resident credentials, those credentials become discoverable, and can be enumerated.
+Therefore, the username can be autofilled and your web browser will show you a nice UI where you can select which account you'd like 
+to use in case you have used Passkeys for multiple accounts on a same website. For example, if you have more than one Google account.</p>
+<h2>8) Does it support biometrics?</h2>
+<p>Do you need to perform user verification with your fingerprint?
+Usually, PIN is supported, but some security keys have a fingerprint reader and can store your fingerprint.
+One advantage of using biometrics is that user presence (where you tap the security key) and user verification (where the user's identity is verified) 
+can be performed in a single gesture: by placing your finger on the fingerprint reader. Whereas with a PIN, user presence must still be done by touching the security key 
+and the PIN has to be entered in another step.</p>
+<p>If a fingerprint reader sounds interesting, you may want to verify how many fingerprints can be stored on that security key.
+It may not be possible to enroll and store fingerprints for all your fingers.
+Some models only allow to store a maximum of 3 fingerprints, for example, and as usual, this number is never specified.
+You discover it after having purchased the security key.</p>
+<p>To my knowledge, there is no command that will directly tell how many fingerprints can be stored.
+However, when enrolling a new fingerprint, the command will fail when there are no more free slots.</p>
+<p>Note that usually, if there's a fingerprint reader, there's no NFC support, so you'll have to make a choice here.</p>
+<h2>9) Do you care about hardware attacks?</h2>
+<p>Is a physical attack in your threat model?
+Do you need to be covered in case your security key is stolen by an attacker?
+In that case, you need to make sure your security key uses a secure element to store credentials, and
+that there are no known vulnerabilities on that secure element.</p>
+<p>Also, make sure that the secure element is actually used.
+Some vendors sell security keys that contain a secure element but which is <a href="https://shop.nitrokey.com/shop/nk3cn-nitrokey-3c-nfc-148">not used at all</a> (see the IMPORTANT NOTE on that page).</p>
+<h2>Summary and other criteria</h2>
+<p>To summarize, mainly look for the following things:</p>
+<ul>
+<li>Does it support FIDO2?</li>
+<li>USB Type-A or Type-C?</li>
+<li>NFC support?</li>
+<li>Max resident credentials</li>
+<li>hmac-secret extension support</li>
+<li>credProtect extension support</li>
+<li>CTAP 2.1 support</li>
+<li>Credential management support</li>
+<li>Biometrics</li>
+<li>Secure element</li>
+</ul>
+<p>But there are a few more things also worth looking for:</p>
+<ul>
+<li>Price</li>
+<li>Form factor / design (sticks out of laptop or fits flush, slim/stylish or bulky)</li>
+<li>Availability and quality of documentation</li>
+<li>Product certifications, such as FIPS 140-2, NIST SP800-63B or CC EAL (you may need this for enterprise scenarios)</li>
+<li>Other supported applications (OTP, PGP, static password, PIV)</li>
+<li>Open source firmware</li>
+<li>Upgradable firmware</li>
+<li>Does it work inside virtual machines? (this is a pretty niche use-case, but we've seen models work better than others inside VMs with USB passthrough)</li>
+</ul>
+<h1>So which key is the best on the market today?</h1>
+<p>I'm not affiliated with Yubico, but I do believe they make pretty good, secure and affordable products, that come with good documentation.
+Especially, after having used security keys made by other vendors.</p>
+<p>They may not list all the technical details of their products on their website (see the appendix for more info), but I can easily recommend the $25 Security Key C NFC if Passkeys are all you care about and it's for personal use.
+I would also recommend buying a pair of these and register both security keys as a backup on all the websites you use, in case you lose one so that you don't get locked out.
+The only downside I see is the number of resident credentials is limited to 25. Hopefully they release a new model that bumps that number sooner than later.</p>
+<p>If you need more applications like PGP, OTP or PIV, I would go for the Yubikey 5, which is essentially the same thing, but with more applications and also for double the price.
+But these days, I think Passkeys/FIDO2 is the killer app. Do you really need support for those other applications?</p>
+<h1>Conclusions</h1>
+<p>For the average person, maybe a security key is overkill and storing passkeys in their smartphone, plus cloud-sync is enough.
+But if you're concerned about third-parties storing your passkeys, this blog post gave an overview of 
+features to look for and pitfalls to avoid.</p>
+<p>Choosing a security key depends on your use case, and I gave a list of these features. Think of which ones make sense to you 
+and the choice will become easier.</p>
+<h1>Appendix</h1>
+<p>Here are some technical details about the security keys I own.
+For each security key, I will include as much information as possible, including the output of the CTAP authenticatorGetInfo command.</p>
+<p>Click on a security below to show more details.</p>
+<details>
+<summary>Security Key C NFC by Yubico (2023)</summary>
+
+This one was purchased in late 2023 for $29 off the official Yubico website.
+It's the newer model which is now black. It previously was blue.
+It's running firmware version 5.4.3.
+
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ctapcli<span class="w"> </span>info
+Get<span class="w"> </span>the<span class="w"> </span>Authenticator<span class="w"> </span>infomation.
+
+Get<span class="w"> </span>all<span class="w"> </span>data.
+-<span class="w"> </span><span class="nv">versions</span><span class="w">                           </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;U2F_V2&quot;</span>,<span class="w"> </span><span class="s2">&quot;FIDO_2_0&quot;</span>,<span class="w"> </span><span class="s2">&quot;FIDO_2_1_PRE&quot;</span><span class="o">]</span>
+-<span class="w"> </span><span class="nv">extensions</span><span class="w">                         </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;credProtect&quot;</span>,<span class="w"> </span><span class="s2">&quot;hmac-secret&quot;</span><span class="o">]</span>
+-<span class="w"> </span>aaguid<span class="o">(</span><span class="m">16</span><span class="o">)</span><span class="w">                         </span><span class="o">=</span><span class="w"> </span>A4E9FC6D4CBE4758B8BA37598BB5BBAA
+-<span class="w"> </span><span class="nv">options</span><span class="w">                            </span><span class="o">=</span><span class="w"> </span><span class="o">[(</span><span class="s2">&quot;rk&quot;</span>,<span class="w"> </span><span class="nb">true</span><span class="o">)</span>,<span class="w"> </span><span class="o">(</span><span class="s2">&quot;up&quot;</span>,<span class="w"> </span><span class="nb">true</span><span class="o">)</span>,<span class="w"> </span><span class="o">(</span><span class="s2">&quot;plat&quot;</span>,<span class="w"> </span><span class="nb">false</span><span class="o">)</span>,<span class="w"> </span><span class="o">(</span><span class="s2">&quot;clientPin&quot;</span>,<span class="w"> </span><span class="nb">true</span><span class="o">)</span>,<span class="w"> </span><span class="o">(</span><span class="s2">&quot;credentialMgmtPreview&quot;</span>,<span class="w"> </span><span class="nb">true</span><span class="o">)]</span>
+-<span class="w"> </span><span class="nv">max_msg_size</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="m">1200</span>
+-<span class="w"> </span><span class="nv">pin_uv_auth_protocols</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="m">2</span>,<span class="w"> </span><span class="m">1</span><span class="o">]</span>
+-<span class="w"> </span><span class="nv">max_credential_count_in_list</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="m">8</span>
+-<span class="w"> </span><span class="nv">max_credential_id_length</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="m">128</span>
+-<span class="w"> </span><span class="nv">transports</span><span class="w">                         </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;nfc&quot;</span>,<span class="w"> </span><span class="s2">&quot;usb&quot;</span><span class="o">]</span>
+-<span class="w"> </span><span class="nv">algorithms</span><span class="w">                         </span><span class="o">=</span><span class="w"> </span><span class="o">[(</span><span class="s2">&quot;alg&quot;</span>,<span class="w"> </span><span class="s2">&quot;-7&quot;</span><span class="o">)</span>,<span class="w"> </span><span class="o">(</span><span class="s2">&quot;type&quot;</span>,<span class="w"> </span><span class="s2">&quot;public-key&quot;</span><span class="o">)</span>,<span class="w"> </span><span class="o">(</span><span class="s2">&quot;alg&quot;</span>,<span class="w"> </span><span class="s2">&quot;-8&quot;</span><span class="o">)</span>,<span class="w"> </span><span class="o">(</span><span class="s2">&quot;type&quot;</span>,<span class="w"> </span><span class="s2">&quot;public-key&quot;</span><span class="o">)]</span>
+-<span class="w"> </span><span class="nv">max_serialized_large_blob_array</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">force_pin_change</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
+-<span class="w"> </span><span class="nv">min_pin_length</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="m">4</span>
+-<span class="w"> </span><span class="nv">firmware_version</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="m">328707</span>
+-<span class="w"> </span><span class="nv">max_cred_blob_length</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">max_rpids_for_set_min_pin_length</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">preferred_platform_uv_attempts</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">uv_modality</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">remaining_discoverable_credentials</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+
+Error:<span class="w"> </span>Invalid<span class="w"> </span>item
+</code></pre></div>
+
+
+
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>fido2-token<span class="w"> </span>-I<span class="w"> </span>/dev/hidraw0<span class="w"> </span>
+proto:<span class="w"> </span>0x02
+major:<span class="w"> </span>0x05
+minor:<span class="w"> </span>0x04
+build:<span class="w"> </span>0x03
+caps:<span class="w"> </span>0x05<span class="w"> </span><span class="o">(</span>wink,<span class="w"> </span>cbor,<span class="w"> </span>msg<span class="o">)</span>
+version<span class="w"> </span>strings:<span class="w"> </span>U2F_V2,<span class="w"> </span>FIDO_2_0,<span class="w"> </span>FIDO_2_1_PRE
+extension<span class="w"> </span>strings:<span class="w"> </span>credProtect,<span class="w"> </span>hmac-secret
+transport<span class="w"> </span>strings:<span class="w"> </span>nfc,<span class="w"> </span>usb
+algorithms:<span class="w"> </span>es256<span class="w"> </span><span class="o">(</span>public-key<span class="o">)</span>,<span class="w"> </span>eddsa<span class="w"> </span><span class="o">(</span>public-key<span class="o">)</span>
+aaguid:<span class="w"> </span>a4e9fc6d4cbe4758b8ba37598bb5bbaa
+options:<span class="w"> </span>rk,<span class="w"> </span>up,<span class="w"> </span>noplat,<span class="w"> </span>clientPin,<span class="w"> </span>credentialMgmtPreview
+fwversion:<span class="w"> </span>0x50403
+maxmsgsiz:<span class="w"> </span><span class="m">1200</span>
+maxcredcntlst:<span class="w"> </span><span class="m">8</span>
+maxcredlen:<span class="w"> </span><span class="m">128</span>
+maxlargeblob:<span class="w"> </span><span class="m">0</span>
+minpinlen:<span class="w"> </span><span class="m">4</span>
+pin<span class="w"> </span>protocols:<span class="w"> </span><span class="m">2</span>,<span class="w"> </span><span class="m">1</span>
+pin<span class="w"> </span>retries:<span class="w"> </span><span class="m">8</span>
+pin<span class="w"> </span>change<span class="w"> </span>required:<span class="w"> </span><span class="nb">false</span>
+uv<span class="w"> </span>retries:<span class="w"> </span>undefined
+</code></pre></div>
+
+
+
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ctapcli<span class="w"> </span>cred
+PIN:<span class="w"> </span>
+
+Enumerate<span class="w"> </span>discoverable<span class="w"> </span>credentials.
+-<span class="w"> </span>existing<span class="w"> </span>discoverable<span class="w"> </span>credentials:<span class="w"> </span><span class="m">1</span>/24
+-<span class="w"> </span>rp:<span class="w"> </span><span class="o">(</span>id:<span class="w"> </span>github.com,<span class="w"> </span>name:<span class="w"> </span><span class="o">)</span>
+<span class="w">  </span>-<span class="w"> </span>credential:<span class="w"> </span><span class="o">(</span>id:<span class="w"> </span>***,<span class="w"> </span>name:<span class="w"> </span>***,<span class="w"> </span>display_name:<span class="w"> </span>***<span class="o">)</span>
+</code></pre></div>
+
+
+</details>
+
+<details>
+<summary>Security Key NFC by Yubico (2019)</summary>
+
+This is the blue security key.
+I bought this one from the official Yubico store in February 2019 for $20, plus shipping fee, for a total of $25.
+It came with firmware version 5.1.2.
+It doesn't support credential management. Note that Yubico's firmware is proprietary and firmware upgrades are NOT possible.
+The only way to get a newer firmware is to purchase a new security key.
+
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ykman<span class="w"> </span>info
+Device<span class="w"> </span>type:<span class="w"> </span>Security<span class="w"> </span>Key<span class="w"> </span>NFC
+Firmware<span class="w"> </span>version:<span class="w"> </span><span class="m">5</span>.1.2
+Form<span class="w"> </span>factor:<span class="w"> </span>Keychain<span class="w"> </span><span class="o">(</span>USB-A<span class="o">)</span>
+Enabled<span class="w"> </span>USB<span class="w"> </span>interfaces:<span class="w"> </span>FIDO
+NFC<span class="w"> </span>transport<span class="w"> </span>is<span class="w"> </span>enabled.
+
+Applications<span class="w">    </span>USB<span class="w">             </span>NFC<span class="w">          </span>
+OTP<span class="w">             </span>Not<span class="w"> </span>available<span class="w">   </span>Not<span class="w"> </span>available
+FIDO<span class="w"> </span>U2F<span class="w">        </span>Enabled<span class="w">         </span>Enabled
+FIDO2<span class="w">           </span>Enabled<span class="w">         </span>Enabled
+OATH<span class="w">            </span>Not<span class="w"> </span>available<span class="w">   </span>Not<span class="w"> </span>available
+PIV<span class="w">             </span>Not<span class="w"> </span>available<span class="w">   </span>Not<span class="w"> </span>available
+OpenPGP<span class="w">         </span>Not<span class="w"> </span>available<span class="w">   </span>Not<span class="w"> </span>available
+YubiHSM<span class="w"> </span>Auth<span class="w">    </span>Not<span class="w"> </span>available<span class="w">   </span>Not<span class="w"> </span>available
+</code></pre></div>
+
+
+
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ctapcli<span class="w"> </span>info
+Get<span class="w"> </span>the<span class="w"> </span>Authenticator<span class="w"> </span>infomation.
+
+Get<span class="w"> </span>all<span class="w"> </span>data.
+-<span class="w"> </span><span class="nv">versions</span><span class="w">                           </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;U2F_V2&quot;</span>,<span class="w"> </span><span class="s2">&quot;FIDO_2_0&quot;</span><span class="o">]</span>
+-<span class="w"> </span><span class="nv">extensions</span><span class="w">                         </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;hmac-secret&quot;</span><span class="o">]</span>
+-<span class="w"> </span>aaguid<span class="o">(</span><span class="m">16</span><span class="o">)</span><span class="w">                         </span><span class="o">=</span><span class="w"> </span>6D44BA9BF6EC2E49B9300C8FE920CB73
+-<span class="w"> </span><span class="nv">options</span><span class="w">                            </span><span class="o">=</span><span class="w"> </span><span class="o">[(</span><span class="s2">&quot;rk&quot;</span>,<span class="w"> </span><span class="nb">true</span><span class="o">)</span>,<span class="w"> </span><span class="o">(</span><span class="s2">&quot;up&quot;</span>,<span class="w"> </span><span class="nb">true</span><span class="o">)</span>,<span class="w"> </span><span class="o">(</span><span class="s2">&quot;plat&quot;</span>,<span class="w"> </span><span class="nb">false</span><span class="o">)</span>,<span class="w"> </span><span class="o">(</span><span class="s2">&quot;clientPin&quot;</span>,<span class="w"> </span><span class="nb">true</span><span class="o">)]</span>
+-<span class="w"> </span><span class="nv">max_msg_size</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="m">1200</span>
+-<span class="w"> </span><span class="nv">pin_uv_auth_protocols</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="o">]</span>
+-<span class="w"> </span><span class="nv">max_credential_count_in_list</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">max_credential_id_length</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">transports</span><span class="w">                         </span><span class="o">=</span><span class="w"> </span><span class="o">[]</span>
+-<span class="w"> </span><span class="nv">algorithms</span><span class="w">                         </span><span class="o">=</span><span class="w"> </span><span class="o">[]</span>
+-<span class="w"> </span><span class="nv">max_serialized_large_blob_array</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">force_pin_change</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
+-<span class="w"> </span><span class="nv">min_pin_length</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">firmware_version</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">max_cred_blob_length</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">max_rpids_for_set_min_pin_length</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">preferred_platform_uv_attempts</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">uv_modality</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">remaining_discoverable_credentials</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+
+Error:<span class="w"> </span>Invalid<span class="w"> </span>item
+</code></pre></div>
+
+
+
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>fido2-token<span class="w"> </span>-I<span class="w"> </span>/dev/hidraw0<span class="w"> </span>
+proto:<span class="w"> </span>0x02
+major:<span class="w"> </span>0x05
+minor:<span class="w"> </span>0x01
+build:<span class="w"> </span>0x02
+caps:<span class="w"> </span>0x05<span class="w"> </span><span class="o">(</span>wink,<span class="w"> </span>cbor,<span class="w"> </span>msg<span class="o">)</span>
+version<span class="w"> </span>strings:<span class="w"> </span>U2F_V2,<span class="w"> </span>FIDO_2_0
+extension<span class="w"> </span>strings:<span class="w"> </span>hmac-secret
+aaguid:<span class="w"> </span>6d44ba9bf6ec2e49b9300c8fe920cb73
+options:<span class="w"> </span>rk,<span class="w"> </span>up,<span class="w"> </span>noplat,<span class="w"> </span>clientPin
+fwversion:<span class="w"> </span>0x0
+maxmsgsiz:<span class="w"> </span><span class="m">1200</span>
+maxcredcntlst:<span class="w"> </span><span class="m">0</span>
+maxcredlen:<span class="w"> </span><span class="m">0</span>
+maxlargeblob:<span class="w"> </span><span class="m">0</span>
+pin<span class="w"> </span>protocols:<span class="w"> </span><span class="m">1</span>
+pin<span class="w"> </span>retries:<span class="w"> </span><span class="m">8</span>
+pin<span class="w"> </span>change<span class="w"> </span>required:<span class="w"> </span><span class="nb">false</span>
+uv<span class="w"> </span>retries:<span class="w"> </span>undefined
+</code></pre></div>
+
+
+
+</details>
+
+<details>
+<summary>Goldengate G320 by eWBM</summary>
+
+Note that the G320 is the USB type-C model and the G310 is the same but with a USB type-A connector.
+
+I was contacted by eWBM and given these two models (G310 and G320) for free in October 2019 for an evaluation of their products.
+
+The maximum number of fingerprints that can be stored is 3.
+
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ctapcli<span class="w"> </span>info
+Get<span class="w"> </span>the<span class="w"> </span>Authenticator<span class="w"> </span>infomation.
+
+Get<span class="w"> </span>all<span class="w"> </span>data.
+-<span class="w"> </span><span class="nv">versions</span><span class="w">                           </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;U2F_V2&quot;</span>,<span class="w"> </span><span class="s2">&quot;FIDO_2_0&quot;</span>,<span class="w"> </span><span class="s2">&quot;FIDO_2_1_PRE&quot;</span><span class="o">]</span>
+-<span class="w"> </span><span class="nv">extensions</span><span class="w">                         </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;credProtect&quot;</span>,<span class="w"> </span><span class="s2">&quot;hmac-secret&quot;</span><span class="o">]</span>
+-<span class="w"> </span>aaguid<span class="o">(</span><span class="m">16</span><span class="o">)</span><span class="w">                         </span><span class="o">=</span><span class="w"> </span>87DBC5A14C944DC88A4797D800FD1F3C
+-<span class="w"> </span><span class="nv">options</span><span class="w">                            </span><span class="o">=</span><span class="w"> </span><span class="o">[(</span><span class="s2">&quot;rk&quot;</span>,<span class="w"> </span><span class="nb">true</span><span class="o">)</span>,<span class="w"> </span><span class="o">(</span><span class="s2">&quot;up&quot;</span>,<span class="w"> </span><span class="nb">true</span><span class="o">)</span>,<span class="w"> </span><span class="o">(</span><span class="s2">&quot;uv&quot;</span>,<span class="w"> </span><span class="nb">true</span><span class="o">)</span>,<span class="w"> </span><span class="o">(</span><span class="s2">&quot;plat&quot;</span>,<span class="w"> </span><span class="nb">false</span><span class="o">)</span>,<span class="w"> </span><span class="o">(</span><span class="s2">&quot;clientPin&quot;</span>,<span class="w"> </span><span class="nb">true</span><span class="o">)</span>,<span class="w"> </span><span class="o">(</span><span class="s2">&quot;credentialMgmtPreview&quot;</span>,<span class="w"> </span><span class="nb">true</span><span class="o">)</span>,<span class="w"> </span><span class="o">(</span><span class="s2">&quot;userVerificationMgmtPreview&quot;</span>,<span class="w"> </span><span class="nb">true</span><span class="o">)]</span>
+-<span class="w"> </span><span class="nv">max_msg_size</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="m">2048</span>
+-<span class="w"> </span><span class="nv">pin_uv_auth_protocols</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="o">]</span>
+-<span class="w"> </span><span class="nv">max_credential_count_in_list</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="m">6</span>
+-<span class="w"> </span><span class="nv">max_credential_id_length</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="m">192</span>
+-<span class="w"> </span><span class="nv">transports</span><span class="w">                         </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;usb&quot;</span><span class="o">]</span>
+-<span class="w"> </span><span class="nv">algorithms</span><span class="w">                         </span><span class="o">=</span><span class="w"> </span><span class="o">[]</span>
+-<span class="w"> </span><span class="nv">max_serialized_large_blob_array</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">force_pin_change</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
+-<span class="w"> </span><span class="nv">min_pin_length</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">firmware_version</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">max_cred_blob_length</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">max_rpids_for_set_min_pin_length</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">preferred_platform_uv_attempts</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">uv_modality</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">remaining_discoverable_credentials</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+
+Error:<span class="w"> </span>Invalid<span class="w"> </span>item
+</code></pre></div>
+
+
+
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>fido2-token<span class="w"> </span>-I<span class="w"> </span>/dev/hidraw0<span class="w"> </span>
+proto:<span class="w"> </span>0x02
+major:<span class="w"> </span>0x02
+minor:<span class="w"> </span>0x09
+build:<span class="w"> </span>0x65
+caps:<span class="w"> </span>0x0d<span class="w"> </span><span class="o">(</span>wink,<span class="w"> </span>cbor,<span class="w"> </span>nomsg<span class="o">)</span>
+version<span class="w"> </span>strings:<span class="w"> </span>U2F_V2,<span class="w"> </span>FIDO_2_0,<span class="w"> </span>FIDO_2_1_PRE
+extension<span class="w"> </span>strings:<span class="w"> </span>credProtect,<span class="w"> </span>hmac-secret
+transport<span class="w"> </span>strings:<span class="w"> </span>usb
+aaguid:<span class="w"> </span>87dbc5a14c944dc88a4797d800fd1f3c
+options:<span class="w"> </span>rk,<span class="w"> </span>up,<span class="w"> </span>uv,<span class="w"> </span>noplat,<span class="w"> </span>clientPin,<span class="w"> </span>credentialMgmtPreview,<span class="w"> </span>userVerificationMgmtPreview
+fwversion:<span class="w"> </span>0x0
+maxmsgsiz:<span class="w"> </span><span class="m">2048</span>
+maxcredcntlst:<span class="w"> </span><span class="m">6</span>
+maxcredlen:<span class="w"> </span><span class="m">192</span>
+maxlargeblob:<span class="w"> </span><span class="m">0</span>
+pin<span class="w"> </span>protocols:<span class="w"> </span><span class="m">1</span>
+pin<span class="w"> </span>retries:<span class="w"> </span><span class="m">8</span>
+pin<span class="w"> </span>change<span class="w"> </span>required:<span class="w"> </span><span class="nb">false</span>
+uv<span class="w"> </span>retries:<span class="w"> </span>undefined
+sensor<span class="w"> </span>type:<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">(</span>touch<span class="o">)</span>
+max<span class="w"> </span>samples:<span class="w"> </span><span class="m">5</span>
+</code></pre></div>
+
+
+
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ctapcli<span class="w"> </span>cred
+PIN:<span class="w"> </span>
+
+Enumerate<span class="w"> </span>discoverable<span class="w"> </span>credentials.
+-<span class="w"> </span>existing<span class="w"> </span>discoverable<span class="w"> </span>credentials:<span class="w"> </span><span class="m">0</span>/100
+
+No<span class="w"> </span>discoverable<span class="w"> </span>credentials.
+</code></pre></div>
+
+
+
+</details>
+
+<details>
+<summary>Titan Security Key v2 by Google (2023)</summary>
+
+This is the USB type-C model, also known as model K52T.
+I purchased this model from the official Google Store in November 2023 for $35.
+
+It doesn't support credential management!
+
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ctapcli<span class="w"> </span>info
+Get<span class="w"> </span>the<span class="w"> </span>Authenticator<span class="w"> </span>infomation.
+
+Get<span class="w"> </span>all<span class="w"> </span>data.
+-<span class="w"> </span><span class="nv">versions</span><span class="w">                           </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;FIDO_2_0&quot;</span>,<span class="w"> </span><span class="s2">&quot;U2F_V2&quot;</span><span class="o">]</span>
+-<span class="w"> </span><span class="nv">extensions</span><span class="w">                         </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;credProtect&quot;</span>,<span class="w"> </span><span class="s2">&quot;hmac-secret&quot;</span><span class="o">]</span>
+-<span class="w"> </span>aaguid<span class="o">(</span><span class="m">16</span><span class="o">)</span><span class="w">                         </span><span class="o">=</span><span class="w"> </span>42B4FB4A286643B29BF76C6669C2E5D3
+-<span class="w"> </span><span class="nv">options</span><span class="w">                            </span><span class="o">=</span><span class="w"> </span><span class="o">[(</span><span class="s2">&quot;rk&quot;</span>,<span class="w"> </span><span class="nb">true</span><span class="o">)</span>,<span class="w"> </span><span class="o">(</span><span class="s2">&quot;clientPin&quot;</span>,<span class="w"> </span><span class="nb">true</span><span class="o">)]</span>
+-<span class="w"> </span><span class="nv">max_msg_size</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="m">2200</span>
+-<span class="w"> </span><span class="nv">pin_uv_auth_protocols</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="o">]</span>
+-<span class="w"> </span><span class="nv">max_credential_count_in_list</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">max_credential_id_length</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">transports</span><span class="w">                         </span><span class="o">=</span><span class="w"> </span><span class="o">[]</span>
+-<span class="w"> </span><span class="nv">algorithms</span><span class="w">                         </span><span class="o">=</span><span class="w"> </span><span class="o">[]</span>
+-<span class="w"> </span><span class="nv">max_serialized_large_blob_array</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">force_pin_change</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
+-<span class="w"> </span><span class="nv">min_pin_length</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">firmware_version</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">max_cred_blob_length</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">max_rpids_for_set_min_pin_length</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">preferred_platform_uv_attempts</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">uv_modality</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">remaining_discoverable_credentials</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+
+Error:<span class="w"> </span>Invalid<span class="w"> </span>item
+</code></pre></div>
+
+
+
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>fido2-token<span class="w"> </span>-I<span class="w"> </span>/dev/hidraw0<span class="w"> </span>
+proto:<span class="w"> </span>0x02
+major:<span class="w"> </span>0x02
+minor:<span class="w"> </span>0x00
+build:<span class="w"> </span>0x03
+caps:<span class="w"> </span>0x05<span class="w"> </span><span class="o">(</span>wink,<span class="w"> </span>cbor,<span class="w"> </span>msg<span class="o">)</span>
+version<span class="w"> </span>strings:<span class="w"> </span>FIDO_2_0,<span class="w"> </span>U2F_V2
+extension<span class="w"> </span>strings:<span class="w"> </span>credProtect,<span class="w"> </span>hmac-secret
+aaguid:<span class="w"> </span>42b4fb4a286643b29bf76c6669c2e5d3
+options:<span class="w"> </span>rk,<span class="w"> </span>clientPin
+fwversion:<span class="w"> </span>0x0
+maxmsgsiz:<span class="w"> </span><span class="m">2200</span>
+maxcredcntlst:<span class="w"> </span><span class="m">0</span>
+maxcredlen:<span class="w"> </span><span class="m">0</span>
+maxlargeblob:<span class="w"> </span><span class="m">0</span>
+pin<span class="w"> </span>protocols:<span class="w"> </span><span class="m">1</span>
+pin<span class="w"> </span>retries:<span class="w"> </span><span class="m">8</span>
+pin<span class="w"> </span>change<span class="w"> </span>required:<span class="w"> </span><span class="nb">false</span>
+uv<span class="w"> </span>retries:<span class="w"> </span>undefined
+</code></pre></div>
+
+
+
+</details>
+
+<details>
+<summary>Solo 1 Hacker by SoloKeys</summary>
+
+I bought this key in February 2019 from the official SoloKeys website for $20, plus shipping fee, for a total of $30.
+This is an old model. The newer one is the Solo 2.
+The firmware was later upgraded to version `4.1.5 unlocked`.
+
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>solo<span class="w"> </span>key<span class="w"> </span>version
+<span class="m">4</span>.1.5<span class="w"> </span>unlocked
+</code></pre></div>
+
+
+
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ctapcli<span class="w"> </span>info
+Get<span class="w"> </span>the<span class="w"> </span>Authenticator<span class="w"> </span>infomation.
+
+Get<span class="w"> </span>all<span class="w"> </span>data.
+-<span class="w"> </span><span class="nv">versions</span><span class="w">                           </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;U2F_V2&quot;</span>,<span class="w"> </span><span class="s2">&quot;FIDO_2_0&quot;</span>,<span class="w"> </span><span class="s2">&quot;FIDO_2_1_PRE&quot;</span><span class="o">]</span>
+-<span class="w"> </span><span class="nv">extensions</span><span class="w">                         </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;credProtect&quot;</span>,<span class="w"> </span><span class="s2">&quot;hmac-secret&quot;</span><span class="o">]</span>
+-<span class="w"> </span>aaguid<span class="o">(</span><span class="m">16</span><span class="o">)</span><span class="w">                         </span><span class="o">=</span><span class="w"> </span>8876631BD4A0427F57730EC71C9E0279
+-<span class="w"> </span><span class="nv">options</span><span class="w">                            </span><span class="o">=</span><span class="w"> </span><span class="o">[(</span><span class="s2">&quot;rk&quot;</span>,<span class="w"> </span><span class="nb">true</span><span class="o">)</span>,<span class="w"> </span><span class="o">(</span><span class="s2">&quot;up&quot;</span>,<span class="w"> </span><span class="nb">true</span><span class="o">)</span>,<span class="w"> </span><span class="o">(</span><span class="s2">&quot;plat&quot;</span>,<span class="w"> </span><span class="nb">false</span><span class="o">)</span>,<span class="w"> </span><span class="o">(</span><span class="s2">&quot;credMgmt&quot;</span>,<span class="w"> </span><span class="nb">true</span><span class="o">)</span>,<span class="w"> </span><span class="o">(</span><span class="s2">&quot;clientPin&quot;</span>,<span class="w"> </span><span class="nb">true</span><span class="o">)]</span>
+-<span class="w"> </span><span class="nv">max_msg_size</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="m">1200</span>
+-<span class="w"> </span><span class="nv">pin_uv_auth_protocols</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="o">]</span>
+-<span class="w"> </span><span class="nv">max_credential_count_in_list</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="m">20</span>
+-<span class="w"> </span><span class="nv">max_credential_id_length</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="m">128</span>
+-<span class="w"> </span><span class="nv">transports</span><span class="w">                         </span><span class="o">=</span><span class="w"> </span><span class="o">[]</span>
+-<span class="w"> </span><span class="nv">algorithms</span><span class="w">                         </span><span class="o">=</span><span class="w"> </span><span class="o">[]</span>
+-<span class="w"> </span><span class="nv">max_serialized_large_blob_array</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">force_pin_change</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
+-<span class="w"> </span><span class="nv">min_pin_length</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">firmware_version</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">max_cred_blob_length</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">max_rpids_for_set_min_pin_length</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">preferred_platform_uv_attempts</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">uv_modality</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="nv">remaining_discoverable_credentials</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+
+Error:<span class="w"> </span>Invalid<span class="w"> </span>item
+</code></pre></div>
+
+
+
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>fido2-token<span class="w"> </span>-I<span class="w"> </span>/dev/hidraw0<span class="w"> </span>
+proto:<span class="w"> </span>0x02
+major:<span class="w"> </span>0x00
+minor:<span class="w"> </span>0x00
+build:<span class="w"> </span>0x00
+caps:<span class="w"> </span>0x05<span class="w"> </span><span class="o">(</span>wink,<span class="w"> </span>cbor,<span class="w"> </span>msg<span class="o">)</span>
+version<span class="w"> </span>strings:<span class="w"> </span>U2F_V2,<span class="w"> </span>FIDO_2_0,<span class="w"> </span>FIDO_2_1_PRE
+extension<span class="w"> </span>strings:<span class="w"> </span>credProtect,<span class="w"> </span>hmac-secret
+aaguid:<span class="w"> </span>8876631bd4a0427f57730ec71c9e0279
+options:<span class="w"> </span>rk,<span class="w"> </span>up,<span class="w"> </span>noplat,<span class="w"> </span>credMgmt,<span class="w"> </span>clientPin
+fwversion:<span class="w"> </span>0x0
+maxmsgsiz:<span class="w"> </span><span class="m">1200</span>
+maxcredcntlst:<span class="w"> </span><span class="m">20</span>
+maxcredlen:<span class="w"> </span><span class="m">128</span>
+maxlargeblob:<span class="w"> </span><span class="m">0</span>
+pin<span class="w"> </span>protocols:<span class="w"> </span><span class="m">1</span>
+pin<span class="w"> </span>retries:<span class="w"> </span><span class="m">8</span>
+pin<span class="w"> </span>change<span class="w"> </span>required:<span class="w"> </span><span class="nb">false</span>
+uv<span class="w"> </span>retries:<span class="w"> </span>undefined
+</code></pre></div>
+
+
+
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ctapcli<span class="w"> </span>cred
+PIN:<span class="w"> </span>
+
+Enumerate<span class="w"> </span>discoverable<span class="w"> </span>credentials.
+-<span class="w"> </span>existing<span class="w"> </span>discoverable<span class="w"> </span>credentials:<span class="w"> </span><span class="m">1</span>/49
+-<span class="w"> </span>rp:<span class="w"> </span><span class="o">(</span>id:<span class="w"> </span>webauthn.io,<span class="w"> </span>name:<span class="w"> </span><span class="nb">test</span><span class="o">)</span>
+<span class="w">  </span>-<span class="w"> </span>credential:<span class="w"> </span><span class="o">(</span>id:<span class="w"> </span>***,<span class="w"> </span>name:<span class="w"> </span>test,<span class="w"> </span>display_name:<span class="w"> </span><span class="nb">test</span><span class="o">)</span>
+</code></pre></div>
+
+
+
+</details>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
