@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="preload" href="https://rsms.me/inter/font-files/Inter-SemiBold.woff2?v=4.0" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://rsms.me/inter/font-files/Inter-Regular.woff2?v=4.0" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://rsms.me/inter/font-files/Inter-Medium.woff2?v=4.0" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://rsms.me/inter/font-files/InterVariable.woff2?v=4.0" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link href="/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="All articles Atom feed" />
+    <link href="/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="All articles RSS feed" />
+        <meta name="description" content="tome.one is Nils Amiet's blog. Nils writes about useful tools, solutions to
+technical problems and sometimes opinions on tech, with a focus on security.">
+    <title>tome.one</title>
+    <!-- JS files -->
+    <script src="./theme/tabler/js/tabler.min.js?1692870487" defer></script>
+    <script src="https://instant.page/5.2.0" type="module"
+        integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
+    <!-- CSS files -->
+    <link href="./theme/tabler/css/tabler.min.css?1692870487" rel="stylesheet">
+    <link href="./theme/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="./theme/tipuesearch/tipuesearch.css">
+    <link rel="stylesheet" type="text/css"
+          href="./theme/pygments/monokai.css">
+        <link rel="shortcut icon" href="https://tome.one/theme/img/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://tome.one/theme/img/favicon.ico" type="image/x-icon">
+    <style>
+        :root {
+            --tblr-font-sans-serif: Inter, -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+        }
+
+        body {
+            font-feature-settings: "cv03", "cv04", "cv11";
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- Sidebar -->
+    <aside class="navbar navbar-vertical navbar-left navbar-expand-lg">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu"
+                    aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <h1 class="navbar-brand navbar-brand-autodark">
+                <a href="/" class="text-decoration-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-books" width="24"
+                         height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M5 4m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z"/>
+                        <path d="M9 4m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z"/>
+                        <path d="M5 8h4"/>
+                        <path d="M9 16h4"/>
+                        <path d="M13.803 4.56l2.184 -.53c.562 -.135 1.133 .19 1.282 .732l3.695 13.418a1.02 1.02 0 0 1 -.634 1.219l-.133 .041l-2.184 .53c-.562 .135 -1.133 -.19 -1.282 -.732l-3.695 -13.418a1.02 1.02 0 0 1 .634 -1.219l.133 -.041z"/>
+                        <path d="M14 9l4 -1"/>
+                        <path d="M16 16l3.923 -.98"/>
+                    </svg>
+                    tome.one
+                </a>
+            </h1>
+            <div class="collapse navbar-collapse" id="sidebar-menu">
+                <ul class="navbar-nav pt-lg-3">
+
+                        <li class="nav-item ">
+                            <a class="nav-link" href="./pages/about.html">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         class="icon icon-tabler icon-tabler-question-mark" width="24" height="24"
+                                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                         stroke-linecap="round" stroke-linejoin="round"><path stroke="none"
+                                                                                              d="M0 0h24v24H0z"
+                                                                                              fill="none"/><path
+                                            d="M8 8a3.5 3 0 0 1 3.5 -3h1a3.5 3 0 0 1 3.5 3a3 3 0 0 1 -2 3a3 4 0 0 0 -2 4"/><path
+                                            d="M12 19l0 .01"/></svg>
+
+                      </span>
+                                <span class="nav-link-title">
+                                About
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="nav-link" href="./pages/conferences.html">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane"
+                                         width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                         stroke="currentColor" fill="none" stroke-linecap="round"
+                                         stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path
+                                            d="M16 10h4a2 2 0 0 1 0 4h-4l-4 7h-3l2 -7h-4l-2 2h-3l2 -4l-2 -4h3l2 2h4l-2 -7h3z"/></svg>
+
+                      </span>
+                                <span class="nav-link-title">
+                                Conferences
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="nav-link" href="./pages/links.html">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link"
+                                         width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                         stroke="currentColor" fill="none" stroke-linecap="round"
+                                         stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path
+                                            d="M9 15l6 -6"/><path
+                                            d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464"/><path
+                                            d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463"/></svg>
+
+                      </span>
+                                <span class="nav-link-title">
+                                Links
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="nav-link" href="./pages/projects.html">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tool"
+                                         width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                         stroke="currentColor" fill="none" stroke-linecap="round"
+                                         stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path
+                                            d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5"/></svg>
+
+                      </span>
+                                <span class="nav-link-title">
+                                Projects
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="nav-link" href="./pages/publications.html">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-book"
+                                         width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                         stroke="currentColor" fill="none" stroke-linecap="round"
+                                         stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path
+                                            d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0"/><path
+                                            d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0"/><path d="M3 6l0 13"/><path
+                                            d="M12 6l0 13"/><path d="M21 6l0 13"/></svg>
+
+                      </span>
+                                <span class="nav-link-title">
+                                Publications
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="nav-link" href="./pages/talks.html">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         class="icon icon-tabler icon-tabler-speakerphone" width="24" height="24"
+                                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                         stroke-linecap="round" stroke-linejoin="round"><path stroke="none"
+                                                                                              d="M0 0h24v24H0z"
+                                                                                              fill="none"/><path
+                                            d="M18 8a3 3 0 0 1 0 6"/><path
+                                            d="M10 8v11a1 1 0 0 1 -1 1h-1a1 1 0 0 1 -1 -1v-5"/><path
+                                            d="M12 8h0l4.524 -3.77a.9 .9 0 0 1 1.476 .692v12.156a.9 .9 0 0 1 -1.476 .692l-4.524 -3.77h-8a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1h8"/></svg>
+
+                      </span>
+                                <span class="nav-link-title">
+                                Talks
+                                </span>
+                            </a>
+                        </li>
+
+                    <li>
+                        <div class="hr-text">
+                            <span>Archives</span>
+                        </div>
+                    </li>
+
+                    <li class="nav-item ">
+                        <a class="nav-link" href="./archives.html">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive"
+                                     width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                     fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none"
+                                                                                                      d="M0 0h24v24H0z"
+                                                                                                      fill="none"/><path
+                                        d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"/><path
+                                        d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10"/><path d="M10 12l4 0"/></svg>
+                            </span>
+                            <span class="nav-link-title">
+                                    Posts
+                                  </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item ">
+                        <a class="nav-link" href="./categories.html">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-category"
+                                       width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                       fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none"
+                                                                                                        d="M0 0h24v24H0z"
+                                                                                                        fill="none"/><path
+                                          d="M4 4h6v6h-6z"/><path d="M14 4h6v6h-6z"/><path d="M4 14h6v6h-6z"/><path
+                                          d="M17 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/></svg>
+                            </span>
+                            <span class="nav-link-title">
+                                    Categories
+                                  </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item ">
+                        <a class="nav-link" href="./tags.html">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag"
+                                     width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                     fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none"
+                                                                                                      d="M0 0h24v24H0z"
+                                                                                                      fill="none"/><path
+                                        d="M7.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path
+                                        d="M3 6v5.172a2 2 0 0 0 .586 1.414l7.71 7.71a2.41 2.41 0 0 0 3.408 0l5.592 -5.592a2.41 2.41 0 0 0 0 -3.408l-7.71 -7.71a2 2 0 0 0 -1.414 -.586h-5.172a3 3 0 0 0 -3 3z"/></svg>
+                            </span>
+                            <span class="nav-link-title">
+                                    Tags
+                                  </span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </aside>
+    <div class="page-wrapper">
+        <!-- Page header -->
+        <div class="page-header d-print-none">
+            <div class="container-narrow">
+                <div class="row g-2 align-items-center">
+                    <div class="col">
+                        <!-- Page pre-title -->
+                        <div class="page-pretitle">
+                                tome.one
+                        </div>
+    <h1>Latest Articles</h1>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container-narrow">
+
+            <div class="row ms-auto align-items-center">
+                <div class="col-auto pt-3 align-items-start">
+
+                    <a class="text-black px-2 ps-0 text-decoration-none" target="_blank"
+                       href="https://github.com/amietn">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             class="icon icon-tabler icon-tabler-brand-github" width="24" height="24"
+                             viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                             stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"/>
+                        </svg>
+                    </a>
+
+                    <a class="text-black px-2 text-decoration-none" target="_blank" href="https://twitter.com/tmlxs">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-x"
+                             width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                             fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M4 4l11.733 16h4.267l-11.733 -16z"/>
+                            <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/>
+                        </svg>
+                    </a>
+
+                    <a class="text-black px-2 text-decoration-none" target="_blank"
+                       href="https://www.linkedin.com/in/nilsamiet">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin"
+                             width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                             fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"/>
+                            <path d="M8 11l0 5"/>
+                            <path d="M8 8l0 .01"/>
+                            <path d="M12 16l0 -5"/>
+                            <path d="M16 16v-3a2 2 0 0 0 -4 0"/>
+                        </svg>
+                    </a>
+
+                </div>
+
+                <div class="col-auto ms-auto pt-3">
+                    <form action="/search" method="get" autocomplete="off" novalidate=""
+                          onsubmit="return (this.elements['q'].value.length > 0)">
+                        <div class="input-icon">
+                  <span class="input-icon-addon">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/search -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                         stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                         stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+                            d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path><path d="M21 21l-6 -6"></path></svg>
+                  </span>
+                            <input id="searchbox" name="q" type="text" value=""
+                                   class="form-control"
+                                   placeholder="Search…"
+                                   aria-label="Search in website">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Page body -->
+        <div class="page-body">
+            <div class="container-narrow">
+    <div class="row row-deck row-cards mb-4">
+
+    </div>
+
+
+    <div class="row row-deck row-cards">
+
+            <div class="col-sm-12 col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h1 class="index-article-title"><a
+                                href="./bash-magic.html">Bash Magic</a></h1>
+
+                        <div class="index-article-header">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     class="icon icon-tabler icon-tabler-calendar-month" width="24"
+                                     height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                     stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"/>
+                                    <path d="M16 3v4"/>
+                                    <path d="M8 3v4"/>
+                                    <path d="M4 11h16"/>
+                                    <path d="M7 14h.013"/>
+                                    <path d="M10.01 14h.005"/>
+                                    <path d="M13.01 14h.005"/>
+                                    <path d="M16.015 14h.005"/>
+                                    <path d="M13.015 17h.005"/>
+                                    <path d="M7.01 17h.005"/>
+                                    <path d="M10.01 17h.005"/>
+                                </svg>
+                                <span class="text-secondary">
+                                Fri 02 December 2016
+                                </span> &#8226;
+                            </span>
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user"
+                                     width="24" height="24"
+                                     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                     stroke-linecap="round"
+                                     stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"/>
+                                    <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/>
+                                </svg>
+                                <span><a href="/pages/about.html">Nils Amiet</a></span>
+                            </span>
+
+
+                                <p class="mt-1">
+
+                                        <a class="badge bg-azure text-white"
+                                           href="./tag/linux.html">linux</a>
+                                        <a class="badge bg-azure text-white"
+                                           href="./tag/bash.html">bash</a>
+                                </p>
+                        </div>
+
+
+                        <div class="index-article-summary">
+                                <p>Over the years I have learned many tips and tricks when working with Bash. Some are well known while others are not. Here are a few tricks that I find the most useful.</p>
+<h4>Searching history</h4>
+<p>So you know you just typed that command but cannot remember what it was. Fine …</p>
+                                <br>
+                                <a class="btn" href="./bash-magic.html">
+                                    Continue reading</a>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h1 class="index-article-title"><a
+                                href="./spark-summit-europe-2016.html">Spark Summit Europe 2016</a></h1>
+
+                        <div class="index-article-header">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     class="icon icon-tabler icon-tabler-calendar-month" width="24"
+                                     height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                     stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"/>
+                                    <path d="M16 3v4"/>
+                                    <path d="M8 3v4"/>
+                                    <path d="M4 11h16"/>
+                                    <path d="M7 14h.013"/>
+                                    <path d="M10.01 14h.005"/>
+                                    <path d="M13.01 14h.005"/>
+                                    <path d="M16.015 14h.005"/>
+                                    <path d="M13.015 17h.005"/>
+                                    <path d="M7.01 17h.005"/>
+                                    <path d="M10.01 17h.005"/>
+                                </svg>
+                                <span class="text-secondary">
+                                Tue 01 November 2016
+                                </span> &#8226;
+                            </span>
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user"
+                                     width="24" height="24"
+                                     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                     stroke-linecap="round"
+                                     stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"/>
+                                    <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/>
+                                </svg>
+                                <span><a href="/pages/about.html">Nils Amiet</a></span>
+                            </span>
+
+
+                                <p class="mt-1">
+
+                                        <a class="badge bg-azure text-white"
+                                           href="./tag/conference.html">conference</a>
+                                        <a class="badge bg-azure text-white"
+                                           href="./tag/spark.html">spark</a>
+                                        <a class="badge bg-azure text-white"
+                                           href="./tag/big-data.html">big data</a>
+                                </p>
+                        </div>
+
+
+                        <div class="index-article-summary">
+                                <p>I attended <a href="https://spark-summit.org/eu-2016/">Spark Summit Europe 2016</a> in Brussels this year in October, a conference where <a href="http://spark.apache.org/">Apache Spark</a> enthusiasts meet up.
+I've been using Spark for nearly a year now on multiple projects and was delighted to see so many Spark users at Square Brussels.</p>
+<p><img alt="Spark Summit Europe 2016 photo" src="./images/spark-summit-europe-2016-header.jpg">
+ </p>
+<p>There were three trainings to choose …</p>
+                                <br>
+                                <a class="btn" href="./spark-summit-europe-2016.html">
+                                    Continue reading</a>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+    </div>
+
+
+
+    <footer class="footer footer-transparent d-print-none">
+        <div class="container-xl">
+            <div class="row text-center align-items-center flex-row-reverse">
+                <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+                        <a class="btn" href="./index2.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left"
+                                 width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                 fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M5 12l14 0"/>
+                                <path d="M5 12l6 6"/>
+                                <path d="M5 12l6 -6"/>
+                            </svg>
+                            Previous page
+                        </a>
+                    <p class="center">Page 3 / 3</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
